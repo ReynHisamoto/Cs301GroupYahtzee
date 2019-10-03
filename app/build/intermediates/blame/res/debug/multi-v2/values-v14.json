@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
+            "map": [
+                {
+                    "source": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\src\\main\\res\\values-v14\\styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "77",
+                        "endOffsets": "90"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "76",
+                        "endOffsets": "127"
+                    }
+                }
+            ]
+        }
+    ]
+}

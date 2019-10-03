@@ -1,0 +1,114 @@
+{
+    "logs": [
+        {
+            "outputFile": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\build\\intermediates\\res\\merged\\debug\\values-v14_values-v14.arsc.flat",
+            "map": [
+                {
+                    "source": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\src\\main\\res\\values-v14\\styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "77",
+                        "endOffsets": "90"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "76",
+                        "endOffsets": "127"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "11,2,7,17,18,19,14,3,20,4,8,12,13,21,10,6,15,9,15,5",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,89,4",
+                        "startOffsets": "520,17,307,859,931,982,674,58,1059,111,357,570,622,1108,464,237,714,402,799,162",
+                        "endColumns": "49,40,49,71,50,76,39,52,48,50,44,51,51,50,55,69,89,61,139,74",
+                        "endOffsets": "565,53,352,926,977,1054,709,106,1103,157,397,617,669,1154,515,302,799,459,849,232"
+                    },
+                    "to": {
+                        "startLines": "11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "470,520,561,611,683,734,811,851,904,953,1004,1049,1101,1153,1204,1260,1330,1420,1482,1537",
+                        "endColumns": "49,40,49,71,50,76,39,52,48,50,44,51,51,50,55,69,89,61,54,74",
+                        "endOffsets": "515,556,606,678,729,806,846,899,948,999,1044,1096,1148,1199,1255,1325,1415,1477,1532,1607"
+                    }
+                },
+                {
+                    "source": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "58",
+                        "endOffsets": "71"
+                    },
+                    "to": {
+                        "startLines": "31",
+                        "startColumns": "4",
+                        "startOffsets": "1612",
+                        "endColumns": "57",
+                        "endOffsets": "1665"
+                    }
+                },
+                {
+                    "source": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\src\\main\\res\\values\\color.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,92,129",
+                        "endColumns": "36,36,37",
+                        "endOffsets": "87,124,162"
+                    }
+                },
+                {
+                    "source": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\src\\main\\res\\values\\dimen.xml",
+                    "from": {
+                        "startLines": "7,2,4,3,6,5",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "307,55,164,109,256,206",
+                        "endColumns": "50,53,41,54,50,49",
+                        "endOffsets": "353,104,201,159,302,251"
+                    },
+                    "to": {
+                        "startLines": "5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "167,218,272,314,369,420",
+                        "endColumns": "50,53,41,54,50,49",
+                        "endOffsets": "213,267,309,364,415,465"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\build\\intermediates\\res\\merged\\debug\\values-v11_values-v11.arsc.flat",
+            "map": [
+                {
+                    "source": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\src\\main\\res\\values-v11\\styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "63",
+                        "endOffsets": "76"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "62",
+                        "endOffsets": "113"
+                    }
+                }
+            ]
+        }
+    ]
+}
