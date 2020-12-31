@@ -159,7 +159,14 @@ public abstract class NetworkObjectPasser {
 			} catch (IOException e) {
 				// if we could not make the connection, set our status to "failed" and return
 				status = RunnerStatus.FAILED;
-				Log.d(e.getClass()+"", e.getMessage());
+				Log.d("NetworkObjectPasser", e.getMessage());
+				Log.e("NetworkObjectPasser", "This can happen because you are missing the required permission requests in your AndroidManifest.xml file.");
+				return;
+			} catch (NullPointerException npe) {
+				status = RunnerStatus.FAILED;
+				Log.e("NetworkObjectPasser", "Could not create socket.");
+				Log.e("NetworkObjectPasser", "This can happen because you are missing the required permission requests in your AndroidManifest.xml file.");
+				Log.e("NetworkObjectPasser", npe.toString());
 				return;
 			}
 			

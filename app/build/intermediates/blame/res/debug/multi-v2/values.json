@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "/media/nuxoll/Extra Storage/AndroidStudioProjects/PigGameStarter/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
-                    "source": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "/media/nuxoll/Extra Storage/AndroidStudioProjects/PigGameStarter/app/src/main/res/values/strings.xml",
                     "from": {
                         "startLines": "11,2,7,17,18,19,14,3,20,4,8,12,13,21,10,6,15,9,15,5",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,89,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "/media/nuxoll/Extra Storage/AndroidStudioProjects/PigGameStarter/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\src\\main\\res\\values\\color.xml",
+                    "source": "/media/nuxoll/Extra Storage/AndroidStudioProjects/PigGameStarter/app/src/main/res/values/color.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -48,7 +48,7 @@
                     }
                 },
                 {
-                    "source": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\src\\main\\res\\values\\dimen.xml",
+                    "source": "/media/nuxoll/Extra Storage/AndroidStudioProjects/PigGameStarter/app/src/main/res/values/dimen.xml",
                     "from": {
                         "startLines": "7,2,4,3,6,5",
                         "startColumns": "4,4,4,4,4,4",

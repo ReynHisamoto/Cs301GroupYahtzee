@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
+            "outputFile": "/media/nuxoll/Extra Storage/AndroidStudioProjects/PigGameStarter/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v14/values-v14.xml",
             "map": [
                 {
-                    "source": "P:\\temp\\CS371\\CS371PigGameStarter\\app\\src\\main\\res\\values-v14\\styles.xml",
+                    "source": "/media/nuxoll/Extra Storage/AndroidStudioProjects/PigGameStarter/app/src/main/res/values-v14/styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -41,6 +41,11 @@ public class IPCoder {
 			}
 		} catch (SocketException ex) {
 			Log.e("IPCoder"/*this.toString()*/, ex.toString());
+			Log.e("IPCoder", "This can happen because you are missing the required permission requests in your AndroidManifest.xml file.");
+		} catch (NullPointerException npe) {
+			Log.e("IPCoder", "Could not retrieve network interfaces.");
+			Log.e("IPCoder", "This can happen because you are missing the required permission requests in your AndroidManifest.xml file.");
+			Log.e("IPCoder", npe.toString());
 		}
 		return "Unable to determine UP address.";
 	}
