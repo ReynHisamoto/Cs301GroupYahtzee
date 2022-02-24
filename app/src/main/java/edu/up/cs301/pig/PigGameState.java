@@ -3,31 +3,31 @@ package edu.up.cs301.pig;
 import edu.up.cs301.game.infoMsg.GameState;
 
 public class PigGameState extends GameState {
-    private int playerId;
-    private int p0Score;
-    private int p1Score;
-    private Dice dice1,dice2,dice3,dice4,dice5;
+    // is the player of the current turn's id
+    private int turn;
+    // 2d array to score scores [the player id of the person in question][the value when looking at the score sheet from top to bottom]
+    private int[][] scores;
+    // an array of the dice values in play
+    private int dices[];
+    // current turn's roll number
     private int rollNum;
-    private ScoreCard scoreCard;  // add more comments
+    //current round of play
     private int round;
+    //array of selected dice up to 3 per rules
+    private int[] selected;
 
 
     /**
      * ctor
      */
-    public PigGameState() {
-        this.playerId = 0;
-        this.p0Score = 0;
-        this.p1Score = 0;
-        this.dice1 = new Dice();
-        this.dice2 = new Dice();
-        this.dice3 = new Dice();
-        this.dice4 = new Dice();
-        this.dice5 = new Dice();
+    // default constructor that sets up the arrays and vals at game launch
+    public PigGameState(int numPlayers) {
+        this.turn = 0;
+        this.scores = new int[numPlayers][13];
+        this.dices= new int[5];
         this.rollNum = 1;
-        this.scoreCard = new ScoreCard();
         this.round = 1;
-
+        this.selected = new int[3];
 
 
     }
@@ -36,16 +36,21 @@ public class PigGameState extends GameState {
      * copy ctor
      * @param g
      */
+    //copies all new values into new gamestate
     public PigGameState (PigGameState g) {
-        this.playerId = g.playerId;
-        this.p0Score = g.p0Score;
-        this.p1Score = g.p1Score;
-        this.dice1 = new Dice(g.dice1);
-        this.dice2 = new Dice(g.dice2);
-        this.dice3 = new Dice(g.dice3);
-        this.dice4 = new Dice(g.dice4);
-        this.dice5 = new Dice(g.dice5);
+        this.turn = g.turn;
         this.rollNum = g.rollNum;
+        for( int i = 0; i < scores.length; i++ ){
+            for(int j = 0; j < scores[i].length; j++){
+                this.scores[i][j] = g.scores[i][j];
+            }
+        }
+        for(int i = 0; i < dices.length; i++){
+            this.dices[i] = g.dices[i];
+        }
+        for(int i =0; i < selected.length; i++){
+            this.selected[i] = g.selected[i];
+        }
         //this.scoreCard = new ScoreCard();
         this.round = g.round;
 
@@ -56,64 +61,83 @@ public class PigGameState extends GameState {
 
     //getter methods for PigGameState
     //todo getter methods for yahtzee
-
-    public int getPlayerId() {
-        return playerId;
+//returns current player id
+    public int getTurn() {
+        return turn;
     }
-
-    public int getP0Score() {
-        return p0Score;
+//returns array current score of player
+   public int[] getScores(int p){
+        return scores[p];
+   }
+//returns array of dices
+    public int[] getDices() {
+        return dices;
     }
-
-    public int getP1Score() {
-        return p1Score;
+//returns number of rolls during the turn
+    public int getRollNum() {
+        return rollNum;
     }
-
-    public int getDiceNum() {
-        return diceNum;
+    //returns current round number
+    public int getRound() {
+        return round;
     }
-
-    public int getRunningTotal() {
-        return runningTotal;
-    }
+    //returns array of selected dice
+    public int[] getSelected(){return selected;}
 
 
     //setter methods for PigGameState
     //todo setter methods for yahtzee
-    public void setRunningTotal(int runningTotal) {
-        this.runningTotal = runningTotal;
+    // sets current turn to given player id
+   public void setTurn(int id){
+        this.turn = id;
+   }
+   // sets for a given player, and row that is in question, to a given score
+    public void setScores(int id, int row, int score){
+        this.scores[id][row] = score;
+    }
+    //sets the dice at a given ind to a new value
+    public void setDices(int ind, int val){
+        this.dices[ind] = val;
+    }
+    //sets the RollNumber to given num
+    public void setRollNum(int num){
+        this.rollNum = num;
+    }
+    //sets Selected die at given index to a new value
+    public void setSelected(int ind, int val){
+        this.selected[ind] = val;
+    }
+    // sets round to given val
+    public void setRound(int num){
+        this.round = num;
     }
 
-    public void setP0Score(int p0Score) {
-        this.p0Score = p0Score;
-    }
 
-    public void setP1Score(int p1Score) {
-        this.p1Score = p1Score;
-    }
-
-    public void setPlayerId(int playerId) {
-        this.playerId = playerId;
-    }
-
-    public void setDiceNum(int diceNum) {
-        this.diceNum = diceNum;
-    }
 
 
     @Override
     public String toString() {
-        return "PigGameState{" +
-                "playerId=" + playerId +
-                ", p0Score=" + p0Score +
-                ", p1Score=" + p1Score +
-                ", dice1=" + dice1.getVal() +
-                ", dice2=" + dice2.getVal() +
-                ", dice3=" + dice3.getVal() +
-                ", dice4=" + dice4.getVal() +
-                ", dice5=" + dice5.getVal() +
-                ", rollNum=" + rollNum +
-                ", scoreCard=" + scoreCard +
+        String playerValues = "";
+        String diceValues = "";
+        String selectedDie = "";
+        for(int i = 0; i < scores.length; i++){
+            playerValues.concat("player" + i + " scores: ");
+            for(int j = 0; j < scores[i].length; j++){
+                playerValues.concat(scores[j] + ", ");
+            }
+        }
+        for(int i = 0; i < dices.length; i++){
+            diceValues.concat("dice " + i + "'s value is:" + dices[i]);
+        }
+        for(int i = 0; i < selected.length; i++){
+            selectedDie.concat("selected dice " + i + "'s value is:" + selected[i]);
+        }
+        return "YahtzeeGameState{" +
+                "Turn=" + turn + "\n" +
+                playerValues + "\n" +
+               diceValues + "\n" +
+                selectedDie + "\n" +
+                ", rollNum=" + rollNum + "\n" +
                 ", round=" + round +
                 '}';
     }
