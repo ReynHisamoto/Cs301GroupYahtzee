@@ -117,9 +117,11 @@ public class PigGameState extends GameState {
 
     @Override
     public String toString() {
+        //initializes empty strings for later return
         String playerValues = "";
         String diceValues = "";
         String selectedDie = "";
+        //writes out all values in arrays to a given string
         for(int i = 0; i < scores.length; i++){
             playerValues.concat("player" + i + " scores: ");
             for(int j = 0; j < scores[i].length; j++){
@@ -132,6 +134,7 @@ public class PigGameState extends GameState {
         for(int i = 0; i < selected.length; i++){
             selectedDie.concat("selected dice " + i + "'s value is:" + selected[i]);
         }
+        //returns values with given variable values and new strings above
         return "YahtzeeGameState{" +
                 "Turn=" + turn + "\n" +
                 playerValues + "\n" +
