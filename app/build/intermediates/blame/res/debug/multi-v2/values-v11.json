@@ -1,16 +1,16 @@
 {
     "logs": [
         {
-            "outputFile": "/media/nuxoll/Extra Storage/AndroidStudioProjects/PigGameStarter/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v11/values-v11.xml",
+            "outputFile": "C:\\Users\\spoti\\AndroidStudioProjects\\GroupYahtzee\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
             "map": [
                 {
-                    "source": "/media/nuxoll/Extra Storage/AndroidStudioProjects/PigGameStarter/app/src/main/res/values-v11/styles.xml",
+                    "source": "C:\\Users\\spoti\\AndroidStudioProjects\\GroupYahtzee\\app\\src\\main\\res\\values-v11\\styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
-                        "startOffsets": "17",
+                        "startOffsets": "19",
                         "endColumns": "63",
-                        "endOffsets": "76"
+                        "endOffsets": "78"
                     },
                     "to": {
                         "startLines": "2",
