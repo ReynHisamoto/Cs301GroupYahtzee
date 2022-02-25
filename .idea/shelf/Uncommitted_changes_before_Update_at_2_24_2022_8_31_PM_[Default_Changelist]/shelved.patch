@@ -1,0 +1,37 @@
+Index: app/src/main/java/edu/up/cs301/pig/YahtzeeLocalGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.up.cs301.pig;\r\n\r\nimport edu.up.cs301.game.GamePlayer;\r\nimport edu.up.cs301.game.LocalGame;\r\nimport edu.up.cs301.game.actionMsg.GameAction;\r\n\r\n\r\n/**\r\n * class PigLocalGame controls the play of the game\r\n *\r\n * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl\r\n * @version February 2016\r\n */\r\npublic class YahtzeeLocalGame extends LocalGame {\r\n\r\n    private YahtzeeGameState masterGameState;\r\n\r\n    /**\r\n     * This ctor creates a new game state\r\n     */\r\n    public YahtzeeLocalGame() {\r\n        this.masterGameState = new YahtzeeGameState(players.length);\r\n    }\r\n\r\n    /**\r\n     * can the player with the given id take an action right now?\r\n     */\r\n    @Override\r\n    protected boolean canMakeAction(int playerIdx) {\r\n\r\n        if (playerIdx == masterGameState.getTurn()) {\r\n            return true;\r\n        } else {\r\n\r\n            return false;\r\n        }\r\n\r\n    }\r\n\r\n    /**\r\n     * This method is called when a new action arrives from a player\r\n     *\r\n     * @return true if the action was taken or false if the action was invalid/illegal.\r\n     */\r\n    @Override\r\n    protected boolean makeMove(GameAction action) {\r\n        //TODO  You will implement this method\r\n\r\n        //hold actionjhghjuh\r\n        if (action instanceof YahtzeeKeep) {\r\n\r\n            if (masterGameState.getTurn() == 0) {\r\n                //masterGameState.setP0Score(masterGameState.getP0Score() + masterGameState.getRunningTotal());\r\n            } else if (masterGameState.getTurn() == 1) {\r\n                //masterGameState.setP1Score(masterGameState.getP1Score() + masterGameState.getRunningTotal());\r\n            }\r\n\r\n\r\n            return true;\r\n\r\n            //roll action\r\n        } else if (action instanceof YahtzeeRoll) {\r\n            int rand = (int)(Math.random() * 6);\r\n            if (rand == 1) {\r\n                //masterGameState.setRunningTotal(0);\r\n                if (masterGameState.getTurn() == 0) {\r\n                    masterGameState.setTurn(1);\r\n                } else {\r\n                    masterGameState.setTurn(0);\r\n                }\r\n            } else {\r\n                //masterGameState.setRunningTotal(masterGameState.getRunningTotal() + rand);\r\n            }\r\n\r\n            return true;\r\n        }\r\n\r\n        if (action instanceof YahtzeeScore){\r\n\r\n        }\r\n            return false;\r\n\r\n\r\n    }//makeMove\r\n\r\n    /**\r\n     * send the updated state to a given player\r\n     */\r\n    @Override\r\n    protected void sendUpdatedStateTo(GamePlayer p) {\r\n        //TODO  You will implement this method\r\n        YahtzeeGameState updatedGameState = new YahtzeeGameState(masterGameState);\r\n        p.sendInfo(updatedGameState);\r\n    }//sendUpdatedSate\r\n\r\n    /**\r\n     * Check if the game is over\r\n     *\r\n     * @return\r\n     * \t\ta message that tells who has won the game, or null if the\r\n     * \t\tgame is not over\r\n     */\r\n    @Override\r\n    protected String checkIfGameOver() {\r\n        //TODO  You will implement this method\r\n        /**\r\n        if (masterGameState.getP0Score() > 50) {\r\n            return  \"player 0 wins, Score: \" + masterGameState.getP0Score();\r\n        } else if (masterGameState.getP1Score() > 50) {\r\n            return \"player 1 wins, Score: \" + masterGameState.getP1Score();\r\n        } else {\r\n         **/\r\n            return null;\r\n\r\n    }\r\n\r\n    //todo create yahtzee methods\r\n    protected boolean selectKeepers() {\r\n        return false;\r\n    }\r\n\r\n    protected boolean selectScoreBox() {\r\n        return false;\r\n    }\r\n\r\n}// class PigLocalGame\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/edu/up/cs301/pig/YahtzeeLocalGame.java b/app/src/main/java/edu/up/cs301/pig/YahtzeeLocalGame.java
+--- a/app/src/main/java/edu/up/cs301/pig/YahtzeeLocalGame.java	(revision 890c159153130b56e620b1e38b1884da4fef0457)
++++ b/app/src/main/java/edu/up/cs301/pig/YahtzeeLocalGame.java	(date 1645763467103)
+@@ -103,6 +103,8 @@
+     @Override
+     protected String checkIfGameOver() {
+         //TODO  You will implement this method
++
++
+         /**
+         if (masterGameState.getP0Score() > 50) {
+             return  "player 0 wins, Score: " + masterGameState.getP0Score();
+Index: local.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>## This file must *NOT* be checked into Version Control Systems,\r\n# as it contains information specific to your local configuration.\r\n#\r\n# Location of the SDK. This is only used by Gradle.\r\n# For customization when using a Version Control System, please read the\r\n# header note.\r\n#Thu Feb 24 19:45:02 GMT-08:00 2022\r\nsdk.dir=C\\:\\\\Users\\\\aweso\\\\AppData\\\\Local\\\\Android\\\\Sdk\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+diff --git a/local.properties b/local.properties
+--- a/local.properties	(revision 890c159153130b56e620b1e38b1884da4fef0457)
++++ b/local.properties	(date 1645762506640)
+@@ -4,5 +4,5 @@
+ # Location of the SDK. This is only used by Gradle.
+ # For customization when using a Version Control System, please read the
+ # header note.
+-#Thu Feb 24 19:45:02 GMT-08:00 2022
+-sdk.dir=C\:\\Users\\aweso\\AppData\\Local\\Android\\Sdk
++#Thu Feb 24 19:06:51 PST 2022
++sdk.dir=C\:\\Users\\spoti\\AppData\\Local\\Android\\Sdk
