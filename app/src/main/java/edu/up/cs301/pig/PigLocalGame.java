@@ -32,7 +32,7 @@ public class PigLocalGame extends LocalGame {
     @Override
     protected boolean canMove(int playerIdx) {
         //TODO  You will implement this method
-        if (playerIdx == masterGameState.getPlayerId()) {
+        if (playerIdx == masterGameState.getTurn()) {
             return true;
         } else {
 
@@ -51,11 +51,11 @@ public class PigLocalGame extends LocalGame {
         //TODO  You will implement this method
 
         //hold action
-        if (action instanceof PigHoldAction) {
+        if (action instanceof YahtzeeKeep) {
 
-            if (masterGameState.getPlayerId() == 0) {
+            if (masterGameState.getTurn() == 0) {
                 masterGameState.setP0Score(masterGameState.getP0Score() + masterGameState.getRunningTotal());
-            } else if (masterGameState.getPlayerId() == 1) {
+            } else if (masterGameState.getTurn() == 1) {
                 masterGameState.setP1Score(masterGameState.getP1Score() + masterGameState.getRunningTotal());
             }
 
@@ -63,20 +63,24 @@ public class PigLocalGame extends LocalGame {
             return true;
 
             //roll action
-        } else if (action instanceof PigRollAction) {
+        } else if (action instanceof YahtzeeRoll) {
             int rand = (int)(Math.random() * 6);
             if (rand == 1) {
                 masterGameState.setRunningTotal(0);
-                if (masterGameState.getPlayerId() == 0) {
-                    masterGameState.setPlayerId(1);
+                if (masterGameState.getTurn() == 0) {
+                    masterGameState.setTurn(1);
                 } else {
-                    masterGameState.setPlayerId(0);
+                    masterGameState.setTurn(0);
                 }
             } else {
                 masterGameState.setRunningTotal(masterGameState.getRunningTotal() + rand);
             }
 
             return true;
+        }
+
+        if (action instanceof YahtzeeScore){
+
         }
             return false;
 
