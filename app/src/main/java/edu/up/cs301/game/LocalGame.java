@@ -266,7 +266,7 @@ public abstract class LocalGame implements Game, Tickable {
 		
 		// if the player is NOT a player who is presently allowed to
 		// move, send the player a message
-		if (!canMove(playerId)) {;
+		if (canMakeAction(playerId)) {;
 			player.sendInfo(new NotYourTurnInfo());
 			return;
 		}
@@ -298,7 +298,9 @@ public abstract class LocalGame implements Game, Tickable {
 	 * @return
 	 * 		true iff the player is allowed to move
 	 */
-	protected abstract boolean canMove(int playerIdx);
+
+	//changed from "canMove"
+	protected abstract boolean canMakeAction(int playerIdx);
 	
 	/**
 	 * Check if the game is over. It is over, return a string that tells

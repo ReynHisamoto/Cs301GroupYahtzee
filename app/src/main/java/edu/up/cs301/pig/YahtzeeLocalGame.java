@@ -3,11 +3,7 @@ package edu.up.cs301.pig;
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.actionMsg.GameAction;
-import edu.up.cs301.game.infoMsg.GameState;
 
-import android.util.Log;
-
-// dummy comment, to see if commit and push work from srvegdahl account
 
 /**
  * class PigLocalGame controls the play of the game
@@ -15,23 +11,23 @@ import android.util.Log;
  * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl
  * @version February 2016
  */
-public class PigLocalGame extends LocalGame {
+public class YahtzeeLocalGame extends LocalGame {
 
-    private PigGameState masterGameState;
+    private YahtzeeGameState masterGameState;
+
     /**
      * This ctor creates a new game state
      */
-    public PigLocalGame() {
-        //TODO  You will implement this constructor
-        this.masterGameState = new PigGameState(players.length);
+    public YahtzeeLocalGame() {
+        this.masterGameState = new YahtzeeGameState(players.length);
     }
 
     /**
      * can the player with the given id take an action right now?
      */
     @Override
-    protected boolean canMove(int playerIdx) {
-        //TODO  You will implement this method
+    protected boolean canMakeAction(int playerIdx) {
+
         if (playerIdx == masterGameState.getTurn()) {
             return true;
         } else {
@@ -50,13 +46,13 @@ public class PigLocalGame extends LocalGame {
     protected boolean makeMove(GameAction action) {
         //TODO  You will implement this method
 
-        //hold action
+        //hold actionjhghjuh
         if (action instanceof YahtzeeKeep) {
 
             if (masterGameState.getTurn() == 0) {
-                masterGameState.setP0Score(masterGameState.getP0Score() + masterGameState.getRunningTotal());
+                //masterGameState.setP0Score(masterGameState.getP0Score() + masterGameState.getRunningTotal());
             } else if (masterGameState.getTurn() == 1) {
-                masterGameState.setP1Score(masterGameState.getP1Score() + masterGameState.getRunningTotal());
+                //masterGameState.setP1Score(masterGameState.getP1Score() + masterGameState.getRunningTotal());
             }
 
 
@@ -100,13 +96,15 @@ public class PigLocalGame extends LocalGame {
     @Override
     protected String checkIfGameOver() {
         //TODO  You will implement this method
+        /**
         if (masterGameState.getP0Score() > 50) {
             return  "player 0 wins, Score: " + masterGameState.getP0Score();
         } else if (masterGameState.getP1Score() > 50) {
             return "player 1 wins, Score: " + masterGameState.getP1Score();
         } else {
+         **/
             return null;
-        }
+
     }
 
     //todo create yahtzee methods
