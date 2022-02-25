@@ -13,8 +13,7 @@ public class YahtzeeGameState extends GameState {
     private int rollNum;
     //current round of play
     private int round;
-    //array of selected dice up to 3 per rules
-    private int[] selected;
+
 
 
     /**
@@ -32,7 +31,6 @@ public class YahtzeeGameState extends GameState {
         }
         this.rollNum = 1;
         this.round = 1;
-        this.selected = new int[3];
 
 
     }
@@ -53,9 +51,7 @@ public class YahtzeeGameState extends GameState {
         for(int i = 0; i < diceArray.length; i++){
             this.diceArray[i] = new Dice(g.diceArray[i]);
         }
-        for(int i =0; i < selected.length; i++){
-            this.selected[i] = g.selected[i];
-        }
+
         //this.scoreCard = new ScoreCard();
         this.round = g.round;
 
@@ -86,8 +82,6 @@ public class YahtzeeGameState extends GameState {
     public int getRound() {
         return round;
     }
-    //returns array of selected dice
-    public int[] getSelected(){return selected;}
 
 
     //setter methods for YahtzeeGameState
@@ -122,10 +116,7 @@ public class YahtzeeGameState extends GameState {
     public void setRollNum(int num){
         this.rollNum = num;
     }
-    //sets Selected die at given index to a new value
-    public void setSelected(int ind, int val){
-        this.selected[ind] = val;
-    }
+
     // sets round to given val
     public void setRound(int num){
         this.round = num;
@@ -147,18 +138,15 @@ public class YahtzeeGameState extends GameState {
                 playerValues.concat(scores[j] + ", ");
             }
         }
-        for(int i = 0; i < dices.length; i++){
-            diceValues.concat("dice " + i + "'s value is:" + dices[i]);
+        for(int i = 0; i < diceArray.length; i++){
+            diceValues.concat("dice " + i + "'s value is:" + diceArray[i].getVal());
         }
-        for(int i = 0; i < selected.length; i++){
-            selectedDie.concat("selected dice " + i + "'s value is:" + selected[i]);
-        }
+
         //returns values with given variable values and new strings above
         return "YahtzeeGameState{" +
                 "Turn=" + turn + "\n" +
                 playerValues + "\n" +
                diceValues + "\n" +
-                selectedDie + "\n" +
                 ", rollNum=" + rollNum + "\n" +
                 ", round=" + round +
                 '}';

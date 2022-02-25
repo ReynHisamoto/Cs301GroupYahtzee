@@ -57,25 +57,32 @@ public class YahtzeeLocalGame extends LocalGame {
             }
             return true;
 
-            //roll actiondasfsadf
+            /**
+             * This is the same deal as the yahtzeeKeep method. It applies to a die, and we don't know
+             * how to apply a method to a die, so this is a skeleton method for the time being.
+             */
         } else if (action instanceof YahtzeeRoll) {
             int rand = (int)(Math.random() * 6);
             if (rand == 1) {
-                //masterGameState.setRunningTotal(0);
                 if (masterGameState.getTurn() == 0) {
                     masterGameState.setTurn(1);
                 } else {
                     masterGameState.setTurn(0);
                 }
             } else {
-                //masterGameState.setRunningTotal(masterGameState.getRunningTotal() + rand);
             }
 
             return true;
         }
 
+        /**
+         * We are also stuck on this.
+         * The goal with this method is to "select" the score you want to keep in yahtzee.
+         * We are debating over whether the scorecard should be an array of
+         * int values in the yahtzeeGameState class, or if the scorecard should be an object itself
+         * with possible scoreBox objects built into it. Regardless, we're stuck on this one.
+         */
         if (action instanceof YahtzeeScore){
-
         }
             return false;
 
