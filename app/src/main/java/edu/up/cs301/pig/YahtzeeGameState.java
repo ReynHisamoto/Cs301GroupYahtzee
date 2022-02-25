@@ -2,7 +2,7 @@ package edu.up.cs301.pig;
 
 import edu.up.cs301.game.infoMsg.GameState;
 
-public class PigGameState extends GameState {
+public class YahtzeeGameState extends GameState {
     // is the player of the current turn's id
     private int turn;
     // 2d array to score scores [the player id of the person in question][the value when looking at the score sheet from top to bottom]
@@ -21,7 +21,7 @@ public class PigGameState extends GameState {
      * ctor
      */
     // default constructor that sets up the arrays and vals at game launch
-    public PigGameState(int numPlayers) {
+    public YahtzeeGameState(int numPlayers) {
         this.turn = 0;
         this.scores = new int[numPlayers][13];
         this.dices= new int[5];
@@ -37,7 +37,7 @@ public class PigGameState extends GameState {
      * @param g
      */
     //copies all new values into new gamestate
-    public PigGameState (PigGameState g) {
+    public YahtzeeGameState (YahtzeeGameState g) {
         this.turn = g.turn;
         this.rollNum = g.rollNum;
         for( int i = 0; i < scores.length; i++ ){
@@ -59,7 +59,7 @@ public class PigGameState extends GameState {
 
 
 
-    //getter methods for PigGameState
+    //getter methods for YahtzeeGameState
     //todo getter methods for yahtzee
 //returns current player id
     public int getTurn() {
@@ -85,7 +85,7 @@ public class PigGameState extends GameState {
     public int[] getSelected(){return selected;}
 
 
-    //setter methods for PigGameState
+    //setter methods for YahtzeeGameState
     //todo setter methods for yahtzee
     // sets current turn to given player id
    public void setTurn(int id){

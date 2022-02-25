@@ -266,7 +266,7 @@ public abstract class LocalGame implements Game, Tickable {
 		
 		// if the player is NOT a player who is presently allowed to
 		// move, send the player a message
-		if (!canMove(playerId)) {;
+		if (canMakeAction(playerId)) {;
 			player.sendInfo(new NotYourTurnInfo());
 			return;
 		}
