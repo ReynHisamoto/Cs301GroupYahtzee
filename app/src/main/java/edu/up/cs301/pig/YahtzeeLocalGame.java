@@ -60,20 +60,13 @@ public class YahtzeeLocalGame extends LocalGame {
 
             //roll action
         } else if (action instanceof YahtzeeRoll) {
-            int rand = (int)(Math.random() * 6);
-            if (rand == 1) {
-                //masterGameState.setRunningTotal(0);
-                if (masterGameState.getTurn() == 0) {
-                    masterGameState.setTurn(1);
-                } else {
-                    masterGameState.setTurn(0);
-                }
-            } else {
-                //masterGameState.setRunningTotal(masterGameState.getRunningTotal() + rand);
+            for (int i = 0; i < 5; i++){
+                if (masterGameState.getDices(i) == /*find out if it is selected or not*/  )
+                int rand = (int)(Math.random() * 6);
+                masterGameState.setDices(ind /*(Index not found just yet, building scaffolding for when we can use it)*/, rand);
             }
-
-            return true;
         }
+
 
         if (action instanceof YahtzeeScore){
 
@@ -89,7 +82,7 @@ public class YahtzeeLocalGame extends LocalGame {
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
         //TODO  You will implement this method
-        YahtzeeGameState updatedGameState = new YahtzeeGameState(masterGameState);
+        PigGameState updatedGameState = new PigGameState(masterGameState);
         p.sendInfo(updatedGameState);
     }//sendUpdatedSate
 
