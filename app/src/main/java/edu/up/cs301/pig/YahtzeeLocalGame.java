@@ -44,18 +44,17 @@ public class YahtzeeLocalGame extends LocalGame {
      */
     @Override
     protected boolean makeMove(GameAction action) {
-        //TODO  You will implement this method
-
-        //hold actionjhghjuh
+        /**
+        This action is proving to be difficult. It is an action that is being commited against a
+        "dice" object. However, we don't know how to code that yet, so we will get on that asap.
+         Essentially, this "if" statement detects if the action is a YahtzeeKeep action. If it is, it detects
+         who made the action, then it will tell the YahtzeeGameState to "keep" the die that has had
+         the action performed on it.
+         **/
         if (action instanceof YahtzeeKeep) {
-
             if (masterGameState.getTurn() == 0) {
-                //masterGameState.setP0Score(masterGameState.getP0Score() + masterGameState.getRunningTotal());
             } else if (masterGameState.getTurn() == 1) {
-                //masterGameState.setP1Score(masterGameState.getP1Score() + masterGameState.getRunningTotal());
             }
-
-
             return true;
 
             //roll action
@@ -88,7 +87,6 @@ public class YahtzeeLocalGame extends LocalGame {
      */
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
-        //TODO  You will implement this method
         YahtzeeGameState updatedGameState = new YahtzeeGameState(masterGameState);
         p.sendInfo(updatedGameState);
     }//sendUpdatedSate

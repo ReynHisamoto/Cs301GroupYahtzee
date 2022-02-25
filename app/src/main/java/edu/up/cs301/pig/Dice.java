@@ -25,6 +25,7 @@ public class Dice {
         return val;
     }
 
+    //If true, its a keeper
     public boolean isKeep() {
         return keep;
     }

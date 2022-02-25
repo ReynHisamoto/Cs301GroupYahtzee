@@ -8,7 +8,7 @@ public class YahtzeeGameState extends GameState {
     // 2d array to score scores [the player id of the person in question][the value when looking at the score sheet from top to bottom]
     private int[][] scores;
     // an array of the dice values in play
-    private int dices[];
+    private Dice diceArray[];
     // current turn's roll number
     private int rollNum;
     //current round of play
@@ -24,7 +24,12 @@ public class YahtzeeGameState extends GameState {
     public YahtzeeGameState(int numPlayers) {
         this.turn = 0;
         this.scores = new int[numPlayers][13];
-        this.dices= new int[5];
+        this.diceArray= new Dice[5];
+
+        //Do I need this for loop to instantiate dice?
+        for(int i = 0; i < diceArray.length; i++){
+            this.diceArray[i] = new Dice();
+        }
         this.rollNum = 1;
         this.round = 1;
         this.selected = new int[3];
@@ -45,8 +50,8 @@ public class YahtzeeGameState extends GameState {
                 this.scores[i][j] = g.scores[i][j];
             }
         }
-        for(int i = 0; i < dices.length; i++){
-            this.dices[i] = g.dices[i];
+        for(int i = 0; i < diceArray.length; i++){
+            this.diceArray[i] = new Dice(g.diceArray[i]);
         }
         for(int i =0; i < selected.length; i++){
             this.selected[i] = g.selected[i];
@@ -70,8 +75,8 @@ public class YahtzeeGameState extends GameState {
         return scores[p];
    }
 //returns array of dices
-    public int[] getDices() {
-        return dices;
+    public Dice[] getDices() {
+        return diceArray;
     }
 //returns number of rolls during the turn
     public int getRollNum() {
@@ -96,9 +101,23 @@ public class YahtzeeGameState extends GameState {
         this.scores[id][row] = score;
     }
     //sets the dice at a given ind to a new value
-    public void setDices(int ind, int val){
-        this.dices[ind] = val;
+
+    public void setDiceVal(Dice d, int i){
+        d.setVal(i);
     }
+
+    //swaps the "keep" value of the dice (setter)
+    public void swapKeepValue(Dice d,boolean Keep){
+        if(d.isKeep()){
+            d.setKeep(false);
+        }
+        else {
+            d.setKeep(false);
+        }
+    }
+
+
+
     //sets the RollNumber to given num
     public void setRollNum(int num){
         this.rollNum = num;
