@@ -75,7 +75,7 @@ public class YahtzeeLocalGame extends LocalGame {
 
 
         if (action instanceof YahtzeeScore){
-
+            //???
         }
             return false;
 
@@ -88,7 +88,7 @@ public class YahtzeeLocalGame extends LocalGame {
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
         //TODO  You will implement this method
-        PigGameState updatedGameState = new PigGameState(masterGameState);
+        YahtzeeGameState updatedGameState = new YahtzeeGameState(masterGameState);
         p.sendInfo(updatedGameState);
     }//sendUpdatedSate
 
