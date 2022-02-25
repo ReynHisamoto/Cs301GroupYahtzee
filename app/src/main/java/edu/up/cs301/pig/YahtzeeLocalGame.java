@@ -108,6 +108,12 @@ public class YahtzeeLocalGame extends LocalGame {
     @Override
     protected String checkIfGameOver() {
         //TODO  You will implement this method
+
+        if (masterGameState.getRound() > 14) {
+            return "game over";
+        }
+
+
         /**
         if (masterGameState.getP0Score() > 50) {
             return  "player 0 wins, Score: " + masterGameState.getP0Score();
