@@ -6,9 +6,10 @@ import edu.up.cs301.game.actionMsg.GameAction;
 
 
 /**
- * class PigLocalGame controls the play of the game
+ * class yahtzeeLocalGame controls the play of the game
  *
- * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl
+ * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl, Augustine P, Reyn H, James L, Santiago F
+ *
  * @version February 2016
  */
 public class YahtzeeLocalGame extends LocalGame {
@@ -52,27 +53,26 @@ public class YahtzeeLocalGame extends LocalGame {
          the action performed on it.
          **/
         if (action instanceof YahtzeeKeep) {
+
             if (masterGameState.getTurn() == 0) {
+                //masterGameState.setP0Score(masterGameState.getP0Score() + masterGameState.getRunningTotal());
             } else if (masterGameState.getTurn() == 1) {
+                //masterGameState.setP1Score(masterGameState.getP1Score() + masterGameState.getRunningTotal());
             }
+
+
             return true;
 
-            //roll actiondasfsadf
+            //roll action
         } else if (action instanceof YahtzeeRoll) {
-            int rand = (int)(Math.random() * 6);
-            if (rand == 1) {
-                //masterGameState.setRunningTotal(0);
-                if (masterGameState.getTurn() == 0) {
-                    masterGameState.setTurn(1);
-                } else {
-                    masterGameState.setTurn(0);
-                }
-            } else {
-                //masterGameState.setRunningTotal(masterGameState.getRunningTotal() + rand);
+            //todo figure out how to get current dice, how to check if dice is in keep
+            for (int i = 0; i < 5; i++){
+                if (masterGameState.getDices(i) == /*find out if it is selected or not*/  )
+                int rand = (int)(Math.random() * 6);
+                masterGameState.setDices(ind /*(Index not found just yet, building scaffolding for when we can use it)*/, rand);
             }
-
-            return true;
         }
+
 
         if (action instanceof YahtzeeScore){
 
@@ -87,7 +87,8 @@ public class YahtzeeLocalGame extends LocalGame {
      */
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
-        YahtzeeGameState updatedGameState = new YahtzeeGameState(masterGameState);
+        //TODO  You will implement this method
+        PigGameState updatedGameState = new PigGameState(masterGameState);
         p.sendInfo(updatedGameState);
     }//sendUpdatedSate
 
@@ -101,14 +102,13 @@ public class YahtzeeLocalGame extends LocalGame {
     @Override
     protected String checkIfGameOver() {
         //TODO  You will implement this method
-        /**
-        if (masterGameState.getP0Score() > 50) {
-            return  "player 0 wins, Score: " + masterGameState.getP0Score();
-        } else if (masterGameState.getP1Score() > 50) {
-            return "player 1 wins, Score: " + masterGameState.getP1Score();
-        } else {
-         **/
-            return null;
+
+        if (masterGameState.getRound() > 14) {
+            return "game over";
+        }
+
+        return null;
+
 
     }
 

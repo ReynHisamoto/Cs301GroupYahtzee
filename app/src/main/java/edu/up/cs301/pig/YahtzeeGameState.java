@@ -1,5 +1,13 @@
 package edu.up.cs301.pig;
 
+/**
+ * class Yahtzee Game State is the game state with all of the variables in yahtzee
+ *
+ * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl, Augustine P, Reyn H, James L, Santiago F
+ *
+ * @version February 2016
+ */
+
 import edu.up.cs301.game.infoMsg.GameState;
 
 public class YahtzeeGameState extends GameState {
