@@ -60,7 +60,7 @@ public class PigMainActivity extends GameMainActivity {
      */
     @Override
     public LocalGame createLocalGame() {
-        return new PigLocalGame();
+        return new YahtzeeLocalGame();
     }
 
 }

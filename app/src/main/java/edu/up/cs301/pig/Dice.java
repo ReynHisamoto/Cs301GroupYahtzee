@@ -35,6 +35,11 @@ public class Dice {
         this.keep = keep;
     }
 
+    @Override
+    public String toString(){
+        return "Dice Value: " + val + " Dice Keeper: " + keep;
+    }
+
     public void setVal(int val) {
         this.val = val;
     }

@@ -9,7 +9,13 @@ public class YahtzeeKeep extends GameAction {
      *
      * @param player the player who created the action
      */
-    public YahtzeeKeep(GamePlayer player) {
+    int idx;
+    Dice selected;
+    public YahtzeeKeep(GamePlayer player,int id,Dice selected) {
         super(player);
+        this.idx = id;
+        this.selected = selected;
     }
+    public int getIdx(){return idx;}
+    public Dice getSelected(){return selected;}
 }

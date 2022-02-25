@@ -9,7 +9,11 @@ public class YahtzeeRoll extends GameAction {
      *
      * @param player the player who created the action
      */
-    public YahtzeeRoll(GamePlayer player) {
+    private int idx;
+    public YahtzeeRoll(GamePlayer player, int id) {
         super(player);
+        idx = id;
     }
+    public int getIdx(){return idx;}
+    public void setIdx(int idx){this.idx = idx;}
 }

@@ -9,7 +9,21 @@ public class YahtzeeScore extends GameAction {
      *
      * @param player the player who created the action
      */
-    public YahtzeeScore(GamePlayer player) {
+    private int row;
+    private int idx;
+    public YahtzeeScore(GamePlayer player, int row, int idx) {
         super(player);
+        this.row = row;
+        this.idx = idx;
+    }
+    public int getRow(){return row;}
+    public int getIdx(){return idx;}
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public void setIdx(int idx) {
+        this.idx = idx;
     }
 }

@@ -6,10 +6,26 @@ import edu.up.cs301.game.actionMsg.GameAction;
 
 
 /**
- * class PigLocalGame controls the play of the game
+ * class YahtzeeLocalGame controls the play of the game
  *
- * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl
- * @version February 2016
+ * @author Augustine Pham James Lulay Reyn Hasimoto Santiago Franco
+ * @version February 2022
+ */
+/**
+ External Citation
+ Date: 23 September 2022
+ Problem: forgot how arraylists worked
+ Resource:
+ https://www.geeksforgeeks.org/arraylist-in-java/
+ Solution: I used the example code from this post.
+ */
+/**
+ External Citation
+ Date: 23 September 2022
+ Problem: forgot how for each loops worked
+ Resource:
+ https://www.geeksforgeeks.org/for-each-loop-in-java/
+ Solution: I used the example code from this post.
  */
 public class YahtzeeLocalGame extends LocalGame {
 
@@ -44,50 +60,110 @@ public class YahtzeeLocalGame extends LocalGame {
      */
     @Override
     protected boolean makeMove(GameAction action) {
+
         /**
-        This action is proving to be difficult. It is an action that is being commited against a
-        "dice" object. However, we don't know how to code that yet, so we will get on that asap.
          Essentially, this "if" statement detects if the action is a YahtzeeKeep action. If it is, it detects
          who made the action, then it will tell the YahtzeeGameState to "keep" the die that has had
          the action performed on it.
          **/
         if (action instanceof YahtzeeKeep) {
-            if (masterGameState.getTurn() == 0) {
-            } else if (masterGameState.getTurn() == 1) {
-            }
-            return true;
+           if(!canMakeAction(((YahtzeeKeep) action).getIdx()) || masterGameState.getSelectedDice().size() > 3){
+               return false;
+           }else if (!masterGameState.getDice(((YahtzeeKeep) action).getIdx()).isKeep()) {
+               masterGameState.getSelectedDice().add(masterGameState.getDice(((YahtzeeKeep) action).idx));
+               masterGameState.getDice(((YahtzeeKeep) action).idx).setKeep(true);
+               return true;
+           }else{
+                masterGameState.getSelectedDice().remove(masterGameState.getDice(((YahtzeeKeep) action).getIdx()));
+                masterGameState.getDice(((YahtzeeKeep) action).getIdx()).setKeep(false);
+               }
+
+
 
             /**
-             * This is the same deal as the yahtzeeKeep method. It applies to a die, and we don't know
-             * how to apply a method to a die, so this is a skeleton method for the time being.
+             * Sets selected dice value to random int 1-6
              */
         } else if (action instanceof YahtzeeRoll) {
-            int rand = (int)(Math.random() * 6);
-            if (rand == 1) {
-                if (masterGameState.getTurn() == 0) {
-                    masterGameState.setTurn(1);
-                } else {
-                    masterGameState.setTurn(0);
-                }
-            } else {
+            int rand;
+            if(canMakeAction(((YahtzeeRoll) action).getIdx())){
+            for (Dice dice : masterGameState.getSelectedDice()){
+                rand = (int)(Math.random() * 6 + 1);
+                dice.setVal(rand);
             }
-
             return true;
+        }
+            return false;
         }
 
         /**
-         * We are also stuck on this.
-         * The goal with this method is to "select" the score you want to keep in yahtzee.
-         * We are debating over whether the scorecard should be an array of
-         * int values in the yahtzeeGameState class, or if the scorecard should be an object itself
-         * with possible scoreBox objects built into it. Regardless, we're stuck on this one.
+         * checks where the player has clicked and adds to the scoreboard accordingly
          */
         if (action instanceof YahtzeeScore){
-        }
+            if(canMakeAction(((YahtzeeScore) action).getIdx())){
+                int score = 0;
+                int[] numDice = totalDice(masterGameState.getDiceArray());
+                int mostCommon = checkMaxNumDice(numDice);
+                int secondCommon = checkSecondNumDice(numDice,mostCommon);
+                // if player selects aces twos etc. get score then add to score sheet
+                if(((YahtzeeScore) action).getRow() < 6){
+                    for (Dice dice : masterGameState.getDiceArray()){
+                        if(dice.getVal() == ((YahtzeeScore) action).getRow() + 1 ){
+                            score += dice.getVal();
+                        }
+                    }
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
+                    return true;
+                }
+                // if player selects 3 of a kind then get the most common dice value and multiply by three
+                else if(((YahtzeeScore) action).getRow() < 7 && mostCommon > 3){
+                    score = mostCommon * 3;
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
+                    return true;
+                }
+                // if player selects 4 of a kind then get the most common dice value and multiply by four
+                else if(((YahtzeeScore) action).getRow() < 8 && mostCommon > 4){
+                    score = mostCommon * 4;
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
+                    return true;
+                }
+                // if player selects full house then checks for full house by looking if there are three of one type and two of another if true then set score to 25
+                else if(((YahtzeeScore) action).getRow() < 9 && mostCommon == 3 && secondCommon == 2){
+                    score = 25;
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
+                    return true;
+                    // if player selects small straight check if true if so then give player 30 pts on score card
+                }else if(((YahtzeeScore) action).getRow() < 10 && SmallStraight(numDice)){
+                    score = 30;
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
+                    return true;
+                    // if player selects large straight and true then give player 40 points
+                }else if(((YahtzeeScore) action).getRow() < 11 && LargeStraight(numDice)){
+                    score = 40;
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
+                    return true;
+                    // if player chooses yahtzee and if true give player 50 points
+                }else if(((YahtzeeScore) action).getRow() < 12 && Yahtzee(numDice)) {
+                    score = 50;
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
+                    return true;
+                    // if player chooses chance sum dice and add to score
+                }else if(((YahtzeeScore) action).getRow() < 13 ){
+                    for(Dice dice : masterGameState.getDiceArray()){
+                        score += dice.getVal();
+                    }
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
+                    return true;
+                }
+
+            }
+            }
+        // not valid move
             return false;
+        }
 
 
-    }//makeMove
+
+    //makeMove
 
     /**
      * send the updated state to a given player
@@ -124,14 +200,82 @@ public class YahtzeeLocalGame extends LocalGame {
             return null;
 
     }
+    /*
+    checks the most common dice given an array of common dice
+     */
+    protected int checkMaxNumDice(int[] potValue){
+        int maxNum = 0;
+        for(int numDice : potValue){
+            if(maxNum < numDice){
+                maxNum = numDice;
+            }
+        }
+        return maxNum;
+    }
+    /*
+    checks for the second most common dice given an array of common dice
+     */
+    protected int checkSecondNumDice(int[] potValue, int currentMax){
+        int maxNum = 0;
+        for(int numDice : potValue){
+            if(maxNum < numDice && numDice < currentMax){
+                maxNum = numDice;
+            }
+        }
+        return maxNum;
+    }
+    /*
+    creates an array of dice in common
+     */
+    protected int[] totalDice(Dice[] dice){
+        int[] potValue = new int[6];
+        for(int i =0; i < potValue.length; i++)
+            for(Dice dices : dice){
+                if (dices.getVal() == i + 1){
+                    potValue[i]++;
+                }
+            }
+        return potValue;
+    }
+    /*
+    checks whether or not the given hand of dice is a small straight
+     */
+    protected boolean SmallStraight(int[] potValue){
+        int numInstance = 0;
+        for(int val : potValue){
+            if(val == 1) {
+                numInstance++;
+            }
+        }
+        return( numInstance >= 4);
+        }
 
-    //todo create yahtzee methods
-    protected boolean selectKeepers() {
+    /*
+    checks whether or not the given hand of dice is a large straight
+     */
+    protected boolean LargeStraight(int[] potValue){
+        int numInstance = 0;
+        for(int val : potValue){
+            if(val == 1 && numInstance < 5){
+                numInstance++;
+            }
+        }
+        return(numInstance < 5);
+    }
+
+    /*
+    checks whether or not the given hand of dice is a yahtzee
+     */
+    protected boolean Yahtzee(int[] potValue){
+        for(int val: potValue){
+            if(val == 5){
+                return true;
+            }
+        }
         return false;
     }
 
-    protected boolean selectScoreBox() {
-        return false;
-    }
+
+
 
 }// class PigLocalGame
