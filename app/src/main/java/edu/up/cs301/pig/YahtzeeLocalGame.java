@@ -57,7 +57,7 @@ public class YahtzeeLocalGame extends LocalGame {
             }
             return true;
 
-            //roll action
+            //roll actiondasfsadf
         } else if (action instanceof YahtzeeRoll) {
             int rand = (int)(Math.random() * 6);
             if (rand == 1) {
