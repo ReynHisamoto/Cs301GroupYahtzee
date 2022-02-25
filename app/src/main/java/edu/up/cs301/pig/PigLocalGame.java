@@ -7,7 +7,7 @@ import edu.up.cs301.game.infoMsg.GameState;
 
 import android.util.Log;
 
-// dummy comment, to see if commit and push work from srvegdahl account
+
 
 /**
  * class PigLocalGame controls the play of the game
@@ -15,13 +15,13 @@ import android.util.Log;
  * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl
  * @version February 2016
  */
-public class PigLocalGame extends LocalGame {
+public class YahtzeeLocalGame extends LocalGame {
 
     private PigGameState masterGameState;
     /**
      * This ctor creates a new game state
      */
-    public PigLocalGame() {
+    public YahtzeeLocalGame() {
         //TODO  You will implement this constructor
         this.masterGameState = new PigGameState(players.length);
     }
@@ -30,7 +30,7 @@ public class PigLocalGame extends LocalGame {
      * can the player with the given id take an action right now?
      */
     @Override
-    protected boolean canMove(int playerIdx) {
+    protected boolean canMakeAction(int playerIdx) {
         //TODO  You will implement this method
         if (playerIdx == masterGameState.getTurn()) {
             return true;

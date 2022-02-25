@@ -298,7 +298,9 @@ public abstract class LocalGame implements Game, Tickable {
 	 * @return
 	 * 		true iff the player is allowed to move
 	 */
-	protected abstract boolean canMove(int playerIdx);
+
+	//changed from "canMove"
+	protected abstract boolean canMakeAction(int playerIdx);
 	
 	/**
 	 * Check if the game is over. It is over, return a string that tells
