@@ -55,12 +55,14 @@ public class YahtzeeGameState extends GameState {
     public YahtzeeGameState (YahtzeeGameState g) {
         this.turn = g.turn;
         this.rollNum = g.rollNum;
-        for( int i = 0; i < scores.length; i++ ){
-            for(int j = 0; j < scores[i].length; j++){
+        this.scores = new int[g.scores.length][g.scores[0].length];
+        this.diceArray = new Dice[g.diceArray.length];
+        for( int i = 0; i < g.scores.length; i++ ){
+            for(int j = 0; j < g.scores[i].length; j++){
                 this.scores[i][j] = g.scores[i][j];
             }
         }
-        for(int i = 0; i < diceArray.length; i++){
+        for(int i = 0; i < g.diceArray.length; i++){
             this.diceArray[i] = new Dice(g.diceArray[i]);
         }
         for(int i =0; i < selected.size();i++){
@@ -151,7 +153,7 @@ public class YahtzeeGameState extends GameState {
         for(int i = 0; i < scores.length; i++){
             playerValues.concat("player" + i + " scores: ");
             for(int j = 0; j < scores[i].length; j++){
-                playerValues.concat(scores[j] + ", ");
+                playerValues.concat(scores[i][j] + ", ");
             }
         }
         for(int i = 0; i < diceArray.length; i++){
