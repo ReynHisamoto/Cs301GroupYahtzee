@@ -153,14 +153,14 @@ public class YahtzeeGameState extends GameState {
         for(int i = 0; i < scores.length; i++){
             playerValues.concat("player" + i + " scores: ");
             for(int j = 0; j < scores[i].length; j++){
-                playerValues.concat(scores[i][j] + ", ");
+                playerValues = playerValues.concat(scores[i][j] + ", ");
             }
         }
         for(int i = 0; i < diceArray.length; i++){
-            diceValues.concat("dice " + i + "'s value is: " + diceArray[i].getVal());
+            diceValues = diceValues.concat("dice " + i + "'s value is: " + diceArray[i].getVal());
         }
         for(int i =0; i < selected.size(); i++){
-            selectedValues.concat("Selected dice: " + i + "'s value is: " + selected.get(i).getVal());
+            selectedValues = selectedValues.concat("Selected dice: " + i + "'s value is: " + selected.get(i).getVal());
         }
         //returns values with given variable values and new strings above
         return "YahtzeeGameState{" +
