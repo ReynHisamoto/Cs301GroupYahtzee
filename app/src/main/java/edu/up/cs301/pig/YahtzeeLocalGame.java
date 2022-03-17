@@ -186,6 +186,12 @@ public class YahtzeeLocalGame extends LocalGame {
                     score += 35;
                 }
                 masterGameState.setScores(((YahtzeeScore) action).getIdx(),14,score);
+                masterGameState.setRound(masterGameState.getRound() + 1);
+                if(masterGameState.getTurn() >= players.length){
+                    masterGameState.setTurn(0);
+                }else{
+                    masterGameState.setTurn(masterGameState.getTurn() + 1);
+                }
             }
             }
         // not valid move
@@ -216,7 +222,7 @@ public class YahtzeeLocalGame extends LocalGame {
     protected String checkIfGameOver() {
         //TODO  You will implement this method
 
-        if (masterGameState.getRound() > 14) {
+        if (masterGameState.getRound() > 14 * players.length) {
             return "game over";
         }
 
