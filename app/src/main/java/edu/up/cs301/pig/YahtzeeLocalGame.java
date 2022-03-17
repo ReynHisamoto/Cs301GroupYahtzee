@@ -178,6 +178,10 @@ public class YahtzeeLocalGame extends LocalGame {
                         fullTop = true;
                     }
                 }
+                score = 0;
+                for(int i =0; i < masterGameState.getScores(((YahtzeeScore) action).getIdx()).length;i++){
+                    score += masterGameState.getScores(((YahtzeeScore) action).getIdx())[i];
+                }
                 if(fullTop){
                     score += 35;
                 }
