@@ -208,7 +208,7 @@ public class YahtzeeLocalGame extends LocalGame {
         //TODO  You will implement this method
         int max =0;
         for(int i =0; i < players.length; i++){
-            if(max < masterGameState.getScores(i)[14]){
+            if(max < masterGameState.getScores(i)[13]){
                 max = i;
             }
         }
