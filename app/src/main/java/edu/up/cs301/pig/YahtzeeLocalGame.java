@@ -292,11 +292,11 @@ public class YahtzeeLocalGame extends LocalGame {
     protected boolean LargeStraight(int[] potValue){
         int numInstance = 0;
         for(int val : potValue){
-            if(val == 1 && numInstance < 5){
+            if(val == 1 ){
                 numInstance++;
             }
         }
-        return(numInstance < 5);
+        return(numInstance >= 5);
     }
 
     /*
