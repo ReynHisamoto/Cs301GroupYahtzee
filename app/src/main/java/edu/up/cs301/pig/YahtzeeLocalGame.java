@@ -43,14 +43,7 @@ public class YahtzeeLocalGame extends LocalGame {
      */
     @Override
     protected boolean canMakeAction(int playerIdx) {
-
-        if (playerIdx == masterGameState.getTurn()) {
-            return true;
-        } else {
-
-            return false;
-        }
-
+        return (playerIdx == masterGameState.getTurn());
     }
 
     /**
@@ -60,13 +53,12 @@ public class YahtzeeLocalGame extends LocalGame {
      */
     @Override
     protected boolean makeMove(GameAction action) {
-
         /**
          Essentially, this "if" statement detects if the action is a YahtzeeKeep action. If it is, it detects
          who made the action, then it will tell the YahtzeeGameState to "keep" the die that has had
          the action performed on it.
          **/
-        if (action instanceof YahtzeeKeep) {
+        if (action instanceof YahtzeeKeep && canMakeAction(((YahtzeeKeep) action).idx)) {
            if(!canMakeAction(((YahtzeeKeep) action).getIdx()) || masterGameState.getSelectedDice().size() > 3){
                return false;
            }else if (!masterGameState.getDice(((YahtzeeKeep) action).getIdx()).isKeep()) {
@@ -83,7 +75,7 @@ public class YahtzeeLocalGame extends LocalGame {
             /**
              * Sets selected dice value to random int 1-6
              */
-        } else if (action instanceof YahtzeeRoll) {
+        } else if (action instanceof YahtzeeRoll && canMakeAction(((YahtzeeRoll) action).getIdx())) {
             int rand;
             if(canMakeAction(((YahtzeeRoll) action).getIdx())){
             for (Dice dice : masterGameState.getSelectedDice()){
@@ -98,7 +90,7 @@ public class YahtzeeLocalGame extends LocalGame {
         /**
          * checks where the player has clicked and adds to the scoreboard accordingly
          */
-        if (action instanceof YahtzeeScore){
+        if (action instanceof YahtzeeScore && canMakeAction(((YahtzeeScore) action).getIdx())){
             if(canMakeAction(((YahtzeeScore) action).getIdx())){
                 int score = 0;
                 int[] numDice = totalDice(masterGameState.getDiceArray());
