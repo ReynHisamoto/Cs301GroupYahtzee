@@ -223,9 +223,14 @@ public class YahtzeeLocalGame extends LocalGame {
     @Override
     protected String checkIfGameOver() {
         //TODO  You will implement this method
-
+        int max =0;
+        for(int i =0; i < players.length; i++){
+            if(max < masterGameState.getScores(i)[14]){
+                max = i;
+            }
+        }
         if (masterGameState.getRound() > 14 * players.length) {
-            return "game over";
+            return "The winner is " + playerNames[max] + " !";
         }
 
 
