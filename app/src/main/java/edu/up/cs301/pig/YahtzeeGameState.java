@@ -19,12 +19,13 @@ public class YahtzeeGameState extends GameState {
     // 2d array to score scores [the player id of the person in question][the value when looking at the score sheet from top to bottom]
     private int[][] scores;
     // an array of the dice values in play
-    private Dice diceArray[];
+    private Dice[] diceArray;
     // current turn's roll number
     private int rollNum;
     //current round of play
     private int round;
     private ArrayList<Dice> selected = new ArrayList<Dice>();
+    private int[] numYahtzee;
 
 
 
@@ -36,7 +37,7 @@ public class YahtzeeGameState extends GameState {
         this.turn = 0;
         this.scores = new int[numPlayers][14];
         this.diceArray= new Dice[5];
-
+        this.numYahtzee = new int[numPlayers];
         //Do I need this for loop to instantiate dice?
         for(int i = 0; i < diceArray.length; i++){
             this.diceArray[i] = new Dice();
@@ -70,7 +71,9 @@ public class YahtzeeGameState extends GameState {
         }
         //this.scoreCard = new ScoreCard();
         this.round = g.round;
-
+        for(int i = 0; i < numYahtzee.length; i++){
+            this.numYahtzee[i] = g.numYahtzee[i];
+        }
 
     }
 
@@ -101,6 +104,9 @@ public class YahtzeeGameState extends GameState {
     }
     public ArrayList<Dice> getSelectedDice(){return selected;}
 
+    public int getNumYahtzee(int idx) {
+        return numYahtzee[idx];
+    }
 
     //setter methods for YahtzeeGameState
     //todo setter methods for yahtzee
@@ -117,15 +123,12 @@ public class YahtzeeGameState extends GameState {
     public void setDiceVal(Dice d, int i){
         d.setVal(i);
     }
-
+    public void incrNumYahtzee(int idx){
+        this.numYahtzee[idx]++;
+    }
     //swaps the "keep" value of the dice (setter)
     public void swapKeepValue(Dice d,boolean Keep){
-        if(d.isKeep()){
-            d.setKeep(false);
-        }
-        else {
-            d.setKeep(false);
-        }
+        d.setKeep(false);
     }
 
 
@@ -151,7 +154,7 @@ public class YahtzeeGameState extends GameState {
         String selectedValues = "";
         //writes out all values in arrays to a given string
         for(int i = 0; i < scores.length; i++){
-            playerValues.concat("player" + i + " scores: ");
+            playerValues = playerValues.concat("player" + i + " scores: ");
             for(int j = 0; j < scores[i].length; j++){
                 playerValues = playerValues.concat(scores[i][j] + ", ");
             }

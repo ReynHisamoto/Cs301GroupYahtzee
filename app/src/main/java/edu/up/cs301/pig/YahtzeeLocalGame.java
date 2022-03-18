@@ -84,32 +84,28 @@ public class YahtzeeLocalGame extends LocalGame {
             }
             return true;
         }
-            return false;
         }
 
         /**
          * checks where the player has clicked and adds to the scoreboard accordingly
          */
         if (action instanceof YahtzeeScore && canMakeAction(((YahtzeeScore) action).getIdx())){
-            if(canMakeAction(((YahtzeeScore) action).getIdx())){
                 int score = 0;
                 int[] numDice = totalDice(masterGameState.getDiceArray());
                 int mostCommon = checkMaxNumDice(numDice);
                 int secondCommon = checkSecondNumDice(numDice,mostCommon);
-                boolean fullTop = true;
-                int numYahtzees =0;
+                boolean fullTop = false;
                 // if player selects aces twos etc. get score then add to score sheet
-                if(((YahtzeeScore) action).getRow() < 6){
+                if(((YahtzeeScore) action).getRow() <= 5){
                     for (Dice dice : masterGameState.getDiceArray()){
                         if(dice.getVal() == ((YahtzeeScore) action).getRow() + 1 ){
                             score += dice.getVal();
                         }
                     }
                     masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
-                    return true;
                 }
                 // if player selects 3 of a kind then get the most common dice value and multiply by three
-                else if(((YahtzeeScore) action).getRow() < 7 && numDice[mostCommon] >= 3){
+                else if(((YahtzeeScore) action).getRow() == 6 && numDice[mostCommon] >= 3){
 
                     score += mostCommon * 3;
                     for(int i =0; i < masterGameState.getDiceArray().length; i++){
@@ -118,10 +114,9 @@ public class YahtzeeLocalGame extends LocalGame {
                         }
                     }
                     masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
-                    return true;
                 }
                 // if player selects 4 of a kind then get the most common dice value and multiply by four
-                else if(((YahtzeeScore) action).getRow() < 8 && numDice[mostCommon] >= 4){
+                else if(((YahtzeeScore) action).getRow() == 7 && numDice[mostCommon] >= 4){
                     score += mostCommon * 4;
                     for(int i =0; i < masterGameState.getDiceArray().length; i++){
                         if(masterGameState.getDiceArray()[i].getVal() != mostCommon){
@@ -129,41 +124,36 @@ public class YahtzeeLocalGame extends LocalGame {
                         }
                     }
                     masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
-                    return true;
                 }
                 // if player selects full house then checks for full house by looking if there are three of one type and two of another if true then set score to 25
-                else if(((YahtzeeScore) action).getRow() < 9 && numDice[mostCommon] == 3 && numDice[secondCommon] == 2){
+                else if(((YahtzeeScore) action).getRow() == 8 && numDice[mostCommon] == 3 && numDice[secondCommon] == 2){
                     score += 25;
                     masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
-                    return true;
                     // if player selects small straight check if true if so then give player 30 pts on score card
-                }else if(((YahtzeeScore) action).getRow() < 10 && SmallStraight(numDice)){
+                }else if(((YahtzeeScore) action).getRow() == 9 && SmallStraight(numDice)){
                     score += 30;
                     masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
-                    return true;
                     // if player selects large straight and true then give player 40 points
-                }else if(((YahtzeeScore) action).getRow() < 11 && LargeStraight(numDice)){
+                }else if(((YahtzeeScore) action).getRow() == 10 && LargeStraight(numDice)){
                     score += 40;
                     masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
-                    return true;
                     // if player chooses yahtzee and if true give player 50 points
-                }else if(((YahtzeeScore) action).getRow() < 12 && Yahtzee(numDice)) {
-                    if(numYahtzees == 0){
+                }else if(((YahtzeeScore) action).getRow() == 11 && Yahtzee(numDice)) {
+                    if(masterGameState.getNumYahtzee(((YahtzeeScore) action).getIdx()) == 0){
                     score += 50;
-                    numYahtzees ++;
-                    } else if(numYahtzees > 0){
+                    masterGameState.incrNumYahtzee(((YahtzeeScore) action).getIdx());
+                    } else if(masterGameState.getNumYahtzee(((YahtzeeScore) action).getIdx()) > 0){
                         score += 100;
                     }
                     masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
 
-                    return true;
+
                     // if player chooses chance sum dice and add to score
-                }else if(((YahtzeeScore) action).getRow() < 13 ){
+                }else if(((YahtzeeScore) action).getRow() == 12 ){
                     for(Dice dice : masterGameState.getDiceArray()){
                         score += dice.getVal();
                     }
                     masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
-                    return true;
                 }
                 score = 0;
                 for(int i = 0; i < 6; i++){
@@ -179,15 +169,16 @@ public class YahtzeeLocalGame extends LocalGame {
                 if(fullTop){
                     score += 35;
                 }
-                masterGameState.setScores(((YahtzeeScore) action).getIdx(),14,score);
+                masterGameState.setScores(((YahtzeeScore) action).getIdx(),13,score);
                 masterGameState.setRound(masterGameState.getRound() + 1);
                 if(masterGameState.getTurn() >= players.length){
                     masterGameState.setTurn(0);
                 }else{
                     masterGameState.setTurn(masterGameState.getTurn() + 1);
                 }
+                return true;
             }
-            }
+
         // not valid move
             return false;
         }
@@ -221,7 +212,7 @@ public class YahtzeeLocalGame extends LocalGame {
                 max = i;
             }
         }
-        if (masterGameState.getRound() > 14 * players.length) {
+        if (masterGameState.getRound() > 13 * players.length) {
             return "The winner is " + playerNames[max] + " !";
         }
 
