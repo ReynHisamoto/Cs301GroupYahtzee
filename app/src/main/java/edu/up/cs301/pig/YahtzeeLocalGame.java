@@ -35,7 +35,7 @@ public class YahtzeeLocalGame extends LocalGame {
      * This ctor creates a new game state
      */
     public YahtzeeLocalGame() {
-        this.masterGameState = new YahtzeeGameState(players.length);
+        this.masterGameState = new YahtzeeGameState(4);
     }
 
     /**
@@ -258,7 +258,7 @@ public class YahtzeeLocalGame extends LocalGame {
         int[] potValue = new int[6];
         for(int i =0; i < potValue.length; i++)
             for(Dice dices : dice){
-                if (dices.getVal() == i + 1){
+                if (dices.getVal() == i){
                     potValue[i]++;
                 }
             }

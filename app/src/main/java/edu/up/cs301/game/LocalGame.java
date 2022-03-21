@@ -39,7 +39,7 @@ public abstract class LocalGame implements Game, Tickable {
 	// the handler for the game's thread
 	private Handler myHandler;
 		
-	// the players in the game, in order of  player number
+	// the players in the game, in order of player number
 	protected GamePlayer[] players;
 	
 	// whether the game's thread is running
