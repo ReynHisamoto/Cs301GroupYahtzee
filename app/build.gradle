@@ -15,4 +15,8 @@ android {
         }
     }
 }
+dependencies {
+    implementation fileTree(dir: 'libs', includes: ['*.jar'])
+    testImplementation 'junit:junit:4.+'
+}
 

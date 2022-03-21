@@ -7,10 +7,10 @@ import edu.up.cs301.game.actionMsg.GameAction;
 
 /**
  * class YahtzeeLocalGame controls the play of the game
- *
- * @author Augustine Pham James Lulay Reyn Hasimoto Santiago Franco
- * @version February 2022
- */
+ *  *
+ *  * @author Augustine Pham James Lulay Reyn Hasimoto Santiago Franco
+ *  * @version February 2022
+ *  */
 /**
  External Citation
  Date: 23 September 2022
