@@ -23,6 +23,7 @@ public class YahtzeeLocalGameTest {
     public void sendUpdatedStateTo() {
     }
 
+
     @Test
     public void checkIfGameOver() {
     }
@@ -52,14 +53,16 @@ public class YahtzeeLocalGameTest {
         assertEquals(maxNum[4],0);
     }
 
+
+    //james will test this
     @Test
     public void smallStraight() {
     }
-
+    //james will write this
     @Test
     public void largeStraight() {
     }
-
+    //james will write this
     @Test
     public void yahtzee() {
     }

@@ -58,7 +58,7 @@ public class YahtzeeLocalGame extends LocalGame {
          who made the action, then it will tell the YahtzeeGameState to "keep" the die that has had
          the action performed on it.
          **/
-        if (action instanceof YahtzeeKeep && canMakeAction(((YahtzeeKeep) action).idx)) {
+        if (action instanceof YahtzeeKeep && canMakeAction(((YahtzeeKeep)action).idx)) {
            if(!canMakeAction(((YahtzeeKeep) action).getIdx()) || masterGameState.getSelectedDice().size() > 3){
                return false;
            }else if (!masterGameState.getDice(((YahtzeeKeep) action).getIdx()).isKeep()) {
@@ -205,7 +205,6 @@ public class YahtzeeLocalGame extends LocalGame {
      */
     @Override
     protected String checkIfGameOver() {
-        //TODO  You will implement this method
         int max =0;
         for(int i =0; i < players.length; i++){
             if(max < masterGameState.getScores(i)[13]){
@@ -251,6 +250,8 @@ public class YahtzeeLocalGame extends LocalGame {
         }
         return maxNum;
     }
+
+
     /*
     creates an array of dice in common
      */
