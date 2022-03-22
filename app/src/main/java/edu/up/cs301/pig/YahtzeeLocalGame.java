@@ -270,7 +270,7 @@ public class YahtzeeLocalGame extends LocalGame {
     protected boolean SmallStraight(int[] potValue){
         int numInstance = 0;
         for(int val : potValue){
-            if(val == 1) {
+            if(val >= 1) {
                 numInstance++;
             }
         }
