@@ -272,6 +272,8 @@ public class YahtzeeLocalGame extends LocalGame {
         for(int val : potValue){
             if(val >= 1) {
                 numInstance++;
+            }else{
+                numInstance =0;
             }
         }
         return( numInstance >= 4);
@@ -285,6 +287,8 @@ public class YahtzeeLocalGame extends LocalGame {
         for(int val : potValue){
             if(val == 1 ){
                 numInstance++;
+            }else{
+                numInstance = 0;
             }
         }
         return(numInstance >= 5);
