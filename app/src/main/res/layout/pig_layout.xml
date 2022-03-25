@@ -41,7 +41,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/settings"
+                android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -338,7 +338,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="player" />
+                    android:text="Player" />
 
                 <TextView
                     android:id="@+id/p0Ones"
@@ -436,7 +436,7 @@
                     android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/p0FinalScore"
+                    android:id="@+id/textView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -450,108 +450,108 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="OP" />
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="2" />
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="4" />
 
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="6" />
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" /> <TextView
-                android:id="@+id/Goodbye"
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="" />
 
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="19" />
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" /> <TextView
-                android:id="@+id/Goodbye"
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="" />
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/Goodbye"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

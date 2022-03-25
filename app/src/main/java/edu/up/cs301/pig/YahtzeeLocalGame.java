@@ -8,7 +8,7 @@ import edu.up.cs301.game.actionMsg.GameAction;
 /**
  * class YahtzeeLocalGame controls the play of the game
  *  *
- *  * @author Augustine Pham James Lulay Reyn Hasimoto Santiago Franco
+ *  * @author Augustine Pham James Lulay Reyn Hisamoto Santiago Franco
  *  * @version February 2022
  *  */
 /**
@@ -305,6 +305,15 @@ public class YahtzeeLocalGame extends LocalGame {
             }
         }
         return false;
+    }
+
+    /**
+     * For testing purposes only
+     * Check the masterGameState
+     */
+    //todo delete before alpha in case this causes problems
+    public YahtzeeGameState getMasterGameState() {
+        return masterGameState;
     }
 
 

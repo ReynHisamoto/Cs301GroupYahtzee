@@ -23,9 +23,16 @@ public class YahtzeeLocalGameTest {
     public void sendUpdatedStateTo() {
     }
 
-
     @Test
     public void checkIfGameOver() {
+        YahtzeeLocalGame game = new YahtzeeLocalGame();
+        YahtzeeGameState gameState = game.getMasterGameState();
+        String gameEnd = "";
+        gameState.setRound(14);
+        if (gameState.getRound() > 13) {
+            gameEnd = "game over";
+        }
+        assertEquals("game over", gameEnd);
     }
 
     @Test
@@ -38,6 +45,11 @@ public class YahtzeeLocalGameTest {
 
     @Test
     public void checkSecondNumDice() {
+        int[] testDice = {1,1,1,2,3};
+        YahtzeeLocalGame game = new YahtzeeLocalGame();
+
+        int second = game.checkSecondNumDice(testDice);
+        assertEquals(1,second );
     }
 
     @Test
@@ -53,17 +65,37 @@ public class YahtzeeLocalGameTest {
         assertEquals(maxNum[4],0);
     }
 
-
-    //james will test this
     @Test
     public void smallStraight() {
     }
-    //james will write this
+
     @Test
     public void largeStraight() {
     }
-    //james will write this
+
+    /**
+     * Test yahtzee method
+     * if all dice are the same number, return true
+     */
     @Test
     public void yahtzee() {
+
+        Dice[] dice = {new Dice(),new Dice(),new Dice(),new Dice(),new Dice()};
+        boolean yahtzee;
+        dice[0].setVal(2);
+        dice[1].setVal(2);
+        dice[2].setVal(2);
+        dice[3].setVal(2);
+        dice[4].setVal(2);
+
+        int num = dice[0].getVal();
+
+        if (dice[1].getVal() == num && dice[2].getVal() == num &&
+                dice[3].getVal() == num && dice[4].getVal() == num) {
+            yahtzee = true;
+        } else {
+            yahtzee = false;
+        }
+        assertEquals(true, yahtzee);
     }
 }
