@@ -5,8 +5,6 @@ import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -20,7 +18,7 @@ import android.view.View.OnClickListener;
  * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl
  * @version February 2016
  */
-public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
+public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
 	/* instance variables */
 
@@ -38,7 +36,7 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
     /**
      * constructor does nothing extra
      */
-    public PigHumanPlayer(String name) {
+    public YahtzeeHumanPlayer(String name) {
         super(name);
     }
 

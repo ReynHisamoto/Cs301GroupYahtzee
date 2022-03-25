@@ -8,7 +8,6 @@ package edu.up.cs301.pig;
  * @version February 2016
  */
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import edu.up.cs301.game.infoMsg.GameState;
