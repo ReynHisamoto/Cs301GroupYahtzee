@@ -552,7 +552,7 @@
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/Testing"
+                    android:id="@+id/p1TotalScore"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
