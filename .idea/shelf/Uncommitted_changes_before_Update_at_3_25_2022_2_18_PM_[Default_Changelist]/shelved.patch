@@ -1,0 +1,711 @@
+Index: app/src/main/java/edu/up/cs301/pig/PigMainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/edu/up/cs301/pig/PigMainActivity.java b/app/src/main/java/edu/up/cs301/pig/YahtzeeMainActivity.java
+rename from app/src/main/java/edu/up/cs301/pig/PigMainActivity.java
+rename to app/src/main/java/edu/up/cs301/pig/YahtzeeMainActivity.java
+--- a/app/src/main/java/edu/up/cs301/pig/PigMainActivity.java	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/src/main/java/edu/up/cs301/pig/YahtzeeMainActivity.java	(date 1647908593141)
+@@ -8,13 +8,14 @@
+ import edu.up.cs301.game.config.GameConfig;
+ import edu.up.cs301.game.config.GamePlayerType;
+ 
++
+ /**
+  * this is the primary activity for Pig
+  *
+  * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl
+  * @version February 2016
+  */
+-public class PigMainActivity extends GameMainActivity {
++public class YahtzeeMainActivity extends GameMainActivity {
+ 
+     // the port number that this game will use when playing over the network
+     private static final int PORT_NUMBER = 2278;
+@@ -36,11 +37,11 @@
+         // Pig has two player types:  human and computer
+         playerTypes.add(new GamePlayerType("Local Human Player") {
+             public GamePlayer createPlayer(String name) {
+-                return new PigHumanPlayer(name);
++                return new YahtzeeHumanPlayer(name);
+             }});
+         playerTypes.add(new GamePlayerType("Computer Player") {
+             public GamePlayer createPlayer(String name) {
+-                return new PigComputerPlayer(name);
++                return new YahtzeeComputerPlayer(name);
+             }});
+ 
+         // Create a game configuration class for Pig:
+Index: app/src/main/java/edu/up/cs301/pig/PigComputerPlayer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/edu/up/cs301/pig/PigComputerPlayer.java b/app/src/main/java/edu/up/cs301/pig/YahtzeeComputerPlayer.java
+rename from app/src/main/java/edu/up/cs301/pig/PigComputerPlayer.java
+rename to app/src/main/java/edu/up/cs301/pig/YahtzeeComputerPlayer.java
+--- a/app/src/main/java/edu/up/cs301/pig/PigComputerPlayer.java	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/src/main/java/edu/up/cs301/pig/YahtzeeComputerPlayer.java	(date 1647908593081)
+@@ -1,9 +1,7 @@
+ package edu.up.cs301.pig;
+ 
+ import edu.up.cs301.game.GameComputerPlayer;
+-import edu.up.cs301.game.actionMsg.GameAction;
+ import edu.up.cs301.game.infoMsg.GameInfo;
+-import edu.up.cs301.game.util.Tickable;
+ 
+ /**
+  * An AI for Pig
+@@ -11,12 +9,12 @@
+  * @author Andrew M. Nuxoll
+  * @version August 2015
+  */
+-public class PigComputerPlayer extends GameComputerPlayer {
++public class YahtzeeComputerPlayer extends GameComputerPlayer {
+ 
+     /**
+      * ctor does nothing extra
+      */
+-    public PigComputerPlayer(String name) {
++    public YahtzeeComputerPlayer(String name) {
+         super(name);
+     }
+ 
+Index: app/src/main/java/edu/up/cs301/pig/PigHumanPlayer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/edu/up/cs301/pig/PigHumanPlayer.java b/app/src/main/java/edu/up/cs301/pig/YahtzeeHumanPlayer.java
+rename from app/src/main/java/edu/up/cs301/pig/PigHumanPlayer.java
+rename to app/src/main/java/edu/up/cs301/pig/YahtzeeHumanPlayer.java
+--- a/app/src/main/java/edu/up/cs301/pig/PigHumanPlayer.java	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/src/main/java/edu/up/cs301/pig/YahtzeeHumanPlayer.java	(date 1647908593091)
+@@ -5,8 +5,6 @@
+ import edu.up.cs301.game.R;
+ import edu.up.cs301.game.infoMsg.GameInfo;
+ 
+-import android.graphics.Color;
+-import android.graphics.drawable.Drawable;
+ import android.view.View;
+ import android.widget.Button;
+ import android.widget.ImageButton;
+@@ -20,7 +18,7 @@
+  * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl
+  * @version February 2016
+  */
+-public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
++public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListener {
+ 
+ 	/* instance variables */
+ 
+@@ -38,7 +36,7 @@
+     /**
+      * constructor does nothing extra
+      */
+-    public PigHumanPlayer(String name) {
++    public YahtzeeHumanPlayer(String name) {
+         super(name);
+     }
+ 
+Index: app/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"edu.up.cs301.game\"\r\n    android:versionCode=\"1\"\r\n    android:versionName=\"1.0\" >\r\n\r\n    <uses-sdk android:targetSdkVersion=\"27\" />\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n    <uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />\r\n\r\n    <application\r\n        android:debuggable=\"true\"\r\n        android:icon=\"@drawable/face1\"\r\n        android:label=\"@string/app_name\"\r\n        android:theme=\"@style/AppTheme\" >\r\n        <activity\r\n            android:name=\"edu.up.cs301.pig.PigMainActivity\"\r\n            android:configChanges=\"keyboard|keyboardHidden|orientation|screenSize\" >\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml b/app/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml
+--- a/app/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml	(date 1647907885246)
+@@ -13,9 +13,10 @@
+         android:debuggable="true"
+         android:icon="@drawable/face1"
+         android:label="@string/app_name"
++        android:testOnly="true"
+         android:theme="@style/AppTheme" >
+         <activity
+-            android:name="edu.up.cs301.pig.PigMainActivity"
++            android:name="edu.up.cs301.Yahtzee.YahtzeeMainActivity"
+             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" >
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+Index: .idea/modules/app/Cs301GroupYahtzee.app.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module external.linked.project.id=\":app\" external.linked.project.path=\"$MODULE_DIR$/../../../app\" external.root.project.path=\"$MODULE_DIR$/../../..\" external.system.id=\"GRADLE\" external.system.module.group=\"Cs301GroupYahtzee\" external.system.module.version=\"unspecified\" type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"FacetManager\">\r\n    <facet type=\"android-gradle\" name=\"Android-Gradle\">\r\n      <configuration>\r\n        <option name=\"GRADLE_PROJECT_PATH\" value=\":app\" />\r\n        <option name=\"LAST_SUCCESSFUL_SYNC_AGP_VERSION\" value=\"3.3.2\" />\r\n        <option name=\"LAST_KNOWN_AGP_VERSION\" value=\"3.3.2\" />\r\n      </configuration>\r\n    </facet>\r\n    <facet type=\"android\" name=\"Android\">\r\n      <configuration>\r\n        <option name=\"SELECTED_BUILD_VARIANT\" value=\"debug\" />\r\n        <option name=\"ASSEMBLE_TASK_NAME\" value=\"assembleDebug\" />\r\n        <option name=\"COMPILE_JAVA_TASK_NAME\" value=\"compileDebugSources\" />\r\n        <afterSyncTasks>\r\n          <task>generateDebugSources</task>\r\n        </afterSyncTasks>\r\n        <option name=\"ALLOW_USER_CONFIGURATION\" value=\"false\" />\r\n        <option name=\"MANIFEST_FILE_RELATIVE_PATH\" value=\"/src/main/AndroidManifest.xml\" />\r\n        <option name=\"RES_FOLDER_RELATIVE_PATH\" value=\"/src/main/res\" />\r\n        <option name=\"RES_FOLDERS_RELATIVE_PATH\" value=\"file://$MODULE_DIR$/../../../app/src/main/res;file://$MODULE_DIR$/../../../app/src/debug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/debug;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/debug\" />\r\n        <option name=\"TEST_RES_FOLDERS_RELATIVE_PATH\" value=\"file://$MODULE_DIR$/../../../app/src/androidTest/res;file://$MODULE_DIR$/../../../app/src/androidTestDebug/res;file://$MODULE_DIR$/../../../app/build/generated/res/rs/androidTest/debug;file://$MODULE_DIR$/../../../app/build/generated/res/resValues/androidTest/debug\" />\r\n        <option name=\"ASSETS_FOLDER_RELATIVE_PATH\" value=\"/src/main/assets\" />\r\n      </configuration>\r\n    </facet>\r\n  </component>\r\n  <component name=\"NewModuleRootManager\" LANGUAGE_LEVEL=\"JDK_1_7\">\r\n    <output url=\"file://$MODULE_DIR$/../../../app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes\" />\r\n    <output-test url=\"file://$MODULE_DIR$/../../../app/build/intermediates/javac/debugUnitTest/compileDebugUnitTestJavaWithJavac/classes\" />\r\n    <exclude-output />\r\n    <content url=\"file://$MODULE_DIR$/../../../app\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/debug\" isTestSource=\"false\" generated=\"true\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/../../../app/src/main/java\" isTestSource=\"false\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/../../../app/src/main/res\" type=\"java-resource\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/../../../app/build/generated/renderscript_source_output_dir/debug/compileDebugRenderscript/out\" isTestSource=\"false\" generated=\"true\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/../../../app/build/generated/res/resValues/debug\" type=\"java-resource\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/../../../app/build/generated/res/rs/debug\" type=\"java-resource\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/../../../app/build/generated/source/apt/debug\" isTestSource=\"false\" generated=\"true\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/../../../app/build/generated/source/apt/test/debug\" isTestSource=\"true\" generated=\"true\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/../../../app/src/test/java\" isTestSource=\"true\" />\r\n      <excludeFolder url=\"file://$MODULE_DIR$/../../../app/.gradle\" />\r\n      <excludeFolder url=\"file://$MODULE_DIR$/../../../app/build\" />\r\n    </content>\r\n    <orderEntry type=\"jdk\" jdkName=\"Android API 27 Platform\" jdkType=\"Android SDK\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Gradle: junit:junit:4.13.2\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Gradle: org.hamcrest:hamcrest-core:1.3\" level=\"project\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules/app/Cs301GroupYahtzee.app.iml b/.idea/modules/app/Cs301GroupYahtzee.app.iml
+--- a/.idea/modules/app/Cs301GroupYahtzee.app.iml	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/.idea/modules/app/Cs301GroupYahtzee.app.iml	(date 1647907922542)
+@@ -34,8 +34,10 @@
+       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/java" isTestSource="false" />
+       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/main/res" type="java-resource" />
+       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/renderscript_source_output_dir/debug/compileDebugRenderscript/out" isTestSource="false" generated="true" />
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/renderscript_source_output_dir/debug/compileDebugRenderscript/out" isTestSource="false" generated="true" />
+       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/res/resValues/debug" type="java-resource" />
+       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/res/rs/debug" type="java-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/apt/debug" isTestSource="false" generated="true" />
+       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/apt/debug" isTestSource="false" generated="true" />
+       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/apt/test/debug" isTestSource="true" generated="true" />
+       <sourceFolder url="file://$MODULE_DIR$/../../../app/src/test/java" isTestSource="true" />
+Index: app/build/intermediates/blame/res/debug/single/debug.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\drawable-mdpi_ic_launcher.png.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\drawable-mdpi\\\\ic_launcher.png\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\drawable-hdpi_ic_launcher.png.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\drawable-hdpi\\\\ic_launcher.png\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\layout_game_config_tabhost.xml.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\layout\\\\game_config_tabhost.xml\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\drawable-xhdpi_ic_launcher.png.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\drawable-xhdpi\\\\ic_launcher.png\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\drawable-xhdpi_face6.png.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\drawable-xhdpi\\\\face6.png\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\layout_game_no_gui.xml.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\layout\\\\game_no_gui.xml\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\drawable-ldpi_ic_launcher.png.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\drawable-ldpi\\\\ic_launcher.png\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\drawable-hdpi_purple_delete_button.png.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\drawable-hdpi\\\\purple_delete_button.png\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\drawable-xhdpi_face1.png.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\drawable-xhdpi\\\\face1.png\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\drawable-hdpi_ic_action_search.png.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\drawable-hdpi\\\\ic_action_search.png\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\drawable-xhdpi_face2.png.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\drawable-xhdpi\\\\face2.png\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\layout_game_remote_tab.xml.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\layout\\\\game_remote_tab.xml\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\layout_game_player_list_row.xml.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\layout\\\\game_player_list_row.xml\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\drawable-mdpi_ic_action_search.png.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\drawable-mdpi\\\\ic_action_search.png\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\layout_game_config_main.xml.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\layout\\\\game_config_main.xml\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\drawable-xhdpi_face3.png.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\drawable-xhdpi\\\\face3.png\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\menu_game_main.xml.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\menu\\\\game_main.xml\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\drawable-xhdpi_face5.png.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\drawable-xhdpi\\\\face5.png\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\layout_game_local_tab.xml.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\layout\\\\game_local_tab.xml\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\drawable-xhdpi_face4.png.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\drawable-xhdpi\\\\face4.png\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\drawable-xhdpi_ic_action_search.png.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\drawable-xhdpi\\\\ic_action_search.png\"\r\n    },\r\n    {\r\n        \"merged\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\layout_pig_layout.xml.flat\",\r\n        \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\layout\\\\pig_layout.xml\"\r\n    }\r\n]
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build/intermediates/blame/res/debug/single/debug.json b/app/build/intermediates/blame/res/debug/single/debug.json
+--- a/app/build/intermediates/blame/res/debug/single/debug.json	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/build/intermediates/blame/res/debug/single/debug.json	(date 1647907884376)
+@@ -1,90 +1,90 @@
+ [
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher.png.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\layout_game_no_gui.xml.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\layout\\game_no_gui.xml"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher.png.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher.png.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\ic_launcher.png"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\layout_game_config_tabhost.xml.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_search.png.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-mdpi\\ic_action_search.png"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher.png.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\ic_launcher.png"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher.png.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_face6.png.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\face6.png"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\layout_game_local_tab.xml.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\layout\\game_local_tab.xml"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\layout_game_no_gui.xml.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\layout\\game_no_gui.xml"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher.png.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher.png.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-ldpi\\ic_launcher.png"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\layout_pig_layout.xml.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\layout\\pig_layout.xml"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_purple_delete_button.png.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-hdpi\\purple_delete_button.png"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\layout_game_config_main.xml.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\layout\\game_config_main.xml"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_face1.png.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\face1.png"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_face4.png.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\face4.png"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_search.png.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-hdpi\\ic_action_search.png"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher.png.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-ldpi\\ic_launcher.png"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_face2.png.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\face2.png"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_face3.png.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\face3.png"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\layout_game_remote_tab.xml.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\layout\\game_remote_tab.xml"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_face2.png.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\face2.png"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\layout_game_player_list_row.xml.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\layout\\game_player_list_row.xml"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_face5.png.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\face5.png"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_search.png.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-mdpi\\ic_action_search.png"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_search.png.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-hdpi\\ic_action_search.png"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\layout_game_config_main.xml.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\layout\\game_config_main.xml"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\layout_game_remote_tab.xml.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\layout\\game_remote_tab.xml"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_face3.png.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\face3.png"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_search.png.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_search.png"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\menu_game_main.xml.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\menu\\game_main.xml"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_face6.png.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\face6.png"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_face5.png.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\face5.png"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\layout_game_config_tabhost.xml.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\layout\\game_config_tabhost.xml"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\layout_game_local_tab.xml.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\layout\\game_local_tab.xml"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\menu_game_main.xml.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\menu\\game_main.xml"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_face4.png.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\face4.png"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_face1.png.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\face1.png"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_search.png.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_search.png"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_purple_delete_button.png.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\drawable-hdpi\\purple_delete_button.png"
+     },
+     {
+-        "merged": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\layout_pig_layout.xml.flat",
+-        "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\layout\\pig_layout.xml"
++        "merged": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\layout_game_player_list_row.xml.flat",
++        "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\layout\\game_player_list_row.xml"
+     }
+ ]
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"edu.up.cs301.game\"\r\n    android:versionCode=\"1\"\r\n    android:versionName=\"1.0\" >\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n    <uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />\r\n\r\n    <application\r\n        android:icon=\"@drawable/face1\"\r\n        android:label=\"@string/app_name\"\r\n        android:theme=\"@style/AppTheme\" >\r\n        \r\n        <activity android:name=\"edu.up.cs301.pig.PigMainActivity\"\r\n            android:configChanges=\"keyboard|keyboardHidden|orientation|screenSize\" >\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        \r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/src/main/AndroidManifest.xml	(date 1647908593101)
+@@ -11,7 +11,7 @@
+         android:label="@string/app_name"
+         android:theme="@style/AppTheme" >
+         
+-        <activity android:name="edu.up.cs301.pig.PigMainActivity"
++        <activity android:name="edu.up.cs301.pig.YahtzeeMainActivity"
+             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" >
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+Index: app/src/main/java/edu/up/cs301/pig/YahtzeeKeep.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.up.cs301.pig;\r\n\r\nimport edu.up.cs301.game.GamePlayer;\r\nimport edu.up.cs301.game.actionMsg.GameAction;\r\n\r\npublic class YahtzeeKeep extends GameAction {\r\n    /**\r\n     * constructor for GameAction\r\n     *\r\n     * @param player the player who created the action\r\n     */\r\n    int idx;\r\n    Dice selected;\r\n    public YahtzeeKeep(GamePlayer player,int id,Dice selected) {\r\n        super(player);\r\n        this.idx = id;\r\n        this.selected = selected;\r\n    }\r\n    public int getIdx(){return idx;}\r\n    public Dice getSelected(){return selected;}\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/edu/up/cs301/pig/YahtzeeKeep.java b/app/src/main/java/edu/up/cs301/pig/YahtzeeKeep.java
+--- a/app/src/main/java/edu/up/cs301/pig/YahtzeeKeep.java	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/src/main/java/edu/up/cs301/pig/YahtzeeKeep.java	(date 1647908593101)
+@@ -2,6 +2,7 @@
+ 
+ import edu.up.cs301.game.GamePlayer;
+ import edu.up.cs301.game.actionMsg.GameAction;
++import edu.up.cs301.pig.Dice;
+ 
+ public class YahtzeeKeep extends GameAction {
+     /**
+Index: app/src/main/java/edu/up/cs301/pig/YahtzeeGameState.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.up.cs301.pig;\r\n\r\n/**\r\n * class Yahtzee Game State is the game state with all of the variables in yahtzee\r\n *\r\n * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl, Augustine P, Reyn H, James L, Santiago F\r\n *\r\n * @version February 2016\r\n */\r\n\r\nimport java.lang.reflect.Array;\r\nimport java.util.ArrayList;\r\n\r\nimport edu.up.cs301.game.infoMsg.GameState;\r\n\r\npublic class YahtzeeGameState extends GameState {\r\n    // is the player of the current turn's id\r\n    private int turn;\r\n    // 2d array to score scores [the player id of the person in question][the value when looking at the score sheet from top to bottom]\r\n    private int[][] scores;\r\n    // an array of the dice values in play\r\n    private Dice[] diceArray;\r\n    // current turn's roll number\r\n    private int rollNum;\r\n    //current round of play\r\n    private int round;\r\n    private ArrayList<Dice> selected = new ArrayList<Dice>();\r\n    private int[] numYahtzee;\r\n\r\n\r\n\r\n    /**\r\n     * ctor\r\n     */\r\n    // default constructor that sets up the arrays and vals at game launch\r\n    public YahtzeeGameState(int numPlayers) {\r\n        this.turn = 0;\r\n        this.scores = new int[numPlayers][13];\r\n        this.diceArray= new Dice[5];\r\n        this.numYahtzee = new int[numPlayers];\r\n        //Do I need this for loop to instantiate dice?\r\n        for(int i = 0; i < diceArray.length; i++){\r\n            this.diceArray[i] = new Dice();\r\n        }\r\n        this.rollNum = 1;\r\n        this.round = 1;\r\n\r\n\r\n    }\r\n\r\n    /**\r\n     * copy ctor\r\n     * @param g\r\n     */\r\n    //copies all new values into new gamestate\r\n    public YahtzeeGameState (YahtzeeGameState g) {\r\n        this.turn = g.turn;\r\n        this.rollNum = g.rollNum;\r\n        this.scores = new int[g.scores.length][g.scores[0].length];\r\n        this.diceArray = new Dice[g.diceArray.length];\r\n        for( int i = 0; i < g.scores.length; i++ ){\r\n            for(int j = 0; j < g.scores[i].length; j++){\r\n                this.scores[i][j] = g.scores[i][j];\r\n            }\r\n        }\r\n        for(int i = 0; i < g.diceArray.length; i++){\r\n            this.diceArray[i] = new Dice(g.diceArray[i]);\r\n        }\r\n        for(int i =0; i < selected.size();i++){\r\n            this.selected.add(new Dice(g.diceArray[i]));\r\n        }\r\n        //this.scoreCard = new ScoreCard();\r\n        this.round = g.round;\r\n        for(int i = 0; i < numYahtzee.length; i++){\r\n            this.numYahtzee[i] = g.numYahtzee[i];\r\n        }\r\n\r\n    }\r\n\r\n\r\n\r\n    //getter methods for YahtzeeGameState\r\n    //todo getter methods for yahtzee\r\n//returns current player id\r\n    public int getTurn() {\r\n        return turn;\r\n    }\r\n//returns array current score of player\r\n   public int[] getScores(int p){\r\n        return scores[p];\r\n   }\r\n//returns array of dices\r\n    public Dice getDice(int idx) {\r\n        return diceArray[idx];\r\n    }\r\n    public Dice[] getDiceArray(){return diceArray;}\r\n//returns number of rolls during the turn\r\n    public int getRollNum() {\r\n        return rollNum;\r\n    }\r\n    //returns current round number\r\n    public int getRound() {\r\n        return round;\r\n    }\r\n    public ArrayList<Dice> getSelectedDice(){return selected;}\r\n\r\n    public int getNumYahtzee(int idx) {\r\n        return numYahtzee[idx];\r\n    }\r\n\r\n    //setter methods for YahtzeeGameState\r\n    //todo setter methods for yahtzee\r\n    // sets current turn to given player id\r\n   public void setTurn(int id){\r\n        this.turn = id;\r\n   }\r\n   // sets for a given player, and row that is in question, to a given score\r\n    public void setScores(int id, int row, int score){\r\n        this.scores[id][row] = score;\r\n    }\r\n    //sets the dice at a given ind to a new value\r\n    public void setSelected(Dice dice,int idx){this.selected.set(idx,dice);}\r\n    public void setDiceVal(Dice d, int i){\r\n        d.setVal(i);\r\n    }\r\n    public void incrNumYahtzee(int idx){\r\n        this.numYahtzee[idx]++;\r\n    }\r\n    //swaps the \"keep\" value of the dice (setter)\r\n    public void swapKeepValue(Dice d,boolean Keep){\r\n        d.setKeep(false);\r\n    }\r\n\r\n\r\n\r\n    //sets the RollNumber to given num\r\n    public void setRollNum(int num){\r\n        this.rollNum = num;\r\n    }\r\n\r\n    // sets round to given val\r\n    public void setRound(int num){\r\n        this.round = num;\r\n    }\r\n\r\n\r\n\r\n\r\n    @Override\r\n    public String toString() {\r\n        //initializes empty strings for later return\r\n        String playerValues = \"\";\r\n        String diceValues = \"\";\r\n        String selectedValues = \"\";\r\n        //writes out all values in arrays to a given string\r\n        for(int i = 0; i < scores.length; i++){\r\n            playerValues = playerValues.concat(\"player\" + i + \" scores: \");\r\n            for(int j = 0; j < scores[i].length; j++){\r\n                playerValues = playerValues.concat(scores[i][j] + \", \");\r\n            }\r\n        }\r\n        for(int i = 0; i < diceArray.length; i++){\r\n            diceValues = diceValues.concat(\"dice \" + i + \"'s value is: \" + diceArray[i].getVal());\r\n        }\r\n        for(int i =0; i < selected.size(); i++){\r\n            selectedValues = selectedValues.concat(\"Selected dice: \" + i + \"'s value is: \" + selected.get(i).getVal());\r\n        }\r\n        //returns values with given variable values and new strings above\r\n        return \"YahtzeeGameState{\" +\r\n                \"Turn=\" + turn + \"\\n\" +\r\n                playerValues + \"\\n\" +\r\n               diceValues + \"\\n\" +\r\n                selectedValues + \"\\n\" +\r\n                \", rollNum=\" + rollNum + \"\\n\" +\r\n                \", round=\" + round +\r\n                '}';\r\n    }\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/edu/up/cs301/pig/YahtzeeGameState.java b/app/src/main/java/edu/up/cs301/pig/YahtzeeGameState.java
+--- a/app/src/main/java/edu/up/cs301/pig/YahtzeeGameState.java	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/src/main/java/edu/up/cs301/pig/YahtzeeGameState.java	(date 1647908593081)
+@@ -8,7 +8,6 @@
+  * @version February 2016
+  */
+ 
+-import java.lang.reflect.Array;
+ import java.util.ArrayList;
+ 
+ import edu.up.cs301.game.infoMsg.GameState;
+Index: app/build/intermediates/transforms/dexBuilder/debug/__content__.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[{\"name\":\"C:\\\\Users\\\\spoti\\\\AndroidStudioProjects\\\\GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\javac\\\\debug\\\\compileDebugJavaWithJavac\\\\classes\",\"index\":0,\"scopes\":[\"PROJECT\"],\"types\":[\"DEX_ARCHIVE\"],\"format\":\"DIRECTORY\",\"present\":true}]
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build/intermediates/transforms/dexBuilder/debug/__content__.json b/app/build/intermediates/transforms/dexBuilder/debug/__content__.json
+--- a/app/build/intermediates/transforms/dexBuilder/debug/__content__.json	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/build/intermediates/transforms/dexBuilder/debug/__content__.json	(date 1647907894988)
+@@ -1,1 +1,1 @@
+-[{"name":"C:\\Users\\spoti\\AndroidStudioProjects\\GroupYahtzee\\app\\build\\intermediates\\javac\\debug\\compileDebugJavaWithJavac\\classes","index":0,"scopes":["PROJECT"],"types":["DEX_ARCHIVE"],"format":"DIRECTORY","present":true}]
+\ No newline at end of file
++[{"name":"C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\javac\\debug\\compileDebugJavaWithJavac\\classes","index":0,"scopes":["PROJECT"],"types":["DEX_ARCHIVE"],"format":"DIRECTORY","present":true}]
+\ No newline at end of file
+Index: local.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>## This file must *NOT* be checked into Version Control Systems,\r\n# as it contains information specific to your local configuration.\r\n#\r\n# Location of the SDK. This is only used by Gradle.\r\n# For customization when using a Version Control System, please read the\r\n# header note.\r\n#Thu Feb 24 19:45:02 GMT-08:00 2022\r\nsdk.dir=C\\:\\\\Users\\\\aweso\\\\AppData\\\\Local\\\\Android\\\\Sdk\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+diff --git a/local.properties b/local.properties
+--- a/local.properties	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/local.properties	(date 1647907874871)
+@@ -5,4 +5,4 @@
+ # For customization when using a Version Control System, please read the
+ # header note.
+ #Thu Feb 24 19:45:02 GMT-08:00 2022
+-sdk.dir=C\:\\Users\\aweso\\AppData\\Local\\Android\\Sdk
++sdk.dir=C\:\\Users\\Santiago\\AppData\\Local\\Android\\Sdk
+Index: app/build/intermediates/signing_config/debug/out/signing-config.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\"mName\":\"debug\",\"mStoreFile\":\"C:\\\\Users\\\\spoti\\\\.android\\\\debug.keystore\",\"mStorePassword\":\"android\",\"mKeyAlias\":\"AndroidDebugKey\",\"mKeyPassword\":\"android\",\"mStoreType\":\"jks\",\"mV1SigningEnabled\":true,\"mV2SigningEnabled\":true}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build/intermediates/signing_config/debug/out/signing-config.json b/app/build/intermediates/signing_config/debug/out/signing-config.json
+--- a/app/build/intermediates/signing_config/debug/out/signing-config.json	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/build/intermediates/signing_config/debug/out/signing-config.json	(date 1647907895728)
+@@ -1,1 +1,1 @@
+-{"mName":"debug","mStoreFile":"C:\\Users\\spoti\\.android\\debug.keystore","mStorePassword":"android","mKeyAlias":"AndroidDebugKey","mKeyPassword":"android","mStoreType":"jks","mV1SigningEnabled":true,"mV2SigningEnabled":true}
+\ No newline at end of file
++{"mName":"debug","mStoreFile":"C:\\Users\\Santiago\\.android\\debug.keystore","mStorePassword":"android","mKeyAlias":"AndroidDebugKey","mKeyPassword":"android","mStoreType":"jks","mV1SigningEnabled":true,"mV2SigningEnabled":true}
+\ No newline at end of file
+Index: app/build/intermediates/instant_app_manifest/debug/processDebugManifest/instant-app-manifest/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"edu.up.cs301.game\"\r\n    android:targetSandboxVersion=\"2\"\r\n    android:versionCode=\"1\"\r\n    android:versionName=\"1.0\" >\r\n\r\n    <uses-sdk android:targetSdkVersion=\"27\" />\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n    <uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />\r\n\r\n    <application\r\n        android:debuggable=\"true\"\r\n        android:icon=\"@drawable/face1\"\r\n        android:label=\"@string/app_name\"\r\n        android:theme=\"@style/AppTheme\" >\r\n        <activity\r\n            android:name=\"edu.up.cs301.pig.PigMainActivity\"\r\n            android:configChanges=\"keyboard|keyboardHidden|orientation|screenSize\" >\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build/intermediates/instant_app_manifest/debug/processDebugManifest/instant-app-manifest/AndroidManifest.xml b/app/build/intermediates/instant_app_manifest/debug/processDebugManifest/instant-app-manifest/AndroidManifest.xml
+--- a/app/build/intermediates/instant_app_manifest/debug/processDebugManifest/instant-app-manifest/AndroidManifest.xml	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/build/intermediates/instant_app_manifest/debug/processDebugManifest/instant-app-manifest/AndroidManifest.xml	(date 1647907885248)
+@@ -14,9 +14,10 @@
+         android:debuggable="true"
+         android:icon="@drawable/face1"
+         android:label="@string/app_name"
++        android:testOnly="true"
+         android:theme="@style/AppTheme" >
+         <activity
+-            android:name="edu.up.cs301.pig.PigMainActivity"
++            android:name="edu.up.cs301.Yahtzee.YahtzeeMainActivity"
+             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" >
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+Index: app/build/intermediates/merged_manifests/debug/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"edu.up.cs301.game\"\r\n    android:versionCode=\"1\"\r\n    android:versionName=\"1.0\" >\r\n\r\n    <uses-sdk android:targetSdkVersion=\"27\" />\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n    <uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />\r\n\r\n    <application\r\n        android:debuggable=\"true\"\r\n        android:icon=\"@drawable/face1\"\r\n        android:label=\"@string/app_name\"\r\n        android:theme=\"@style/AppTheme\" >\r\n        <activity\r\n            android:name=\"edu.up.cs301.pig.PigMainActivity\"\r\n            android:configChanges=\"keyboard|keyboardHidden|orientation|screenSize\" >\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml b/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml
+--- a/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml	(date 1647907885243)
+@@ -13,9 +13,10 @@
+         android:debuggable="true"
+         android:icon="@drawable/face1"
+         android:label="@string/app_name"
++        android:testOnly="true"
+         android:theme="@style/AppTheme" >
+         <activity
+-            android:name="edu.up.cs301.pig.PigMainActivity"
++            android:name="edu.up.cs301.Yahtzee.YahtzeeMainActivity"
+             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" >
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+Index: app/build/intermediates/blame/res/debug/multi-v2/debug.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n    \"logs\": [\r\n        {\r\n            \"outputFile\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\values_values.arsc.flat\",\r\n            \"map\": [\r\n                {\r\n                    \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\values\\\\color.xml\",\r\n                    \"from\": {\r\n                        \"startLines\": \"2,3,4\",\r\n                        \"startColumns\": \"4,4,4\",\r\n                        \"startOffsets\": \"57,95,133\",\r\n                        \"endColumns\": \"36,36,37\",\r\n                        \"endOffsets\": \"89,127,166\"\r\n                    },\r\n                    \"to\": {\r\n                        \"startLines\": \"2,3,4\",\r\n                        \"startColumns\": \"4,4,4\",\r\n                        \"startOffsets\": \"55,92,129\",\r\n                        \"endColumns\": \"36,36,37\",\r\n                        \"endOffsets\": \"87,124,162\"\r\n                    }\r\n                },\r\n                {\r\n                    \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\values\\\\styles.xml\",\r\n                    \"from\": {\r\n                        \"startLines\": \"2\",\r\n                        \"startColumns\": \"4\",\r\n                        \"startOffsets\": \"19\",\r\n                        \"endColumns\": \"58\",\r\n                        \"endOffsets\": \"73\"\r\n                    },\r\n                    \"to\": {\r\n                        \"startLines\": \"31\",\r\n                        \"startColumns\": \"4\",\r\n                        \"startOffsets\": \"1612\",\r\n                        \"endColumns\": \"57\",\r\n                        \"endOffsets\": \"1665\"\r\n                    }\r\n                },\r\n                {\r\n                    \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\values\\\\dimen.xml\",\r\n                    \"from\": {\r\n                        \"startLines\": \"7,2,4,3,6,5\",\r\n                        \"startColumns\": \"4,4,4,4,4,4\",\r\n                        \"startOffsets\": \"314,57,168,112,262,211\",\r\n                        \"endColumns\": \"50,53,41,54,50,49\",\r\n                        \"endOffsets\": \"360,106,205,162,308,256\"\r\n                    },\r\n                    \"to\": {\r\n                        \"startLines\": \"5,6,7,8,9,10\",\r\n                        \"startColumns\": \"4,4,4,4,4,4\",\r\n                        \"startOffsets\": \"167,218,272,314,369,420\",\r\n                        \"endColumns\": \"50,53,41,54,50,49\",\r\n                        \"endOffsets\": \"213,267,309,364,415,465\"\r\n                    }\r\n                },\r\n                {\r\n                    \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\values\\\\strings.xml\",\r\n                    \"from\": {\r\n                        \"startLines\": \"11,2,7,17,18,19,14,3,20,4,8,12,13,21,10,6,15,9,15,5\",\r\n                        \"startColumns\": \"4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,89,4\",\r\n                        \"startOffsets\": \"531,19,314,876,949,1001,688,61,1079,115,365,582,635,1129,474,243,729,411,814,167\",\r\n                        \"endColumns\": \"49,40,49,71,50,76,39,52,48,50,44,51,51,50,55,69,89,61,139,74\",\r\n                        \"endOffsets\": \"576,55,359,943,995,1073,723,109,1123,161,405,629,682,1175,525,308,814,468,864,237\"\r\n                    },\r\n                    \"to\": {\r\n                        \"startLines\": \"11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30\",\r\n                        \"startColumns\": \"4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4\",\r\n                        \"startOffsets\": \"470,520,561,611,683,734,811,851,904,953,1004,1049,1101,1153,1204,1260,1330,1420,1482,1537\",\r\n                        \"endColumns\": \"49,40,49,71,50,76,39,52,48,50,44,51,51,50,55,69,89,61,54,74\",\r\n                        \"endOffsets\": \"515,556,606,678,729,806,846,899,948,999,1044,1096,1148,1199,1255,1325,1415,1477,1532,1607\"\r\n                    }\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"outputFile\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\values-v11_values-v11.arsc.flat\",\r\n            \"map\": [\r\n                {\r\n                    \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\values-v11\\\\styles.xml\",\r\n                    \"from\": {\r\n                        \"startLines\": \"2\",\r\n                        \"startColumns\": \"4\",\r\n                        \"startOffsets\": \"19\",\r\n                        \"endColumns\": \"63\",\r\n                        \"endOffsets\": \"78\"\r\n                    },\r\n                    \"to\": {\r\n                        \"startLines\": \"2\",\r\n                        \"startColumns\": \"4\",\r\n                        \"startOffsets\": \"55\",\r\n                        \"endColumns\": \"62\",\r\n                        \"endOffsets\": \"113\"\r\n                    }\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"outputFile\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\res\\\\merged\\\\debug\\\\values-v14_values-v14.arsc.flat\",\r\n            \"map\": [\r\n                {\r\n                    \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\values-v14\\\\styles.xml\",\r\n                    \"from\": {\r\n                        \"startLines\": \"2\",\r\n                        \"startColumns\": \"4\",\r\n                        \"startOffsets\": \"19\",\r\n                        \"endColumns\": \"77\",\r\n                        \"endOffsets\": \"92\"\r\n                    },\r\n                    \"to\": {\r\n                        \"startLines\": \"2\",\r\n                        \"startColumns\": \"4\",\r\n                        \"startOffsets\": \"55\",\r\n                        \"endColumns\": \"76\",\r\n                        \"endOffsets\": \"127\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build/intermediates/blame/res/debug/multi-v2/debug.json b/app/build/intermediates/blame/res/debug/multi-v2/debug.json
+--- a/app/build/intermediates/blame/res/debug/multi-v2/debug.json	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/build/intermediates/blame/res/debug/multi-v2/debug.json	(date 1647907884372)
+@@ -1,10 +1,10 @@
+ {
+     "logs": [
+         {
+-            "outputFile": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
++            "outputFile": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
+             "map": [
+                 {
+-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\color.xml",
++                    "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\color.xml",
+                     "from": {
+                         "startLines": "2,3,4",
+                         "startColumns": "4,4,4",
+@@ -21,7 +21,7 @@
+                     }
+                 },
+                 {
+-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\styles.xml",
++                    "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\styles.xml",
+                     "from": {
+                         "startLines": "2",
+                         "startColumns": "4",
+@@ -38,24 +38,7 @@
+                     }
+                 },
+                 {
+-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\dimen.xml",
+-                    "from": {
+-                        "startLines": "7,2,4,3,6,5",
+-                        "startColumns": "4,4,4,4,4,4",
+-                        "startOffsets": "314,57,168,112,262,211",
+-                        "endColumns": "50,53,41,54,50,49",
+-                        "endOffsets": "360,106,205,162,308,256"
+-                    },
+-                    "to": {
+-                        "startLines": "5,6,7,8,9,10",
+-                        "startColumns": "4,4,4,4,4,4",
+-                        "startOffsets": "167,218,272,314,369,420",
+-                        "endColumns": "50,53,41,54,50,49",
+-                        "endOffsets": "213,267,309,364,415,465"
+-                    }
+-                },
+-                {
+-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\strings.xml",
++                    "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\strings.xml",
+                     "from": {
+                         "startLines": "11,2,7,17,18,19,14,3,20,4,8,12,13,21,10,6,15,9,15,5",
+                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,89,4",
+@@ -70,49 +53,66 @@
+                         "endColumns": "49,40,49,71,50,76,39,52,48,50,44,51,51,50,55,69,89,61,54,74",
+                         "endOffsets": "515,556,606,678,729,806,846,899,948,999,1044,1096,1148,1199,1255,1325,1415,1477,1532,1607"
+                     }
++                },
++                {
++                    "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\dimen.xml",
++                    "from": {
++                        "startLines": "7,2,4,3,6,5",
++                        "startColumns": "4,4,4,4,4,4",
++                        "startOffsets": "314,57,168,112,262,211",
++                        "endColumns": "50,53,41,54,50,49",
++                        "endOffsets": "360,106,205,162,308,256"
++                    },
++                    "to": {
++                        "startLines": "5,6,7,8,9,10",
++                        "startColumns": "4,4,4,4,4,4",
++                        "startOffsets": "167,218,272,314,369,420",
++                        "endColumns": "50,53,41,54,50,49",
++                        "endOffsets": "213,267,309,364,415,465"
++                    }
+                 }
+             ]
+         },
+         {
+-            "outputFile": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\values-v11_values-v11.arsc.flat",
++            "outputFile": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\values-v14_values-v14.arsc.flat",
+             "map": [
+                 {
+-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values-v11\\styles.xml",
++                    "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values-v14\\styles.xml",
+                     "from": {
+                         "startLines": "2",
+                         "startColumns": "4",
+                         "startOffsets": "19",
+-                        "endColumns": "63",
+-                        "endOffsets": "78"
++                        "endColumns": "77",
++                        "endOffsets": "92"
+                     },
+                     "to": {
+                         "startLines": "2",
+                         "startColumns": "4",
+                         "startOffsets": "55",
+-                        "endColumns": "62",
+-                        "endOffsets": "113"
++                        "endColumns": "76",
++                        "endOffsets": "127"
+                     }
+                 }
+             ]
+         },
+         {
+-            "outputFile": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\values-v14_values-v14.arsc.flat",
++            "outputFile": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\res\\merged\\debug\\values-v11_values-v11.arsc.flat",
+             "map": [
+                 {
+-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values-v14\\styles.xml",
++                    "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values-v11\\styles.xml",
+                     "from": {
+                         "startLines": "2",
+                         "startColumns": "4",
+                         "startOffsets": "19",
+-                        "endColumns": "77",
+-                        "endOffsets": "92"
++                        "endColumns": "63",
++                        "endOffsets": "78"
+                     },
+                     "to": {
+                         "startLines": "2",
+                         "startColumns": "4",
+                         "startOffsets": "55",
+-                        "endColumns": "76",
+-                        "endOffsets": "127"
++                        "endColumns": "62",
++                        "endOffsets": "113"
+                     }
+                 }
+             ]
+Index: app/build/intermediates/blame/res/debug/multi-v2/values-v11.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n    \"logs\": [\r\n        {\r\n            \"outputFile\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\incremental\\\\mergeDebugResources\\\\merged.dir\\\\values-v11\\\\values-v11.xml\",\r\n            \"map\": [\r\n                {\r\n                    \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\values-v11\\\\styles.xml\",\r\n                    \"from\": {\r\n                        \"startLines\": \"2\",\r\n                        \"startColumns\": \"4\",\r\n                        \"startOffsets\": \"19\",\r\n                        \"endColumns\": \"63\",\r\n                        \"endOffsets\": \"78\"\r\n                    },\r\n                    \"to\": {\r\n                        \"startLines\": \"2\",\r\n                        \"startColumns\": \"4\",\r\n                        \"startOffsets\": \"55\",\r\n                        \"endColumns\": \"62\",\r\n                        \"endOffsets\": \"113\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build/intermediates/blame/res/debug/multi-v2/values-v11.json b/app/build/intermediates/blame/res/debug/multi-v2/values-v11.json
+--- a/app/build/intermediates/blame/res/debug/multi-v2/values-v11.json	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/build/intermediates/blame/res/debug/multi-v2/values-v11.json	(date 1647907884374)
+@@ -1,10 +1,10 @@
+ {
+     "logs": [
+         {
+-            "outputFile": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
++            "outputFile": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
+             "map": [
+                 {
+-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values-v11\\styles.xml",
++                    "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values-v11\\styles.xml",
+                     "from": {
+                         "startLines": "2",
+                         "startColumns": "4",
+Index: app/build/intermediates/blame/res/debug/multi-v2/values-v14.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n    \"logs\": [\r\n        {\r\n            \"outputFile\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\incremental\\\\mergeDebugResources\\\\merged.dir\\\\values-v14\\\\values-v14.xml\",\r\n            \"map\": [\r\n                {\r\n                    \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\values-v14\\\\styles.xml\",\r\n                    \"from\": {\r\n                        \"startLines\": \"2\",\r\n                        \"startColumns\": \"4\",\r\n                        \"startOffsets\": \"19\",\r\n                        \"endColumns\": \"77\",\r\n                        \"endOffsets\": \"92\"\r\n                    },\r\n                    \"to\": {\r\n                        \"startLines\": \"2\",\r\n                        \"startColumns\": \"4\",\r\n                        \"startOffsets\": \"55\",\r\n                        \"endColumns\": \"76\",\r\n                        \"endOffsets\": \"127\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build/intermediates/blame/res/debug/multi-v2/values-v14.json b/app/build/intermediates/blame/res/debug/multi-v2/values-v14.json
+--- a/app/build/intermediates/blame/res/debug/multi-v2/values-v14.json	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/build/intermediates/blame/res/debug/multi-v2/values-v14.json	(date 1647907884368)
+@@ -1,10 +1,10 @@
+ {
+     "logs": [
+         {
+-            "outputFile": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
++            "outputFile": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
+             "map": [
+                 {
+-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values-v14\\styles.xml",
++                    "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values-v14\\styles.xml",
+                     "from": {
+                         "startLines": "2",
+                         "startColumns": "4",
+Index: app/build/intermediates/blame/res/debug/multi-v2/values.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n    \"logs\": [\r\n        {\r\n            \"outputFile\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\build\\\\intermediates\\\\incremental\\\\mergeDebugResources\\\\merged.dir\\\\values\\\\values.xml\",\r\n            \"map\": [\r\n                {\r\n                    \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\values\\\\color.xml\",\r\n                    \"from\": {\r\n                        \"startLines\": \"2,3,4\",\r\n                        \"startColumns\": \"4,4,4\",\r\n                        \"startOffsets\": \"57,95,133\",\r\n                        \"endColumns\": \"36,36,37\",\r\n                        \"endOffsets\": \"89,127,166\"\r\n                    },\r\n                    \"to\": {\r\n                        \"startLines\": \"2,3,4\",\r\n                        \"startColumns\": \"4,4,4\",\r\n                        \"startOffsets\": \"55,92,129\",\r\n                        \"endColumns\": \"36,36,37\",\r\n                        \"endOffsets\": \"87,124,162\"\r\n                    }\r\n                },\r\n                {\r\n                    \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\values\\\\styles.xml\",\r\n                    \"from\": {\r\n                        \"startLines\": \"2\",\r\n                        \"startColumns\": \"4\",\r\n                        \"startOffsets\": \"19\",\r\n                        \"endColumns\": \"58\",\r\n                        \"endOffsets\": \"73\"\r\n                    },\r\n                    \"to\": {\r\n                        \"startLines\": \"31\",\r\n                        \"startColumns\": \"4\",\r\n                        \"startOffsets\": \"1612\",\r\n                        \"endColumns\": \"57\",\r\n                        \"endOffsets\": \"1665\"\r\n                    }\r\n                },\r\n                {\r\n                    \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\values\\\\dimen.xml\",\r\n                    \"from\": {\r\n                        \"startLines\": \"7,2,4,3,6,5\",\r\n                        \"startColumns\": \"4,4,4,4,4,4\",\r\n                        \"startOffsets\": \"314,57,168,112,262,211\",\r\n                        \"endColumns\": \"50,53,41,54,50,49\",\r\n                        \"endOffsets\": \"360,106,205,162,308,256\"\r\n                    },\r\n                    \"to\": {\r\n                        \"startLines\": \"5,6,7,8,9,10\",\r\n                        \"startColumns\": \"4,4,4,4,4,4\",\r\n                        \"startOffsets\": \"167,218,272,314,369,420\",\r\n                        \"endColumns\": \"50,53,41,54,50,49\",\r\n                        \"endOffsets\": \"213,267,309,364,415,465\"\r\n                    }\r\n                },\r\n                {\r\n                    \"source\": \"C:\\\\Users\\\\aweso\\\\AndroidStudioProjects\\\\Cs301GroupYahtzee\\\\app\\\\src\\\\main\\\\res\\\\values\\\\strings.xml\",\r\n                    \"from\": {\r\n                        \"startLines\": \"11,2,7,17,18,19,14,3,20,4,8,12,13,21,10,6,15,9,15,5\",\r\n                        \"startColumns\": \"4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,89,4\",\r\n                        \"startOffsets\": \"531,19,314,876,949,1001,688,61,1079,115,365,582,635,1129,474,243,729,411,814,167\",\r\n                        \"endColumns\": \"49,40,49,71,50,76,39,52,48,50,44,51,51,50,55,69,89,61,139,74\",\r\n                        \"endOffsets\": \"576,55,359,943,995,1073,723,109,1123,161,405,629,682,1175,525,308,814,468,864,237\"\r\n                    },\r\n                    \"to\": {\r\n                        \"startLines\": \"11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30\",\r\n                        \"startColumns\": \"4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4\",\r\n                        \"startOffsets\": \"470,520,561,611,683,734,811,851,904,953,1004,1049,1101,1153,1204,1260,1330,1420,1482,1537\",\r\n                        \"endColumns\": \"49,40,49,71,50,76,39,52,48,50,44,51,51,50,55,69,89,61,54,74\",\r\n                        \"endOffsets\": \"515,556,606,678,729,806,846,899,948,999,1044,1096,1148,1199,1255,1325,1415,1477,1532,1607\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build/intermediates/blame/res/debug/multi-v2/values.json b/app/build/intermediates/blame/res/debug/multi-v2/values.json
+--- a/app/build/intermediates/blame/res/debug/multi-v2/values.json	(revision f38e2a0331515a861a5f17aea380f2f220a285a1)
++++ b/app/build/intermediates/blame/res/debug/multi-v2/values.json	(date 1647907884371)
+@@ -1,10 +1,10 @@
+ {
+     "logs": [
+         {
+-            "outputFile": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
++            "outputFile": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+             "map": [
+                 {
+-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\color.xml",
++                    "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\color.xml",
+                     "from": {
+                         "startLines": "2,3,4",
+                         "startColumns": "4,4,4",
+@@ -21,7 +21,7 @@
+                     }
+                 },
+                 {
+-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\styles.xml",
++                    "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\styles.xml",
+                     "from": {
+                         "startLines": "2",
+                         "startColumns": "4",
+@@ -38,24 +38,7 @@
+                     }
+                 },
+                 {
+-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\dimen.xml",
+-                    "from": {
+-                        "startLines": "7,2,4,3,6,5",
+-                        "startColumns": "4,4,4,4,4,4",
+-                        "startOffsets": "314,57,168,112,262,211",
+-                        "endColumns": "50,53,41,54,50,49",
+-                        "endOffsets": "360,106,205,162,308,256"
+-                    },
+-                    "to": {
+-                        "startLines": "5,6,7,8,9,10",
+-                        "startColumns": "4,4,4,4,4,4",
+-                        "startOffsets": "167,218,272,314,369,420",
+-                        "endColumns": "50,53,41,54,50,49",
+-                        "endOffsets": "213,267,309,364,415,465"
+-                    }
+-                },
+-                {
+-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\strings.xml",
++                    "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\strings.xml",
+                     "from": {
+                         "startLines": "11,2,7,17,18,19,14,3,20,4,8,12,13,21,10,6,15,9,15,5",
+                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,89,4",
+@@ -70,6 +53,23 @@
+                         "endColumns": "49,40,49,71,50,76,39,52,48,50,44,51,51,50,55,69,89,61,54,74",
+                         "endOffsets": "515,556,606,678,729,806,846,899,948,999,1044,1096,1148,1199,1255,1325,1415,1477,1532,1607"
+                     }
++                },
++                {
++                    "source": "C:\\Users\\Santiago\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\dimen.xml",
++                    "from": {
++                        "startLines": "7,2,4,3,6,5",
++                        "startColumns": "4,4,4,4,4,4",
++                        "startOffsets": "314,57,168,112,262,211",
++                        "endColumns": "50,53,41,54,50,49",
++                        "endOffsets": "360,106,205,162,308,256"
++                    },
++                    "to": {
++                        "startLines": "5,6,7,8,9,10",
++                        "startColumns": "4,4,4,4,4,4",
++                        "startOffsets": "167,218,272,314,369,420",
++                        "endColumns": "50,53,41,54,50,49",
++                        "endOffsets": "213,267,309,364,415,465"
++                    }
+                 }
+             ]
+         }

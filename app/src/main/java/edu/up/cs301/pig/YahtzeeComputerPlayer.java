@@ -1,9 +1,7 @@
 package edu.up.cs301.pig;
 
 import edu.up.cs301.game.GameComputerPlayer;
-import edu.up.cs301.game.actionMsg.GameAction;
 import edu.up.cs301.game.infoMsg.GameInfo;
-import edu.up.cs301.game.util.Tickable;
 
 /**
  * An AI for Pig
@@ -11,12 +9,12 @@ import edu.up.cs301.game.util.Tickable;
  * @author Andrew M. Nuxoll
  * @version August 2015
  */
-public class PigComputerPlayer extends GameComputerPlayer {
+public class YahtzeeComputerPlayer extends GameComputerPlayer {
 
     /**
      * ctor does nothing extra
      */
-    public PigComputerPlayer(String name) {
+    public YahtzeeComputerPlayer(String name) {
         super(name);
     }
 

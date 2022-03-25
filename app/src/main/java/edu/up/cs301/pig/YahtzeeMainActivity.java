@@ -8,13 +8,14 @@ import edu.up.cs301.game.LocalGame;
 import edu.up.cs301.game.config.GameConfig;
 import edu.up.cs301.game.config.GamePlayerType;
 
+
 /**
  * this is the primary activity for Pig
  *
  * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl
  * @version February 2016
  */
-public class PigMainActivity extends GameMainActivity {
+public class YahtzeeMainActivity extends GameMainActivity {
 
     // the port number that this game will use when playing over the network
     private static final int PORT_NUMBER = 2278;
@@ -36,11 +37,11 @@ public class PigMainActivity extends GameMainActivity {
         // Pig has two player types:  human and computer
         playerTypes.add(new GamePlayerType("Local Human Player") {
             public GamePlayer createPlayer(String name) {
-                return new PigHumanPlayer(name);
+                return new YahtzeeHumanPlayer(name);
             }});
         playerTypes.add(new GamePlayerType("Computer Player") {
             public GamePlayer createPlayer(String name) {
-                return new PigComputerPlayer(name);
+                return new YahtzeeComputerPlayer(name);
             }});
 
         // Create a game configuration class for Pig:
