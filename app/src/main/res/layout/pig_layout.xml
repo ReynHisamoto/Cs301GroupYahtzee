@@ -450,108 +450,110 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="OP" />
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p1Ones"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p1Twos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="2" />
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p1Threes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p1Fours"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="4" />
 
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p1Fives"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p1Sixes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p1Sum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="6" />
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p1Bonus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="" /> <TextView
-                android:id="@+id/p0Yahtzee"
+                    android:text="" />
+                <TextView
+                android:id="@+id/p13OfAKind"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="" />
 
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p14OfAKind"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="19" />
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p1FullHouse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p1S_Straight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="" /> <TextView
-                android:id="@+id/p0Yahtzee"
+                    android:text="" />
+                <TextView
+                android:id="@+id/p1L_Straight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="" />
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p1Chance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p1Yahtzee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p1TotalScore"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
