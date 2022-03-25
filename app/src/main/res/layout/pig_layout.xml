@@ -506,7 +506,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="" /> <TextView
+                    android:text="" />
+                <TextView
                 android:id="@+id/P1ThreeOfAKind"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -551,7 +552,7 @@
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/p1TotalScore"
+                    android:id="@+id/Testing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
