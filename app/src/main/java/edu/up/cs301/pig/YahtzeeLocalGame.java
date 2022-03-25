@@ -58,7 +58,7 @@ public class YahtzeeLocalGame extends LocalGame {
          who made the action, then it will tell the YahtzeeGameState to "keep" the die that has had
          the action performed on it.
          **/
-        if (action instanceof YahtzeeKeep && canMakeAction(((YahtzeeKeep) action).idx)) {
+        if (action instanceof YahtzeeKeep && canMakeAction(((YahtzeeKeep)action).idx)) {
            if(!canMakeAction(((YahtzeeKeep) action).getIdx()) || masterGameState.getSelectedDice().size() > 3){
                return false;
            }else if (!masterGameState.getDice(((YahtzeeKeep) action).getIdx()).isKeep()) {
@@ -89,7 +89,7 @@ public class YahtzeeLocalGame extends LocalGame {
         /**
          * checks where the player has clicked and adds to the scoreboard accordingly
          */
-        if (action instanceof YahtzeeScore && canMakeAction(((YahtzeeScore) action).getIdx())){
+        if (action instanceof YahtzeeScore && canMakeAction(((YahtzeeScore) action).getIdx()) && masterGameState.getScores(((YahtzeeScore) action).getIdx())[((YahtzeeScore) action).getRow()] == 0){
                 int score = 0;
                 int[] numDice = totalDice(masterGameState.getDiceArray());
                 int mostCommon = checkMaxNumDice(numDice);
@@ -205,7 +205,6 @@ public class YahtzeeLocalGame extends LocalGame {
      */
     @Override
     protected String checkIfGameOver() {
-        //TODO  You will implement this method
         int max =0;
         for(int i =0; i < players.length; i++){
             if(max < masterGameState.getScores(i)[13]){
@@ -251,6 +250,8 @@ public class YahtzeeLocalGame extends LocalGame {
         }
         return maxNum;
     }
+
+
     /*
     creates an array of dice in common
      */
@@ -270,8 +271,10 @@ public class YahtzeeLocalGame extends LocalGame {
     protected boolean SmallStraight(int[] potValue){
         int numInstance = 0;
         for(int val : potValue){
-            if(val == 1) {
+            if(val >= 1) {
                 numInstance++;
+            }else{
+                numInstance =0;
             }
         }
         return( numInstance >= 4);
@@ -285,6 +288,8 @@ public class YahtzeeLocalGame extends LocalGame {
         for(int val : potValue){
             if(val == 1 ){
                 numInstance++;
+            }else{
+                numInstance = 0;
             }
         }
         return(numInstance >= 5);
