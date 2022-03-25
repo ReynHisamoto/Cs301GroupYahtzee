@@ -89,7 +89,7 @@ public class YahtzeeLocalGame extends LocalGame {
         /**
          * checks where the player has clicked and adds to the scoreboard accordingly
          */
-        if (action instanceof YahtzeeScore && canMakeAction(((YahtzeeScore) action).getIdx())){
+        if (action instanceof YahtzeeScore && canMakeAction(((YahtzeeScore) action).getIdx()) && masterGameState.getScores(((YahtzeeScore) action).getIdx())[((YahtzeeScore) action).getRow()] == 0){
                 int score = 0;
                 int[] numDice = totalDice(masterGameState.getDiceArray());
                 int mostCommon = checkMaxNumDice(numDice);
