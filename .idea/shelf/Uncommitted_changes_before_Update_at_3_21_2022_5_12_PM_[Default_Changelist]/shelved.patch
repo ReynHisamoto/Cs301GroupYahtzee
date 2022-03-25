@@ -1,0 +1,232 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_7_41_PM__Default_Changelist_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_7_41_PM__Default_Changelist_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_7_41_PM__Default_Changelist_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_7_41_PM__Default_Changelist_.xml	(revision 866a6db04c01274c31729ae7bcb4dbaef20c25a9)
++++ /dev/null	(revision 866a6db04c01274c31729ae7bcb4dbaef20c25a9)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_2_24_2022_7_41_PM_[Default_Changelist]" date="1645760566179" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_7_41_PM_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2/24/2022 7:41 PM [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_8_14_PM_[Default_Changelist]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_8_14_PM_[Default_Changelist]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_8_14_PM_[Default_Changelist]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_8_14_PM_[Default_Changelist]/shelved.patch	(revision 866a6db04c01274c31729ae7bcb4dbaef20c25a9)
++++ /dev/null	(revision 866a6db04c01274c31729ae7bcb4dbaef20c25a9)
+@@ -1,76 +0,0 @@
+-Index: app/src/main/java/edu/up/cs301/pig/PigLocalGame.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package edu.up.cs301.pig;\r\n\r\nimport edu.up.cs301.game.GamePlayer;\r\nimport edu.up.cs301.game.LocalGame;\r\nimport edu.up.cs301.game.actionMsg.GameAction;\r\nimport edu.up.cs301.game.infoMsg.GameState;\r\n\r\nimport android.util.Log;\r\n\r\n// dummy comment, to see if commit and push work from srvegdahl account\r\n\r\n/**\r\n * class PigLocalGame controls the play of the game\r\n *\r\n * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl\r\n * @version February 2016\r\n */\r\npublic class PigLocalGame extends LocalGame {\r\n\r\n    private PigGameState masterGameState;\r\n    /**\r\n     * This ctor creates a new game state\r\n     */\r\n    public PigLocalGame() {\r\n        //TODO  You will implement this constructor\r\n        this.masterGameState = new PigGameState(players.length);\r\n    }\r\n\r\n    /**\r\n     * can the player with the given id take an action right now?\r\n     */\r\n    @Override\r\n    protected boolean canMove(int playerIdx) {\r\n        //TODO  You will implement this method\r\n        if (playerIdx == masterGameState.getTurn()) {\r\n            return true;\r\n        } else {\r\n\r\n            return false;\r\n        }\r\n\r\n    }\r\n\r\n    /**\r\n     * This method is called when a new action arrives from a player\r\n     *\r\n     * @return true if the action was taken or false if the action was invalid/illegal.\r\n     */\r\n    @Override\r\n    protected boolean makeMove(GameAction action) {\r\n        //TODO  You will implement this method\r\n\r\n        //hold action\r\n        if (action instanceof YahtzeeKeep) {\r\n\r\n            if (masterGameState.getTurn() == 0) {\r\n                masterGameState.setP0Score(masterGameState.getP0Score() + masterGameState.getRunningTotal());\r\n            } else if (masterGameState.getTurn() == 1) {\r\n                masterGameState.setP1Score(masterGameState.getP1Score() + masterGameState.getRunningTotal());\r\n            }\r\n\r\n\r\n            return true;\r\n\r\n            //roll action\r\n        } else if (action instanceof YahtzeeRoll) {\r\n            int rand = (int)(Math.random() * 6);\r\n            if (rand == 1) {\r\n                masterGameState.setRunningTotal(0);\r\n                if (masterGameState.getTurn() == 0) {\r\n                    masterGameState.setTurn(1);\r\n                } else {\r\n                    masterGameState.setTurn(0);\r\n                }\r\n            } else {\r\n                masterGameState.setRunningTotal(masterGameState.getRunningTotal() + rand);\r\n            }\r\n\r\n            return true;\r\n        }\r\n\r\n        if (action instanceof YahtzeeScore){\r\n\r\n        }\r\n            return false;\r\n\r\n\r\n    }//makeMove\r\n\r\n    /**\r\n     * send the updated state to a given player\r\n     */\r\n    @Override\r\n    protected void sendUpdatedStateTo(GamePlayer p) {\r\n        //TODO  You will implement this method\r\n        PigGameState updatedGameState = new PigGameState(masterGameState);\r\n        p.sendInfo(updatedGameState);\r\n    }//sendUpdatedSate\r\n\r\n    /**\r\n     * Check if the game is over\r\n     *\r\n     * @return\r\n     * \t\ta message that tells who has won the game, or null if the\r\n     * \t\tgame is not over\r\n     */\r\n    @Override\r\n    protected String checkIfGameOver() {\r\n        //TODO  You will implement this method\r\n        if (masterGameState.getP0Score() > 50) {\r\n            return  \"player 0 wins, Score: \" + masterGameState.getP0Score();\r\n        } else if (masterGameState.getP1Score() > 50) {\r\n            return \"player 1 wins, Score: \" + masterGameState.getP1Score();\r\n        } else {\r\n            return null;\r\n        }\r\n    }\r\n\r\n    //todo create yahtzee methods\r\n    protected boolean selectKeepers() {\r\n        return false;\r\n    }\r\n\r\n    protected boolean selectScoreBox() {\r\n        return false;\r\n    }\r\n\r\n}// class PigLocalGame\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/java/edu/up/cs301/pig/PigLocalGame.java b/app/src/main/java/edu/up/cs301/pig/PigLocalGame.java
+---- a/app/src/main/java/edu/up/cs301/pig/PigLocalGame.java	(revision 6d09bf947c26e7e1922e94dead6771dac4267763)
+-+++ b/app/src/main/java/edu/up/cs301/pig/PigLocalGame.java	(date 1645762427420)
+-@@ -52,13 +52,14 @@
+- 
+-         //hold action
+-         if (action instanceof YahtzeeKeep) {
+--
+--            if (masterGameState.getTurn() == 0) {
+--                masterGameState.setP0Score(masterGameState.getP0Score() + masterGameState.getRunningTotal());
+--            } else if (masterGameState.getTurn() == 1) {
+--                masterGameState.setP1Score(masterGameState.getP1Score() + masterGameState.getRunningTotal());
+-+            //ind is the index for the dice to keep from on touch
+-+            //checks if the keeper is empty
+-+            //if dice is already in keep, takes the dice out of selected
+-+            if (ind == null) {
+-+                masterGameState.setSelected(ind, dice[ind]);
+-+            } else {
+-+                masterGameState.setSelected(ind, null);
+-             }
+--
+- 
+-             return true;
+- 
+-@@ -81,6 +82,7 @@
+- 
+-         if (action instanceof YahtzeeScore){
+- 
+-+
+-         }
+-             return false;
+- 
+-Index: app/src/main/java/edu/up/cs301/pig/PigGameState.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package edu.up.cs301.pig;\r\n\r\nimport edu.up.cs301.game.infoMsg.GameState;\r\n\r\npublic class PigGameState extends GameState {\r\n    // is the player of the current turn's id\r\n    private int turn;\r\n    // 2d array to score scores [the player id of the person in question][the value when looking at the score sheet from top to bottom]\r\n    private int[][] scores;\r\n    // an array of the dice values in play\r\n    private int dices[];\r\n    // current turn's roll number\r\n    private int rollNum;\r\n    //current round of play\r\n    private int round;\r\n    //array of selected dice up to 3 per rules\r\n    private int[] selected;\r\n\r\n\r\n    /**\r\n     * ctor\r\n     */\r\n    // default constructor that sets up the arrays and vals at game launch\r\n    public PigGameState(int numPlayers) {\r\n        this.turn = 0;\r\n        this.scores = new int[numPlayers][13];\r\n        this.dices= new int[5];\r\n        this.rollNum = 1;\r\n        this.round = 1;\r\n        this.selected = new int[3];\r\n\r\n\r\n    }\r\n\r\n    /**\r\n     * copy ctor\r\n     * @param g\r\n     */\r\n    //copies all new values into new gamestate\r\n    public PigGameState (PigGameState g) {\r\n        this.turn = g.turn;\r\n        this.rollNum = g.rollNum;\r\n        for( int i = 0; i < scores.length; i++ ){\r\n            for(int j = 0; j < scores[i].length; j++){\r\n                this.scores[i][j] = g.scores[i][j];\r\n            }\r\n        }\r\n        for(int i = 0; i < dices.length; i++){\r\n            this.dices[i] = g.dices[i];\r\n        }\r\n        for(int i =0; i < selected.length; i++){\r\n            this.selected[i] = g.selected[i];\r\n        }\r\n        //this.scoreCard = new ScoreCard();\r\n        this.round = g.round;\r\n\r\n\r\n    }\r\n\r\n\r\n\r\n    //getter methods for PigGameState\r\n    //todo getter methods for yahtzee\r\n//returns current player id\r\n    public int getTurn() {\r\n        return turn;\r\n    }\r\n//returns array current score of player\r\n   public int[] getScores(int p){\r\n        return scores[p];\r\n   }\r\n//returns array of dices\r\n    public int[] getDices() {\r\n        return dices;\r\n    }\r\n//returns number of rolls during the turn\r\n    public int getRollNum() {\r\n        return rollNum;\r\n    }\r\n    //returns current round number\r\n    public int getRound() {\r\n        return round;\r\n    }\r\n    //returns array of selected dice\r\n    public int[] getSelected(){return selected;}\r\n\r\n\r\n    //setter methods for PigGameState\r\n    //todo setter methods for yahtzee\r\n    // sets current turn to given player id\r\n   public void setTurn(int id){\r\n        this.turn = id;\r\n   }\r\n   // sets for a given player, and row that is in question, to a given score\r\n    public void setScores(int id, int row, int score){\r\n        this.scores[id][row] = score;\r\n    }\r\n    //sets the dice at a given ind to a new value\r\n    public void setDices(int ind, int val){\r\n        this.dices[ind] = val;\r\n    }\r\n    //sets the RollNumber to given num\r\n    public void setRollNum(int num){\r\n        this.rollNum = num;\r\n    }\r\n    //sets Selected die at given index to a new value\r\n    public void setSelected(int ind, int val){\r\n        this.selected[ind] = val;\r\n    }\r\n    // sets round to given val\r\n    public void setRound(int num){\r\n        this.round = num;\r\n    }\r\n\r\n\r\n\r\n\r\n    @Override\r\n    public String toString() {\r\n        //initializes empty strings for later return\r\n        String playerValues = \"\";\r\n        String diceValues = \"\";\r\n        String selectedDie = \"\";\r\n        //writes out all values in arrays to a given string\r\n        for(int i = 0; i < scores.length; i++){\r\n            playerValues.concat(\"player\" + i + \" scores: \");\r\n            for(int j = 0; j < scores[i].length; j++){\r\n                playerValues.concat(scores[j] + \", \");\r\n            }\r\n        }\r\n        for(int i = 0; i < dices.length; i++){\r\n            diceValues.concat(\"dice \" + i + \"'s value is:\" + dices[i]);\r\n        }\r\n        for(int i = 0; i < selected.length; i++){\r\n            selectedDie.concat(\"selected dice \" + i + \"'s value is:\" + selected[i]);\r\n        }\r\n        //returns values with given variable values and new strings above\r\n        return \"YahtzeeGameState{\" +\r\n                \"Turn=\" + turn + \"\\n\" +\r\n                playerValues + \"\\n\" +\r\n               diceValues + \"\\n\" +\r\n                selectedDie + \"\\n\" +\r\n                \", rollNum=\" + rollNum + \"\\n\" +\r\n                \", round=\" + round +\r\n                '}';\r\n    }\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/java/edu/up/cs301/pig/PigGameState.java b/app/src/main/java/edu/up/cs301/pig/PigGameState.java
+---- a/app/src/main/java/edu/up/cs301/pig/PigGameState.java	(revision 6d09bf947c26e7e1922e94dead6771dac4267763)
+-+++ b/app/src/main/java/edu/up/cs301/pig/PigGameState.java	(date 1645760548519)
+-@@ -13,7 +13,7 @@
+-     private int rollNum;
+-     //current round of play
+-     private int round;
+--    //array of selected dice up to 3 per rules
+-+    //array of selected dice
+-     private int[] selected;
+- 
+- 
+-Index: local.properties
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>## This file must *NOT* be checked into Version Control Systems,\r\n# as it contains information specific to your local configuration.\r\n#\r\n# Location of the SDK. This is only used by Gradle.\r\n# For customization when using a Version Control System, please read the\r\n# header note.\r\n#Thu Feb 24 13:50:13 PST 2022\r\nsdk.dir=C\\:\\\\Users\\\\Santiago\\\\AppData\\\\Local\\\\Android\\\\Sdk\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>windows-1252
+-===================================================================
+-diff --git a/local.properties b/local.properties
+---- a/local.properties	(revision 6d09bf947c26e7e1922e94dead6771dac4267763)
+-+++ b/local.properties	(date 1645760566143)
+-@@ -4,5 +4,5 @@
+- # Location of the SDK. This is only used by Gradle.
+- # For customization when using a Version Control System, please read the
+- # header note.
+--#Thu Feb 24 13:50:13 PST 2022
+--sdk.dir=C\:\\Users\\Santiago\\AppData\\Local\\Android\\Sdk
+-+#Thu Feb 24 19:06:51 PST 2022
+-+sdk.dir=C\:\\Users\\spoti\\AppData\\Local\\Android\\Sdk
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_7_41_PM_[Default_Changelist]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_7_41_PM_[Default_Changelist]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_7_41_PM_[Default_Changelist]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_7_41_PM_[Default_Changelist]/shelved.patch	(revision 866a6db04c01274c31729ae7bcb4dbaef20c25a9)
++++ /dev/null	(revision 866a6db04c01274c31729ae7bcb4dbaef20c25a9)
+@@ -1,98 +0,0 @@
+-Index: app/src/main/java/edu/up/cs301/pig/PigLocalGame.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package edu.up.cs301.pig;\r\n\r\nimport edu.up.cs301.game.GamePlayer;\r\nimport edu.up.cs301.game.LocalGame;\r\nimport edu.up.cs301.game.actionMsg.GameAction;\r\nimport edu.up.cs301.game.infoMsg.GameState;\r\n\r\nimport android.util.Log;\r\n\r\n// dummy comment, to see if commit and push work from srvegdahl account\r\n\r\n/**\r\n * class PigLocalGame controls the play of the game\r\n *\r\n * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl\r\n * @version February 2016\r\n */\r\npublic class PigLocalGame extends LocalGame {\r\n\r\n    private PigGameState masterGameState;\r\n    /**\r\n     * This ctor creates a new game state\r\n     */\r\n    public PigLocalGame() {\r\n        //TODO  You will implement this constructor\r\n        this.masterGameState = new PigGameState(players.length);\r\n    }\r\n\r\n    /**\r\n     * can the player with the given id take an action right now?\r\n     */\r\n    @Override\r\n    protected boolean canMove(int playerIdx) {\r\n        //TODO  You will implement this method\r\n        if (playerIdx == masterGameState.getPlayerId()) {\r\n            return true;\r\n        } else {\r\n\r\n            return false;\r\n        }\r\n\r\n    }\r\n\r\n    /**\r\n     * This method is called when a new action arrives from a player\r\n     *\r\n     * @return true if the action was taken or false if the action was invalid/illegal.\r\n     */\r\n    @Override\r\n    protected boolean makeMove(GameAction action) {\r\n        //TODO  You will implement this method\r\n\r\n        //hold action\r\n        if (action instanceof PigHoldAction) {\r\n\r\n            if (masterGameState.getPlayerId() == 0) {\r\n                masterGameState.setP0Score(masterGameState.getP0Score() + masterGameState.getRunningTotal());\r\n            } else if (masterGameState.getPlayerId() == 1) {\r\n                masterGameState.setP1Score(masterGameState.getP1Score() + masterGameState.getRunningTotal());\r\n            }\r\n\r\n\r\n            return true;\r\n\r\n            //roll action\r\n        } else if (action instanceof PigRollAction) {\r\n            int rand = (int)(Math.random() * 6);\r\n            if (rand == 1) {\r\n                masterGameState.setRunningTotal(0);\r\n                if (masterGameState.getPlayerId() == 0) {\r\n                    masterGameState.setPlayerId(1);\r\n                } else {\r\n                    masterGameState.setPlayerId(0);\r\n                }\r\n            } else {\r\n                masterGameState.setRunningTotal(masterGameState.getRunningTotal() + rand);\r\n            }\r\n\r\n            return true;\r\n        }\r\n            return false;\r\n\r\n\r\n    }//makeMove\r\n\r\n    /**\r\n     * send the updated state to a given player\r\n     */\r\n    @Override\r\n    protected void sendUpdatedStateTo(GamePlayer p) {\r\n        //TODO  You will implement this method\r\n        PigGameState updatedGameState = new PigGameState(masterGameState);\r\n        p.sendInfo(updatedGameState);\r\n    }//sendUpdatedSate\r\n\r\n    /**\r\n     * Check if the game is over\r\n     *\r\n     * @return\r\n     * \t\ta message that tells who has won the game, or null if the\r\n     * \t\tgame is not over\r\n     */\r\n    @Override\r\n    protected String checkIfGameOver() {\r\n        //TODO  You will implement this method\r\n        if (masterGameState.getP0Score() > 50) {\r\n            return  \"player 0 wins, Score: \" + masterGameState.getP0Score();\r\n        } else if (masterGameState.getP1Score() > 50) {\r\n            return \"player 1 wins, Score: \" + masterGameState.getP1Score();\r\n        } else {\r\n            return null;\r\n        }\r\n    }\r\n\r\n    //todo create yahtzee methods\r\n    protected boolean selectKeepers() {\r\n        return false;\r\n    }\r\n\r\n    protected boolean selectScoreBox() {\r\n        return false;\r\n    }\r\n\r\n}// class PigLocalGame\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/java/edu/up/cs301/pig/PigLocalGame.java b/app/src/main/java/edu/up/cs301/pig/PigLocalGame.java
+---- a/app/src/main/java/edu/up/cs301/pig/PigLocalGame.java	(revision fae59e51e44d24fc574aef8383a77390b7614121)
+-+++ b/app/src/main/java/edu/up/cs301/pig/PigLocalGame.java	(date 1645760472379)
+-@@ -32,7 +32,7 @@
+-     @Override
+-     protected boolean canMove(int playerIdx) {
+-         //TODO  You will implement this method
+--        if (playerIdx == masterGameState.getPlayerId()) {
+-+        if (playerIdx == masterGameState.getTurn()) {
+-             return true;
+-         } else {
+- 
+-@@ -51,11 +51,17 @@
+-         //TODO  You will implement this method
+- 
+-         //hold action
+-+
+-+        if (action instanceof PigHoldAction) {
+-+
+-+        }
+-+
+-+        /*
+-         if (action instanceof PigHoldAction) {
+- 
+--            if (masterGameState.getPlayerId() == 0) {
+-+            if (masterGameState.getTurn() == 0) {
+-                 masterGameState.setP0Score(masterGameState.getP0Score() + masterGameState.getRunningTotal());
+--            } else if (masterGameState.getPlayerId() == 1) {
+-+            } else if (masterGameState.getTurn() == 1) {
+-                 masterGameState.setP1Score(masterGameState.getP1Score() + masterGameState.getRunningTotal());
+-             }
+- 
+-@@ -67,7 +73,7 @@
+-             int rand = (int)(Math.random() * 6);
+-             if (rand == 1) {
+-                 masterGameState.setRunningTotal(0);
+--                if (masterGameState.getPlayerId() == 0) {
+-+                if (masterGameState.getTurn() == 0) {
+-                     masterGameState.setPlayerId(1);
+-                 } else {
+-                     masterGameState.setPlayerId(0);
+-@@ -79,8 +85,10 @@
+-             return true;
+-         }
+-             return false;
+--
+--
+-+    return false
+-+*/
+-+
+-+        return false;
+-     }//makeMove
+- 
+-     /**
+-Index: app/src/main/java/edu/up/cs301/pig/PigGameState.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package edu.up.cs301.pig;\r\n\r\nimport edu.up.cs301.game.infoMsg.GameState;\r\n\r\npublic class PigGameState extends GameState {\r\n    // is the player of the current turn's id\r\n    private int turn;\r\n    // 2d array to score scores [the player id of the person in question][the value when looking at the score sheet from top to bottom]\r\n    private int[][] scores;\r\n    // an array of the dice values in play\r\n    private int dices[];\r\n    // current turn's roll number\r\n    private int rollNum;\r\n    //current round of play\r\n    private int round;\r\n    //array of selected dice up to 3 per rules\r\n    private int[] selected;\r\n\r\n\r\n    /**\r\n     * ctor\r\n     */\r\n    // default constructor that sets up the arrays and vals at game launch\r\n    public PigGameState(int numPlayers) {\r\n        this.turn = 0;\r\n        this.scores = new int[numPlayers][13];\r\n        this.dices= new int[5];\r\n        this.rollNum = 1;\r\n        this.round = 1;\r\n        this.selected = new int[3];\r\n\r\n\r\n    }\r\n\r\n    /**\r\n     * copy ctor\r\n     * @param g\r\n     */\r\n    //copies all new values into new gamestate\r\n    public PigGameState (PigGameState g) {\r\n        this.turn = g.turn;\r\n        this.rollNum = g.rollNum;\r\n        for( int i = 0; i < scores.length; i++ ){\r\n            for(int j = 0; j < scores[i].length; j++){\r\n                this.scores[i][j] = g.scores[i][j];\r\n            }\r\n        }\r\n        for(int i = 0; i < dices.length; i++){\r\n            this.dices[i] = g.dices[i];\r\n        }\r\n        for(int i =0; i < selected.length; i++){\r\n            this.selected[i] = g.selected[i];\r\n        }\r\n        //this.scoreCard = new ScoreCard();\r\n        this.round = g.round;\r\n\r\n\r\n    }\r\n\r\n\r\n\r\n    //getter methods for PigGameState\r\n    //todo getter methods for yahtzee\r\n//returns current player id\r\n    public int getTurn() {\r\n        return turn;\r\n    }\r\n//returns array current score of player\r\n   public int[] getScores(int p){\r\n        return scores[p];\r\n   }\r\n//returns array of dices\r\n    public int[] getDices() {\r\n        return dices;\r\n    }\r\n//returns number of rolls during the turn\r\n    public int getRollNum() {\r\n        return rollNum;\r\n    }\r\n    //returns current round number\r\n    public int getRound() {\r\n        return round;\r\n    }\r\n    //returns array of selected dice\r\n    public int[] getSelected(){return selected;}\r\n\r\n\r\n    //setter methods for PigGameState\r\n    //todo setter methods for yahtzee\r\n    // sets current turn to given player id\r\n   public void setTurn(int id){\r\n        this.turn = id;\r\n   }\r\n   // sets for a given player, and row that is in question, to a given score\r\n    public void setScores(int id, int row, int score){\r\n        this.scores[id][row] = score;\r\n    }\r\n    //sets the dice at a given ind to a new value\r\n    public void setDices(int ind, int val){\r\n        this.dices[ind] = val;\r\n    }\r\n    //sets the RollNumber to given num\r\n    public void setRollNum(int num){\r\n        this.rollNum = num;\r\n    }\r\n    //sets Selected die at given index to a new value\r\n    public void setSelected(int ind, int val){\r\n        this.selected[ind] = val;\r\n    }\r\n    // sets round to given val\r\n    public void setRound(int num){\r\n        this.round = num;\r\n    }\r\n\r\n\r\n\r\n\r\n    @Override\r\n    public String toString() {\r\n        //initializes empty strings for later return\r\n        String playerValues = \"\";\r\n        String diceValues = \"\";\r\n        String selectedDie = \"\";\r\n        //writes out all values in arrays to a given string\r\n        for(int i = 0; i < scores.length; i++){\r\n            playerValues.concat(\"player\" + i + \" scores: \");\r\n            for(int j = 0; j < scores[i].length; j++){\r\n                playerValues.concat(scores[j] + \", \");\r\n            }\r\n        }\r\n        for(int i = 0; i < dices.length; i++){\r\n            diceValues.concat(\"dice \" + i + \"'s value is:\" + dices[i]);\r\n        }\r\n        for(int i = 0; i < selected.length; i++){\r\n            selectedDie.concat(\"selected dice \" + i + \"'s value is:\" + selected[i]);\r\n        }\r\n        //returns values with given variable values and new strings above\r\n        return \"YahtzeeGameState{\" +\r\n                \"Turn=\" + turn + \"\\n\" +\r\n                playerValues + \"\\n\" +\r\n               diceValues + \"\\n\" +\r\n                selectedDie + \"\\n\" +\r\n                \", rollNum=\" + rollNum + \"\\n\" +\r\n                \", round=\" + round +\r\n                '}';\r\n    }\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/java/edu/up/cs301/pig/PigGameState.java b/app/src/main/java/edu/up/cs301/pig/PigGameState.java
+---- a/app/src/main/java/edu/up/cs301/pig/PigGameState.java	(revision fae59e51e44d24fc574aef8383a77390b7614121)
+-+++ b/app/src/main/java/edu/up/cs301/pig/PigGameState.java	(date 1645759914179)
+-@@ -13,7 +13,7 @@
+-     private int rollNum;
+-     //current round of play
+-     private int round;
+--    //array of selected dice up to 3 per rules
+-+    //array of selected dice
+-     private int[] selected;
+- 
+- 
+-Index: local.properties
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>## This file must *NOT* be checked into Version Control Systems,\r\n# as it contains information specific to your local configuration.\r\n#\r\n# Location of the SDK. This is only used by Gradle.\r\n# For customization when using a Version Control System, please read the\r\n# header note.\r\n#Thu Feb 24 12:31:54 PST 2022\r\nsdk.dir=C\\:\\\\Users\\\\aweso\\\\AppData\\\\Local\\\\Android\\\\Sdk\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>windows-1252
+-===================================================================
+-diff --git a/local.properties b/local.properties
+---- a/local.properties	(revision fae59e51e44d24fc574aef8383a77390b7614121)
+-+++ b/local.properties	(date 1645758411123)
+-@@ -4,5 +4,5 @@
+- # Location of the SDK. This is only used by Gradle.
+- # For customization when using a Version Control System, please read the
+- # header note.
+--#Thu Feb 24 12:31:54 PST 2022
+--sdk.dir=C\:\\Users\\aweso\\AppData\\Local\\Android\\Sdk
+-+#Thu Feb 24 19:06:51 PST 2022
+-+sdk.dir=C\:\\Users\\spoti\\AppData\\Local\\Android\\Sdk
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_8_14_PM__Default_Changelist_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_8_14_PM__Default_Changelist_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_8_14_PM__Default_Changelist_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_8_14_PM__Default_Changelist_.xml	(revision 866a6db04c01274c31729ae7bcb4dbaef20c25a9)
++++ /dev/null	(revision 866a6db04c01274c31729ae7bcb4dbaef20c25a9)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_2_24_2022_8_14_PM_[Default_Changelist]" date="1645762511972" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_24_2022_8_14_PM_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2/24/2022 8:14 PM [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"..\\:/Users/Santiago/AndroidStudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/pig_layout.xml\" value=\"0.12708333333333333\" />\r\n        <entry key=\"..\\:/Users/spoti/AndroidStudioProjects/GroupYahtzee/app/src/main/res/layout/game_config_main.xml\" value=\"0.15052083333333333\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"NullableNotNullManager\">\r\n    <option name=\"myDefaultNullable\" value=\"android.support.annotation.Nullable\" />\r\n    <option name=\"myDefaultNotNull\" value=\"android.support.annotation.NonNull\" />\r\n    <option name=\"myNullables\">\r\n      <value>\r\n        <list size=\"15\">\r\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.Nullable\" />\r\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nullable\" />\r\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"javax.annotation.CheckForNull\" />\r\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.Nullable\" />\r\n          <item index=\"4\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.Nullable\" />\r\n          <item index=\"5\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.Nullable\" />\r\n          <item index=\"6\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.RecentlyNullable\" />\r\n          <item index=\"7\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.qual.Nullable\" />\r\n          <item index=\"8\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NullableDecl\" />\r\n          <item index=\"9\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NullableType\" />\r\n          <item index=\"10\" class=\"java.lang.String\" itemvalue=\"android.annotation.Nullable\" />\r\n          <item index=\"11\" class=\"java.lang.String\" itemvalue=\"com.android.annotations.Nullable\" />\r\n          <item index=\"12\" class=\"java.lang.String\" itemvalue=\"org.eclipse.jdt.annotation.Nullable\" />\r\n          <item index=\"13\" class=\"java.lang.String\" itemvalue=\"io.reactivex.annotations.Nullable\" />\r\n          <item index=\"14\" class=\"java.lang.String\" itemvalue=\"io.reactivex.rxjava3.annotations.Nullable\" />\r\n        </list>\r\n      </value>\r\n    </option>\r\n    <option name=\"myNotNulls\">\r\n      <value>\r\n        <list size=\"15\">\r\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.NotNull\" />\r\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nonnull\" />\r\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.NonNull\" />\r\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.NonNull\" />\r\n          <item index=\"4\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.NonNull\" />\r\n          <item index=\"5\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.RecentlyNonNull\" />\r\n          <item index=\"6\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.qual.NonNull\" />\r\n          <item index=\"7\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NonNullDecl\" />\r\n          <item index=\"8\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NonNullType\" />\r\n          <item index=\"9\" class=\"java.lang.String\" itemvalue=\"android.annotation.NonNull\" />\r\n          <item index=\"10\" class=\"java.lang.String\" itemvalue=\"com.android.annotations.NonNull\" />\r\n          <item index=\"11\" class=\"java.lang.String\" itemvalue=\"org.eclipse.jdt.annotation.NonNull\" />\r\n          <item index=\"12\" class=\"java.lang.String\" itemvalue=\"io.reactivex.annotations.NonNull\" />\r\n          <item index=\"13\" class=\"java.lang.String\" itemvalue=\"io.reactivex.rxjava3.annotations.NonNull\" />\r\n          <item index=\"14\" class=\"java.lang.String\" itemvalue=\"lombok.NonNull\" />\r\n        </list>\r\n      </value>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectInspectionProfilesVisibleTreeState\">\r\n    <entry key=\"Project Default\">\r\n      <profile-state>\r\n        <expanded-state>\r\n          <State>\r\n            <id />\r\n          </State>\r\n          <State>\r\n            <id>Java</id>\r\n          </State>\r\n        </expanded-state>\r\n        <selected-state>\r\n          <State>\r\n            <id>Java</id>\r\n          </State>\r\n        </selected-state>\r\n      </profile-state>\r\n    </entry>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" default=\"true\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n  <component name=\"masterDetails\">\r\n    <states>\r\n      <state key=\"ProjectJDKs.UI\">\r\n        <settings>\r\n          <last-edited>1.7</last-edited>\r\n          <splitter-proportions>\r\n            <option name=\"proportions\">\r\n              <list>\r\n                <option value=\"0.2\" />\r\n              </list>\r\n            </option>\r\n          </splitter-proportions>\r\n        </settings>\r\n      </state>\r\n      <state key=\"ScopeChooserConfigurable.UI\">\r\n        <settings>\r\n          <splitter-proportions>\r\n            <option name=\"proportions\">\r\n              <list>\r\n                <option value=\"0.2\" />\r\n              </list>\r\n            </option>\r\n          </splitter-proportions>\r\n        </settings>\r\n      </state>\r\n    </states>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 866a6db04c01274c31729ae7bcb4dbaef20c25a9)
++++ b/.idea/misc.xml	(date 1647907318222)
+@@ -4,6 +4,9 @@
+     <option name="filePathToZoomLevelMap">
+       <map>
+         <entry key="..\:/Users/Santiago/AndroidStudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/pig_layout.xml" value="0.12708333333333333" />
++        <entry key="..\:/Users/spoti/AndroidStudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/game_config_main.xml" value="0.27447916666666666" />
++        <entry key="..\:/Users/spoti/AndroidStudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/game_config_tabhost.xml" value="0.27447916666666666" />
++        <entry key="..\:/Users/spoti/AndroidStudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/pig_layout.xml" value="0.27447916666666666" />
+         <entry key="..\:/Users/spoti/AndroidStudioProjects/GroupYahtzee/app/src/main/res/layout/game_config_main.xml" value="0.15052083333333333" />
+       </map>
+     </option>
