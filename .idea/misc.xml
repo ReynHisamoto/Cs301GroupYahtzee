@@ -4,6 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Santiago/AndroidStudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/pig_layout.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/spoti/AndroidStudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/game_config_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/spoti/AndroidStudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/game_config_tabhost.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/spoti/AndroidStudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/game_local_tab.xml" value="0.27025641025641023" />
+        <entry key="..\:/Users/spoti/AndroidStudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/game_no_gui.xml" value="0.27025641025641023" />
+        <entry key="..\:/Users/spoti/AndroidStudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/pig_layout.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/spoti/AndroidStudioProjects/GroupYahtzee/app/src/main/res/layout/game_config_main.xml" value="0.15052083333333333" />
       </map>
     </option>
