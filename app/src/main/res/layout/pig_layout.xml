@@ -423,7 +423,7 @@
                     android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/p0Yahtzee"
+                    android:id="@+id/p0Chance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
