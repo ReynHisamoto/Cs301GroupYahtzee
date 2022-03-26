@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/top_gui_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="top"
@@ -73,8 +74,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="BOSS"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:text="BOSS" />
             </LinearLayout>
 
             <LinearLayout
@@ -83,8 +84,8 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/imageView6"
+                <ImageButton
+                    android:id="@+id/ImageButton6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/nuxoll" />
@@ -104,7 +105,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/Dice1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -117,7 +118,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/Dice2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -130,8 +131,8 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/imageView"
+                <ImageButton
+                    android:id="@+id/ImageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -144,7 +145,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/Dice4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -157,7 +158,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/Dice5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -455,6 +456,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="OP" />
+
                 <TextView
                     android:id="@+id/p1Ones"
                     android:layout_width="match_parent"
@@ -468,6 +470,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="2" />
+
                 <TextView
                     android:id="@+id/p1Threes"
                     android:layout_width="match_parent"
@@ -488,6 +491,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
+
                 <TextView
                     android:id="@+id/p1Sixes"
                     android:layout_width="match_parent"
@@ -501,18 +505,20 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="6" />
+
                 <TextView
                     android:id="@+id/p1Bonus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
+
                 <TextView
-                android:id="@+id/P1ThreeOfAKind"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
+                    android:id="@+id/P1ThreeOfAKind"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
 
                 <TextView
                     android:id="@+id/p1FourOfAKind"
@@ -520,23 +526,28 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="19" />
+
                 <TextView
                     android:id="@+id/p1FullHouse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="" />
+
                 <TextView
                     android:id="@+id/p1SmallStraight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="" /> <TextView
-                android:id="@+id/p1LargeStraight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="" />
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/p1LargeStraight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
                 <TextView
                     android:id="@+id/p1Chance"
                     android:layout_width="match_parent"

@@ -35,7 +35,7 @@ public class YahtzeeLocalGame extends LocalGame {
      * This ctor creates a new game state
      */
     public YahtzeeLocalGame() {
-        this.masterGameState = new YahtzeeGameState(4);
+        masterGameState = new YahtzeeGameState(2);
     }
 
     /**

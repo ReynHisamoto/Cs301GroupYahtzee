@@ -8,8 +8,11 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
+
+import org.w3c.dom.Text;
 
 /**
  * A GUI for a human to play Pig. This default version displays the GUI but is incomplete
@@ -23,12 +26,12 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
 	/* instance variables */
 
     // These variables will reference widgets that will be modified during play
-    private TextView    playerScoreTextView = null;
-    private TextView    oppScoreTextView    = null;
-    private TextView    turnTotalTextView   = null;
-    private TextView    messageTextView     = null;
-    private ImageButton dieImageButton      = null;
-    private Button      holdButton          = null;
+    private TextView[] scores = null;
+    private TextView roundNum = null;
+    private Button settings = null;
+    private ImageButton[] dice = null;
+    private TextView names = null;
+    private TextView[][] scoreboard = null;
 
     // the android activity that we are running
     private GameMainActivity myActivity;
@@ -58,7 +61,38 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
      */
     @Override
     public void receiveInfo(GameInfo info) {
-        //TODO You will implement this method to receive state objects from the game
+    if(!(info instanceof YahtzeeGameState)){
+        flash(0xFFFF0000,3);
+    }
+    else{
+        if(playerNum != ((YahtzeeGameState)info).getTurn()){
+            for(int i = 0; i < dice.length; i++){
+                dice[i].setBackgroundColor(0xFFFF0000);
+            }
+        }else{
+            for(int i = 0; i< dice.length; i++){
+                dice[i].setBackgroundColor(0x00000000);
+            }
+        }
+        for(int i = 0; i < dice.length; i++){
+         Dice[] values = ((YahtzeeGameState) info).getDiceArray();
+         switch(values[i].getVal()){
+             case 1: dice[i].setImageResource(R.drawable.face1);
+             break;
+             case 2: dice[i].setImageResource(R.drawable.face2);
+                 break;
+             case 3: dice[i].setImageResource(R.drawable.face3);
+                 break;
+             case 4: dice[i].setImageResource(R.drawable.face4);
+                 break;
+             case 5: dice[i].setImageResource(R.drawable.face5);
+                 break;
+             case 6: dice[i].setImageResource(R.drawable.face6);
+                 break;
+
+         }
+        }
+    }
     }//receiveInfo
 
     /**
@@ -85,19 +119,11 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
         myActivity = activity;
 
         // Load the layout resource for our GUI
-        activity.setContentView(R.layout.pig_layout);
+        activity.setContentView(R.layout.yahtzee_layout);
 
         //Initialize the widget reference member variables
-        this.playerScoreTextView = (TextView)activity.findViewById(R.id.yourScoreValue);
-        this.oppScoreTextView    = (TextView)activity.findViewById(R.id.oppScoreValue);
-        this.turnTotalTextView   = (TextView)activity.findViewById(R.id.turnTotalValue);
-        this.messageTextView     = (TextView)activity.findViewById(R.id.messageTextView);
-        this.dieImageButton      = (ImageButton)activity.findViewById(R.id.dieButton);
-        this.holdButton          = (Button)activity.findViewById(R.id.holdButton);
 
         //Listen for button presses
-        dieImageButton.setOnClickListener(this);
-        holdButton.setOnClickListener(this);
 
     }//setAsGui
 
