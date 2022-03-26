@@ -15,7 +15,7 @@ public class YahtzeeKeep extends GameAction {
     public YahtzeeKeep(GamePlayer player,int id,int die) {
         super(player);
         this.idx = id;
-        this.selected = selected;
+        this.selected = die;
     }
     public int getIdx(){return idx;}
     public int getSelected(){return selected;}
