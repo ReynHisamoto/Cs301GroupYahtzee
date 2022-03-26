@@ -66,12 +66,12 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
     }
     else{
         if(playerNum != ((YahtzeeGameState)info).getTurn()){
-            for(int i = 0; i < dice.length; i++){
-                dice[i].setBackgroundColor(0xFFFF0000);
+            for (ImageButton die : dice) {
+                die.setBackgroundColor(0xFFFF0000);
             }
         }else{
-            for(int i = 0; i< dice.length; i++){
-                dice[i].setBackgroundColor(0x00000000);
+            for (ImageButton die : dice) {
+                die.setBackgroundColor(0x00000000);
             }
         }
         for(int i = 0; i < dice.length; i++){
@@ -129,6 +129,7 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
         if(view == myActivity.findViewById(R.id.scoreLayout)){
              int row = (int) motionEvent.getY()/55;
              YahtzeeScore action = new YahtzeeScore(this,row,playerNum);
+             game.sendAction(action);
             return true;
         }
         return false;
