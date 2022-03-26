@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Santiago/AndroidStudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/game_player_list_row.xml" value="0.25" />
-        <entry key="..\:/Users/Santiago/AndroidStudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/pig_layout.xml" value="0.4" />
+        <entry key="..\:/Users/Santiago/AndroidStudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/pig_layout.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/aweso_9w51wb5/StudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/game_config_main.xml" value="0.3625" />
+        <entry key="..\:/Users/aweso_9w51wb5/StudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/pig_layout.xml" value="0.3625" />
+        <entry key="..\:/Users/aweso_9w51wb5/StudioProjects/Cs301GroupYahtzee/app/src/main/res/layout/yahtzee_layout.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/spoti/AndroidStudioProjects/GroupYahtzee/app/src/main/res/layout/game_config_main.xml" value="0.15052083333333333" />
       </map>
     </option>

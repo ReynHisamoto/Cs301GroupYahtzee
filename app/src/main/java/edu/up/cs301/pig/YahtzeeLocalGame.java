@@ -35,7 +35,7 @@ public class YahtzeeLocalGame extends LocalGame {
      * This ctor creates a new game state
      */
     public YahtzeeLocalGame() {
-        masterGameState = new YahtzeeGameState(2);
+        masterGameState = new YahtzeeGameState(this.players.length);
     }
 
     /**
@@ -75,7 +75,8 @@ public class YahtzeeLocalGame extends LocalGame {
             /**
              * Sets selected dice value to random int 1-6
              */
-        } else if (action instanceof YahtzeeRoll && canMakeAction(((YahtzeeRoll) action).getIdx())) {
+        } else if (action instanceof YahtzeeRoll && canMakeAction(((YahtzeeRoll) action).getIdx()) && masterGameState.getRollNum() <= 3) {
+            masterGameState.setRollNum(masterGameState.getRollNum() + 1);
             int rand;
             if(canMakeAction(((YahtzeeRoll) action).getIdx())){
             for (Dice dice : masterGameState.getSelectedDice()){
@@ -176,6 +177,7 @@ public class YahtzeeLocalGame extends LocalGame {
                 }else{
                     masterGameState.setTurn(masterGameState.getTurn() + 1);
                 }
+                masterGameState.setRollNum(0);
                 return true;
             }
 

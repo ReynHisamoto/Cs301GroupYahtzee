@@ -5,6 +5,7 @@ import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -21,17 +22,16 @@ import org.w3c.dom.Text;
  * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl
  * @version February 2016
  */
-public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListener {
+public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListener, View.OnTouchListener {
 
 	/* instance variables */
 
     // These variables will reference widgets that will be modified during play
-    private TextView[] scores = null;
+    private TextView[][] scores = null;
     private TextView roundNum = null;
     private Button settings = null;
     private ImageButton[] dice = null;
-    private TextView names = null;
-    private TextView[][] scoreboard = null;
+    private TextView[] names = null;
 
     // the android activity that we are running
     private GameMainActivity myActivity;
@@ -92,7 +92,13 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
 
          }
         }
-    }
+         for(int i = 0; i < playerNum; i++){
+             for(int j = 0; j < scores.length; i++){
+                 scores[i][j].setText(((YahtzeeGameState) info).getScores(i)[j]);
+             }
+         }
+         roundNum.setText("ROUND: " + ((YahtzeeGameState) info).getRound());
+        }
     }//receiveInfo
 
     /**
@@ -105,7 +111,10 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
     public void onClick(View button) {
         //TODO  You will implement this method to send appropriate action objects to the game
     }// onClick
-
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        return false;
+    }
     /**
      * callback method--our game has been chosen/rechosen to be the GUI,
      * called from the GUI thread
@@ -122,9 +131,56 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
         activity.setContentView(R.layout.yahtzee_layout);
 
         //Initialize the widget reference member variables
-
+        this.roundNum = activity.findViewById(R.id.roundNum);
+        this.scores = new TextView[][] {{activity.findViewById(R.id.p0Ones),
+                activity.findViewById(R.id.p0Twos),
+                activity.findViewById(R.id.p0Threes),
+                activity.findViewById(R.id.p0Fours),
+                activity.findViewById(R.id.p0Fives),
+                activity.findViewById(R.id.p0Sixes),
+                activity.findViewById(R.id.p0Sum),
+                activity.findViewById(R.id.p0Bonus),
+                activity.findViewById(R.id.p0ThreeOfAKind),
+                activity.findViewById(R.id.p0FourOfAKind),
+                activity.findViewById(R.id.p0FullHouse),
+                activity.findViewById(R.id.p0SmallStraight),
+                activity.findViewById(R.id.p0LargeStraight),
+                activity.findViewById(R.id.p0Chance),
+                activity.findViewById(R.id.p0Yahtzee),
+                activity.findViewById(R.id.p0TotalScore),
+        },
+        {activity.findViewById(R.id.p1Ones),
+                activity.findViewById(R.id.p1Twos),
+                activity.findViewById(R.id.p1Threes),
+                activity.findViewById(R.id.p1Fours),
+                activity.findViewById(R.id.p1Fives),
+                activity.findViewById(R.id.p1Sixes),
+                activity.findViewById(R.id.p1Sum),
+                activity.findViewById(R.id.p1Bonus),
+                activity.findViewById(R.id.p1ThreeOfAKind),
+                activity.findViewById(R.id.p1FourOfAKind),
+                activity.findViewById(R.id.p1FullHouse),
+                activity.findViewById(R.id.p1SmallStraight),
+                activity.findViewById(R.id.p1LargeStraight),
+                activity.findViewById(R.id.p1Chance),
+                activity.findViewById(R.id.p1Yahtzee),
+                activity.findViewById(R.id.p1TotalScore),
+        }};
+        names = new TextView[] {activity.findViewById(R.id.player0),activity.findViewById(R.id.player1)};
+        for(int i = 0; i < names.length; i++){
+            names[i].setText(allPlayerNames[i]);
+        }
+        dice = new ImageButton[] {activity.findViewById(R.id.Dice1),
+                activity.findViewById(R.id.Dice2),
+                activity.findViewById(R.id.Dice3),
+                activity.findViewById(R.id.Dice4),
+                activity.findViewById(R.id.Dice5),};
         //Listen for button presses
-
+    for(ImageButton die : dice){
+        die.setOnClickListener(this);
+    }
+    getTopView().setOnTouchListener(this);
     }//setAsGui
+
 
 }// class PigHumanPlayer

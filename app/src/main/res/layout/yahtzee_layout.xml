@@ -88,6 +88,7 @@
                     android:id="@+id/ImageButton6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="invisible"
                     app:srcCompat="@drawable/nuxoll" />
             </LinearLayout>
 
@@ -108,7 +109,7 @@
                 <ImageButton
                     android:id="@+id/Dice1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     app:srcCompat="@drawable/dice1" />
             </LinearLayout>
 
@@ -121,7 +122,7 @@
                 <ImageButton
                     android:id="@+id/Dice2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     app:srcCompat="@drawable/dice3" />
             </LinearLayout>
 
@@ -132,9 +133,9 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/ImageButton"
+                    android:id="@+id/Dice3"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/dice4" />
             </LinearLayout>
@@ -148,7 +149,7 @@
                 <ImageButton
                     android:id="@+id/Dice4"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     app:srcCompat="@drawable/dice5" />
             </LinearLayout>
 
@@ -161,7 +162,7 @@
                 <ImageButton
                     android:id="@+id/Dice5"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     app:srcCompat="@drawable/dice5" />
             </LinearLayout>
 
@@ -500,7 +501,7 @@
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/P1Sum"
+                    android:id="@+id/p1Sum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -514,7 +515,7 @@
                     android:text="" />
 
                 <TextView
-                    android:id="@+id/P1ThreeOfAKind"
+                    android:id="@+id/p1ThreeOfAKind"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
