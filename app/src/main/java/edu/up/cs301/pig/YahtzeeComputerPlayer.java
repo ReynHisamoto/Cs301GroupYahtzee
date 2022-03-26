@@ -26,7 +26,7 @@ public class YahtzeeComputerPlayer extends GameComputerPlayer {
      */
     @Override
     protected void receiveInfo(GameInfo info) {
-        // TODO  You will implement this method
+
     }//receiveInfo
 
 }

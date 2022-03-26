@@ -173,12 +173,14 @@ public class YahtzeeLocalGame extends LocalGame {
                 }
                 masterGameState.setScores(((YahtzeeScore) action).getIdx(),13,score);
                 masterGameState.setRound(masterGameState.getRound() + 1);
+                YahtzeeRoll endRoll = new YahtzeeRoll(action.getPlayer(),((YahtzeeScore) action).getIdx());
+                makeMove(endRoll);
+                masterGameState.setRollNum(1);
                 if(masterGameState.getTurn() >= players.length){
                     masterGameState.setTurn(0);
                 }else{
                     masterGameState.setTurn(masterGameState.getTurn() + 1);
                 }
-                masterGameState.setRollNum(0);
                 return true;
             }
 
