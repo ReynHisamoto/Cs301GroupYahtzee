@@ -110,9 +110,27 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
      */
     public void onClick(View button) {
         //TODO  You will implement this method to send appropriate action objects to the game
+        if(button instanceof Button){
+            YahtzeeRoll action = new YahtzeeRoll(this,playerNum);
+            game.sendAction(action);
+        }else if(button instanceof ImageButton){
+            int idx =-99;
+            for(int i =0; i < dice.length;i++){
+                if(button.equals(dice[i])){
+                idx = i;
+                }
+            }
+            YahtzeeKeep action = new YahtzeeKeep(this, playerNum,idx);
+            game.sendAction(action);
+        }
     }// onClick
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
+        if(view == myActivity.findViewById(R.id.scoreLayout)){
+             int row = (int) motionEvent.getY()/55;
+             YahtzeeScore action = new YahtzeeScore(this,row,playerNum);
+            return true;
+        }
         return false;
     }
     /**

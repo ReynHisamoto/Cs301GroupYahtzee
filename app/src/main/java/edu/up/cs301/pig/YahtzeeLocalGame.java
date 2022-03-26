@@ -58,16 +58,17 @@ public class YahtzeeLocalGame extends LocalGame {
          who made the action, then it will tell the YahtzeeGameState to "keep" the die that has had
          the action performed on it.
          **/
-        if (action instanceof YahtzeeKeep && canMakeAction(((YahtzeeKeep)action).idx)) {
+        if (action instanceof YahtzeeKeep && canMakeAction(((YahtzeeKeep)action).getIdx())) {
            if(!canMakeAction(((YahtzeeKeep) action).getIdx()) || masterGameState.getSelectedDice().size() > 3){
                return false;
-           }else if (!masterGameState.getDice(((YahtzeeKeep) action).getIdx()).isKeep()) {
-               masterGameState.getSelectedDice().add(masterGameState.getDice(((YahtzeeKeep) action).idx));
-               masterGameState.getDice(((YahtzeeKeep) action).idx).setKeep(true);
+           }else if (!masterGameState.getDice(((YahtzeeKeep) action).getSelected()).isKeep()) {
+               masterGameState.getSelectedDice().add(masterGameState.getDice(((YahtzeeKeep) action).getSelected()));
+               masterGameState.getDice(((YahtzeeKeep) action).getSelected()).setKeep(true);
                return true;
            }else{
-                masterGameState.getSelectedDice().remove(masterGameState.getDice(((YahtzeeKeep) action).getIdx()));
-                masterGameState.getDice(((YahtzeeKeep) action).getIdx()).setKeep(false);
+                masterGameState.getSelectedDice().remove(masterGameState.getDice(((YahtzeeKeep) action).getSelected()));
+                masterGameState.getDice(((YahtzeeKeep) action).getSelected()).setKeep(false);
+                return true;
                }
 
 
