@@ -95,8 +95,8 @@ public class YahtzeeLocalGame extends LocalGame {
                 masterGameState.getScores(((YahtzeeScore) action).getIdx())[((YahtzeeScore) action).getRow()] == 0){
                 int score = 0;
                 int[] numDice = totalDice(masterGameState.getDiceArray());
-                int mostCommon = checkMaxNumDice(numDice);
-                int secondCommon = checkSecondNumDice(numDice,mostCommon);
+                int mostCommon = maxNumDice(numDice);
+                int secondCommon = secondNumDice(numDice,mostCommon);
                 boolean fullTop = false;
                 // if player selects top sheet it gets score then add to score sheet
                 if(((YahtzeeScore) action).getRow() <= 5){
@@ -158,32 +158,40 @@ public class YahtzeeLocalGame extends LocalGame {
                     }
                     masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
                 }
+
                 score = 0;
+
                 for(int i = 0; i < 6; i++){
                     score += masterGameState.getScores(((YahtzeeScore) action).getIdx())[i];
                     if(score > 63){
                         fullTop = true;
                     }
                 }
+
                 masterGameState.setScores(((YahtzeeScore) action).getIdx(),6,score);
                 score = 0;
+
                 for(int i =0; i < masterGameState.getScores(((YahtzeeScore) action).getIdx()).length;i++){
                     score += masterGameState.getScores(((YahtzeeScore) action).getIdx())[i];
                 }
+
                 if(fullTop){
                     score += 35;
                     masterGameState.setScores(((YahtzeeScore) action).getIdx(),7,35);
                 }
+
                 masterGameState.setScores(((YahtzeeScore) action).getIdx(),15,score);
                 masterGameState.setRound(masterGameState.getRound() + 1);
                 YahtzeeRoll endRoll = new YahtzeeRoll(action.getPlayer(),((YahtzeeScore) action).getIdx());
                 makeMove(endRoll);
                 masterGameState.setRollNum(1);
+
                 if(masterGameState.getTurn() >= players.length){
                     masterGameState.setTurn(0);
                 }else{
                     masterGameState.setTurn(masterGameState.getTurn() + 1);
                 }
+
                 return true;
             }
 
@@ -219,25 +227,18 @@ public class YahtzeeLocalGame extends LocalGame {
                 max = i;
             }
         }
+
         if (masterGameState.getRound() > 13 * players.length) {
             return "The winner is " + playerNames[max] + " !";
         }
 
-
-        /**
-        if (masterGameState.getP0Score() > 50) {
-            return  "player 0 wins, Score: " + masterGameState.getP0Score();
-        } else if (masterGameState.getP1Score() > 50) {
-            return "player 1 wins, Score: " + masterGameState.getP1Score();
-        } else {
-         **/
-            return null;
+        return null;
 
     }
     /*
     checks the most common dice given an array of common dice
      */
-    protected int checkMaxNumDice(int[] potValue){
+    protected int maxNumDice(int[] potValue){
         int maxNum = 0;
         for(int numDice : potValue){
             if(maxNum < numDice){
@@ -249,7 +250,7 @@ public class YahtzeeLocalGame extends LocalGame {
     /*
     checks for the second most common dice given an array of common dice
      */
-    protected int checkSecondNumDice(int[] potValue, int currentMax){
+    protected int secondNumDice(int[] potValue, int currentMax){
         int maxNum = 0;
         for(int numDice : potValue){
             if(maxNum < numDice && numDice < currentMax){
@@ -273,6 +274,7 @@ public class YahtzeeLocalGame extends LocalGame {
             }
         return potValue;
     }
+
     /*
     checks whether or not the given hand of dice is a small straight
      */
@@ -282,11 +284,12 @@ public class YahtzeeLocalGame extends LocalGame {
             if(val >= 1) {
                 numInstance++;
             }else{
-                numInstance =0;
+                numInstance = 0;
             }
         }
         return( numInstance >= 4);
         }
+
 
     /*
     checks whether or not the given hand of dice is a large straight
@@ -315,14 +318,6 @@ public class YahtzeeLocalGame extends LocalGame {
         return false;
     }
 
-    /**
-     * For testing purposes only
-     * Check the masterGameState
-     */
-    //todo delete before alpha in case this causes problems
-    public YahtzeeGameState getMasterGameState() {
-        return masterGameState;
-    }
 
 
 

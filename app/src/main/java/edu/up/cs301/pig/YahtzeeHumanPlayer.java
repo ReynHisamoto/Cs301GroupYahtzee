@@ -94,7 +94,7 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
         }
          for(int i = 0; i < playerNum; i++){
              for(int j = 0; j < scores.length; i++){
-                 scores[i][j].setText(((YahtzeeGameState) info).getScores(i)[j]);
+                 scores[i][j].setText(((YahtzeeGameState)info).getScores(i)[j]);
              }
          }
          roundNum.setText("ROUND: " + ((YahtzeeGameState) info).getRound());
@@ -109,7 +109,6 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
      * 		the button that was clicked
      */
     public void onClick(View button) {
-        //TODO  You will implement this method to send appropriate action objects to the game
         if(button instanceof Button){
             YahtzeeRoll action = new YahtzeeRoll(this,playerNum);
             game.sendAction(action);
