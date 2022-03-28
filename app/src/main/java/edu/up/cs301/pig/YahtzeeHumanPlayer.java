@@ -95,9 +95,9 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
 
          }
         }
-         for(int i = 0; i < playerNum; i++){
-             for(int j = 0; j < scores.length; j++){
-                 scores[i][j].setText(((YahtzeeGameState)info).getScores(i)[j]);
+         for(int i = 0; i < allPlayerNames.length; i++){
+             for(int j = 0; j < scores[i].length; j++){
+                 scores[i][j].setText(((YahtzeeGameState)info).getScores(i)[j]+ "");
              }
          }
          roundNum.setText("ROUND: " + ((YahtzeeGameState) info).getRound());

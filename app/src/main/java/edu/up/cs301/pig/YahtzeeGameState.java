@@ -33,7 +33,7 @@ public class YahtzeeGameState extends GameState {
     // default constructor that sets up the arrays and vals at game launch
     public YahtzeeGameState(int numPlayers) {
         this.turn = 0;
-        this.scores = new int[numPlayers][15];
+        this.scores = new int[numPlayers][16];
         this.diceArray= new Dice[5];
         //Do I need this for loop to instantiate dice?
         for(int i = 0; i < diceArray.length; i++){
@@ -41,7 +41,7 @@ public class YahtzeeGameState extends GameState {
             diceArray[i].setVal(1);
         }
         this.rollNum = 1;
-        this.round = 1;
+        this.round = 0;
 
 
     }

@@ -46,7 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="SETTINGS" />
+                android:text="SETTINGS"
+                android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>
 
@@ -347,8 +348,7 @@
                     android:id="@+id/p0Ones"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/p0Twos"
@@ -360,22 +360,19 @@
                     android:id="@+id/p0Threes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="3" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/p0Fours"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="4" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/p0Fives"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="10" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/p0Sixes"
@@ -429,8 +426,7 @@
                     android:id="@+id/p0Chance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="18" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/p0Yahtzee"
@@ -442,8 +438,7 @@
                     android:id="@+id/p0TotalScore"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="32" />
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -470,8 +465,7 @@
                     android:id="@+id/p1Twos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="2" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/p1Threes"
@@ -484,8 +478,7 @@
                     android:id="@+id/p1Fours"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="4" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/p1Fives"
@@ -505,8 +498,7 @@
                     android:id="@+id/p1Sum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="6" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/p1Bonus"
@@ -526,8 +518,7 @@
                     android:id="@+id/p1FourOfAKind"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="19" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/p1FullHouse"
@@ -568,8 +559,7 @@
                     android:id="@+id/p1TotalScore"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="31" />
+                    android:layout_weight="1" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
