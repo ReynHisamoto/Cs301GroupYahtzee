@@ -130,7 +130,10 @@ public class YahtzeeGameState extends GameState {
     public void setRound(int num){
         this.round = num;
     }
-
+    public void rollAllDice(){
+        for(Dice die : diceArray){
+        die.setVal((int)Math.random() * 6 + 1);
+    }}
 
 
 

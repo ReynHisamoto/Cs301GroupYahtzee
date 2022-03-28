@@ -43,7 +43,7 @@ public class YahtzeeLocalGame extends LocalGame {
      */
     @Override
     protected boolean canMakeAction(int playerIdx) {
-        return (playerIdx == masterGameState.getTurn());
+        return (playerIdx != masterGameState.getTurn());
     }
 
     /**
@@ -58,8 +58,10 @@ public class YahtzeeLocalGame extends LocalGame {
          who made the action, then it will tell the YahtzeeGameState to "keep" the die that has had
          the action performed on it.
          **/
-        if (action instanceof YahtzeeKeep && canMakeAction(((YahtzeeKeep)action).getIdx())) {
-           if(!canMakeAction(((YahtzeeKeep) action).getIdx()) || masterGameState.getSelectedDice().size() > 3){
+        if (action instanceof YahtzeeKeep && !canMakeAction(((YahtzeeKeep)action).getIdx())) {
+           if(canMakeAction(((YahtzeeKeep) action).getIdx()) || masterGameState.getSelectedDice().size() > 3){
+               masterGameState.getSelectedDice().get(3).setKeep(false);
+               masterGameState.getSelectedDice().remove(3);
                return false;
            }else if (!masterGameState.getDice(((YahtzeeKeep) action).getSelected()).isKeep()) {
                masterGameState.getSelectedDice().add(masterGameState.getDice(((YahtzeeKeep) action).getSelected()));
@@ -76,10 +78,10 @@ public class YahtzeeLocalGame extends LocalGame {
             /**
              * Sets selected dice value to random int 1-6
              */
-        } else if (action instanceof YahtzeeRoll && canMakeAction(((YahtzeeRoll) action).getIdx()) && masterGameState.getRollNum() <= 3) {
+        } else if (action instanceof YahtzeeRoll && !canMakeAction(((YahtzeeRoll) action).getIdx()) && masterGameState.getRollNum() <= 3) {
             masterGameState.setRollNum(masterGameState.getRollNum() + 1);
             int rand;
-            if(canMakeAction(((YahtzeeRoll) action).getIdx())){
+            if(!canMakeAction(((YahtzeeRoll) action).getIdx())){
             for (Dice dice : masterGameState.getSelectedDice()){
                 rand = (int)(Math.random() * 6 + 1);
                 dice.setVal(rand);
@@ -91,7 +93,7 @@ public class YahtzeeLocalGame extends LocalGame {
         /**
          * checks where the player has clicked and adds to the scoreboard accordingly
          */
-        if (action instanceof YahtzeeScore && canMakeAction(((YahtzeeScore) action).getIdx()) && masterGameState.getScores(((YahtzeeScore) action).getIdx())[((YahtzeeScore) action).getRow()] == 0){
+        if (action instanceof YahtzeeScore && !canMakeAction(((YahtzeeScore) action).getIdx()) && masterGameState.getScores(((YahtzeeScore) action).getIdx())[((YahtzeeScore) action).getRow()] == 0){
                 int score = 0;
                 int[] numDice = totalDice(masterGameState.getDiceArray());
                 int mostCommon = maxNumDice(numDice);
@@ -100,7 +102,7 @@ public class YahtzeeLocalGame extends LocalGame {
                 // if player selects aces twos etc. get score then add to score sheet
                 if(((YahtzeeScore) action).getRow() <= 5){
                     for (Dice dice : masterGameState.getDiceArray()){
-                        if(dice.getVal() == ((YahtzeeScore) action).getRow() + 1 ){
+                        if(dice.getVal() == ((YahtzeeScore) action).getRow()+1){
                             score += dice.getVal();
                         }
                     }
@@ -170,6 +172,7 @@ public class YahtzeeLocalGame extends LocalGame {
                 score = 0;
 
                 for(int i =0; i < masterGameState.getScores(((YahtzeeScore) action).getIdx()).length;i++){
+                    if(i !=6 && i != 7 && i != 16)
                     score += masterGameState.getScores(((YahtzeeScore) action).getIdx())[i];
                 }
 
@@ -180,8 +183,7 @@ public class YahtzeeLocalGame extends LocalGame {
 
                 masterGameState.setScores(((YahtzeeScore) action).getIdx(),15,score);
                 masterGameState.setRound(masterGameState.getRound() + 1);
-                YahtzeeRoll endRoll = new YahtzeeRoll(action.getPlayer(),((YahtzeeScore) action).getIdx());
-                makeMove(endRoll);
+                masterGameState.rollAllDice();
                 masterGameState.setRollNum(1);
 
                 if(masterGameState.getTurn() >= players.length){
@@ -263,7 +265,7 @@ public class YahtzeeLocalGame extends LocalGame {
     creates an array of dice in common
      */
     protected int[] totalDice(Dice[] dice){
-        int[] potValue = new int[6];
+        int[] potValue = new int[7];
         for(int i =0; i < potValue.length; i++)
             for(Dice dices : dice){
                 if (dices.getVal() == i){

@@ -4,6 +4,7 @@ import edu.up.cs301.game.GameHumanPlayer;
 import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.infoMsg.GameInfo;
+import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 
 import android.view.MotionEvent;
 import android.view.View;
@@ -62,21 +63,21 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
     @Override
     public void receiveInfo(GameInfo info) {
     if(!(info instanceof YahtzeeGameState)){
-        flash(0xFFFF0000,3);
+        //flash(0xFFFF0000,3);
+        return;
     }
     else{
         for(int i = 0; i < names.length; i++){
             names[i].setText(allPlayerNames[i]);
         }
-        if(playerNum != ((YahtzeeGameState)info).getTurn()){
-            for (ImageButton die : dice) {
-                die.setBackgroundColor(0xFFFF0000);
-            }
-        }else{
-            for (ImageButton die : dice) {
-                die.setBackgroundColor(0x00000000);
+        for(int i =0; i < dice.length; i++){
+            if(((YahtzeeGameState) info).getDice(i).isKeep()){
+                dice[i].setBackgroundColor(0xFFFF0000);
+            }else{
+                dice[i].setBackgroundColor(0x00000000);
             }
         }
+
         for(int i = 0; i < dice.length; i++){
          Dice[] values = ((YahtzeeGameState) info).getDiceArray();
          switch(values[i].getVal()){
@@ -128,10 +129,9 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
             }// onClick
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
-        if(motionEvent.getX() > this.getTopView().getHeight()/2.5){
+        if(motionEvent.getX() > (this.getTopView().getWidth()*3.65)/5 && view.equals(getTopView())){
              int row = (int) motionEvent.getY()/60;
-             float x = motionEvent.getX();
-             YahtzeeScore action = new YahtzeeScore(this,row,playerNum);
+             YahtzeeScore action = new YahtzeeScore(this,row-1,playerNum);
              game.sendAction(action);
             return true;
         }
