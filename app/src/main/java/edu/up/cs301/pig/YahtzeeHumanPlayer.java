@@ -29,7 +29,7 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
     // These variables will reference widgets that will be modified during play
     private TextView[][] scores = null;
     private TextView roundNum = null;
-    private Button settings = null;
+    private Button roll = null;
     private ImageButton[] dice = null;
     private TextView[] names = null;
 
@@ -112,25 +112,25 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
      * 		the button that was clicked
      */
     public void onClick(View button) {
-        if(button instanceof Button){
-            YahtzeeRoll action = new YahtzeeRoll(this,playerNum);
-            game.sendAction(action);
-        }
-        else if(button instanceof ImageButton){
+        if(button instanceof ImageButton){
             int idx =-99;
             for(int i =0; i < dice.length;i++){
                 if(button.equals(dice[i])){
-                idx = i;
+                    idx = i;
                 }
             }
             YahtzeeKeep action = new YahtzeeKeep(this, playerNum,idx);
             game.sendAction(action);
+        } else if(button instanceof Button){
+            YahtzeeRoll action = new YahtzeeRoll(this,playerNum);
+            game.sendAction(action);
         }
-    }// onClick
+            }// onClick
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
-        if(view == myActivity.findViewById(R.id.scoreLayout)){
+        if(motionEvent.getX() > 1450){
              int row = (int) motionEvent.getY()/55;
+             float x = motionEvent.getX();
              YahtzeeScore action = new YahtzeeScore(this,row,playerNum);
              game.sendAction(action);
             return true;
@@ -194,10 +194,12 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
                 activity.findViewById(R.id.Dice3),
                 activity.findViewById(R.id.Dice4),
                 activity.findViewById(R.id.Dice5),};
+        roll = activity.findViewById(R.id.roll);
         //Listen for button presses
     for(ImageButton die : dice){
         die.setOnClickListener(this);
     }
+    roll.setOnClickListener(this);
     getTopView().setOnTouchListener(this);
     }//setAsGui
 

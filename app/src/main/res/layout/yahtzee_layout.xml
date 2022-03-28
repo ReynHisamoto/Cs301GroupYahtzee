@@ -4,8 +4,7 @@
     android:id="@+id/top_gui_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="top"
-    android:orientation="horizontal">
+    android:gravity="top">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,8 +88,7 @@
                     android:id="@+id/ImageButton6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="invisible"
-                     />
+                    android:visibility="invisible" />
             </LinearLayout>
 
         </LinearLayout>
@@ -110,8 +108,7 @@
                 <ImageButton
                     android:id="@+id/Dice1"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                     />
+                    android:layout_height="60dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -123,8 +120,7 @@
                 <ImageButton
                     android:id="@+id/Dice2"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                     />
+                    android:layout_height="60dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -137,8 +133,7 @@
                     android:id="@+id/Dice3"
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
-                    android:layout_weight="1"
-                     />
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -150,8 +145,7 @@
                 <ImageButton
                     android:id="@+id/Dice4"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    />
+                    android:layout_height="60dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -163,8 +157,7 @@
                 <ImageButton
                     android:id="@+id/Dice5"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                     />
+                    android:layout_height="60dp" />
             </LinearLayout>
 
         </LinearLayout>
