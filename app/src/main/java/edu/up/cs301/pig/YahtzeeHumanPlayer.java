@@ -128,8 +128,8 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
             }// onClick
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
-        if(motionEvent.getX() > 1450){
-             int row = (int) motionEvent.getY()/55;
+        if(motionEvent.getX() > this.getTopView().getHeight()/2.5){
+             int row = (int) motionEvent.getY()/60;
              float x = motionEvent.getX();
              YahtzeeScore action = new YahtzeeScore(this,row,playerNum);
              game.sendAction(action);
