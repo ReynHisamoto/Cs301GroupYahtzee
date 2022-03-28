@@ -35,7 +35,7 @@ public class YahtzeeLocalGame extends LocalGame {
      * This ctor creates a new game state
      */
     public YahtzeeLocalGame() {
-        masterGameState = new YahtzeeGameState(this.players.length);
+        masterGameState = new YahtzeeGameState(2);
     }
 
     /**
@@ -141,10 +141,9 @@ public class YahtzeeLocalGame extends LocalGame {
                     masterGameState.setScores(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow(),score);
                     // if player chooses yahtzee and if true give player 50 points
                 }else if(((YahtzeeScore) action).getRow() == 13 && Yahtzee(numDice)) {
-                    if(masterGameState.getNumYahtzee(((YahtzeeScore) action).getIdx()) == 0){
+                    if(masterGameState.getScores(((YahtzeeScore) action).getIdx())[13] == 0){
                     score += 50;
-                    masterGameState.incrNumYahtzee(((YahtzeeScore) action).getIdx());
-                    } else if(masterGameState.getNumYahtzee(((YahtzeeScore) action).getIdx()) > 0){
+                    } else if(masterGameState.getScores(((YahtzeeScore) action).getIdx())[13] > 0){
                         score += 100;
                     }
                     masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);

@@ -65,6 +65,9 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
         flash(0xFFFF0000,3);
     }
     else{
+        for(int i = 0; i < names.length; i++){
+            names[i].setText(allPlayerNames[i]);
+        }
         if(playerNum != ((YahtzeeGameState)info).getTurn()){
             for (ImageButton die : dice) {
                 die.setBackgroundColor(0xFFFF0000);
@@ -112,7 +115,8 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
         if(button instanceof Button){
             YahtzeeRoll action = new YahtzeeRoll(this,playerNum);
             game.sendAction(action);
-        }else if(button instanceof ImageButton){
+        }
+        else if(button instanceof ImageButton){
             int idx =-99;
             for(int i =0; i < dice.length;i++){
                 if(button.equals(dice[i])){
@@ -185,9 +189,6 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
                 activity.findViewById(R.id.p1TotalScore),
         }};
         names = new TextView[] {activity.findViewById(R.id.player0),activity.findViewById(R.id.player1)};
-        for(int i = 0; i < names.length; i++){
-            names[i].setText(allPlayerNames[i]);
-        }
         dice = new ImageButton[] {activity.findViewById(R.id.Dice1),
                 activity.findViewById(R.id.Dice2),
                 activity.findViewById(R.id.Dice3),

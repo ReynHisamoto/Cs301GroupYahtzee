@@ -24,7 +24,6 @@ public class YahtzeeGameState extends GameState {
     //current round of play
     private int round;
     private ArrayList<Dice> selected = new ArrayList<Dice>();
-    private int[] numYahtzee;
 
 
 
@@ -34,12 +33,12 @@ public class YahtzeeGameState extends GameState {
     // default constructor that sets up the arrays and vals at game launch
     public YahtzeeGameState(int numPlayers) {
         this.turn = 0;
-        this.scores = new int[numPlayers][13];
+        this.scores = new int[numPlayers][15];
         this.diceArray= new Dice[5];
-        this.numYahtzee = new int[numPlayers];
         //Do I need this for loop to instantiate dice?
         for(int i = 0; i < diceArray.length; i++){
             this.diceArray[i] = new Dice();
+            diceArray[i].setVal(1);
         }
         this.rollNum = 1;
         this.round = 1;
@@ -70,10 +69,6 @@ public class YahtzeeGameState extends GameState {
         }
         //this.scoreCard = new ScoreCard();
         this.round = g.round;
-        for(int i = 0; i < numYahtzee.length; i++){
-            this.numYahtzee[i] = g.numYahtzee[i];
-        }
-
     }
 
 
@@ -103,9 +98,6 @@ public class YahtzeeGameState extends GameState {
     }
     public ArrayList<Dice> getSelectedDice(){return selected;}
 
-    public int getNumYahtzee(int idx) {
-        return numYahtzee[idx];
-    }
 
     //setter methods for YahtzeeGameState
     //todo setter methods for yahtzee
@@ -121,9 +113,6 @@ public class YahtzeeGameState extends GameState {
     public void setSelected(Dice dice,int idx){this.selected.set(idx,dice);}
     public void setDiceVal(Dice d, int i){
         d.setVal(i);
-    }
-    public void incrNumYahtzee(int idx){
-        this.numYahtzee[idx]++;
     }
     //swaps the "keep" value of the dice (setter)
     public void swapKeepValue(Dice d,boolean Keep){
