@@ -38,7 +38,7 @@ public class YahtzeeGameState extends GameState {
         //Do I need this for loop to instantiate dice?
         for(int i = 0; i < diceArray.length; i++){
             this.diceArray[i] = new Dice();
-            diceArray[i].setVal(1);
+            diceArray[i].setVal((int)(Math.random() * 6 + 1));
         }
         this.rollNum = 1;
         this.round = 0;
@@ -132,7 +132,7 @@ public class YahtzeeGameState extends GameState {
     }
     public void rollAllDice(){
         for(Dice die : diceArray){
-        die.setVal((int)Math.random() * 6 + 1);
+        die.setVal((int)(Math.random() * 6 + 1));
     }}
 
 
