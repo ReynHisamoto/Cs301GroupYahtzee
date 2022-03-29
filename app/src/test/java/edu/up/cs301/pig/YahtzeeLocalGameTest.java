@@ -25,6 +25,7 @@ public class YahtzeeLocalGameTest {
 
     @Test
     public void checkIfGameOver() {
+        /*YahtzeeLocalGame game = new YahtzeeLocalGame();
        /* YahtzeeLocalGame game = new YahtzeeLocalGame();
         YahtzeeGameState gameState = game.getMasterGameState();
         String gameEnd = "";
@@ -36,11 +37,11 @@ public class YahtzeeLocalGameTest {
     }
 
     @Test
-    public void checkMaxNumDice() {/*
+    public void checkMaxNumDice() {
     int[] testDice = {1,1,1,2,3};
     YahtzeeLocalGame game = new YahtzeeLocalGame();
     int res = game.checkMaxNumDice(testDice);
-    assertEquals(res, 3);*/
+    assertEquals(res, 3);
     }
 
     @Test

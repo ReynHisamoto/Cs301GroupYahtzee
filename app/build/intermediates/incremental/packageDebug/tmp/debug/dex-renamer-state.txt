@@ -1,4 +1,4 @@
-#Tue Mar 29 09:16:01 PDT 2022
-base.0=C\:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
+#Tue Mar 29 09:43:59 PDT 2022
+base.0=C\:\\Users\\aweso_9w51wb5\\StudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
 path.0=classes.dex
 renamed.0=classes.dex
