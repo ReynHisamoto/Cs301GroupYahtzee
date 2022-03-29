@@ -24,6 +24,7 @@ public class YahtzeeGameState extends GameState {
     //current round of play
     private int round;
     private ArrayList<Dice> selected = new ArrayList<Dice>();
+    private Boolean[][] chosen;
 
 
 
@@ -41,7 +42,13 @@ public class YahtzeeGameState extends GameState {
             diceArray[i].setVal((int)(Math.random() * 6 + 1));
         }
         this.rollNum = 1;
-        this.round = 0;
+        this.round = 1;
+        this.chosen = new Boolean[numPlayers][16];
+        for(int i = 0;i < chosen.length; i++){
+            for(int j =0; j < chosen[i].length; j++){
+                chosen[i][j] = false;
+            }
+        }
 
 
     }
@@ -69,6 +76,7 @@ public class YahtzeeGameState extends GameState {
         }
         //this.scoreCard = new ScoreCard();
         this.round = g.round;
+        this.chosen = g.chosen.clone();
     }
 
 
@@ -97,6 +105,7 @@ public class YahtzeeGameState extends GameState {
         return round;
     }
     public ArrayList<Dice> getSelectedDice(){return selected;}
+    public Boolean getChosen(int player, int row){return chosen[player][row];}
 
 
     //setter methods for YahtzeeGameState
@@ -117,6 +126,9 @@ public class YahtzeeGameState extends GameState {
     //swaps the "keep" value of the dice (setter)
     public void swapKeepValue(Dice d,boolean Keep){
         d.setKeep(false);
+    }
+    public void setChosen(int player, int row, boolean val){
+        this.chosen[player][row] = val;
     }
 
 
