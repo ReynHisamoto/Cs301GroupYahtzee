@@ -72,7 +72,7 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
         }
         for(int i =0; i < dice.length; i++){
             if(((YahtzeeGameState) info).getDice(i).isKeep()){
-                dice[i].setBackgroundColor(0xFFFF0000);
+                dice[i].setBackgroundColor(0xFF00FF00);
             }else{
                 dice[i].setBackgroundColor(0x00000000);
             }

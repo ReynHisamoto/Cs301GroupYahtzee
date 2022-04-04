@@ -242,9 +242,9 @@ public class YahtzeeLocalGame extends LocalGame {
      */
     @Override
     protected String checkIfGameOver() {
-        int max =0;
+        int max = 0;
         for(int i =0; i < players.length; i++){
-            if(max < masterGameState.getScores(i)[15]){
+            if(masterGameState.getScores(max)[15] < masterGameState.getScores(i)[15]){
                 max = i;
             }
         }
