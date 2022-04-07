@@ -206,6 +206,7 @@ public class YahtzeeLocalGame extends LocalGame {
                 masterGameState.setRound(masterGameState.getRound() + 1);
                 masterGameState.rollAllDice();
                 masterGameState.setRollNum(1);
+                masterGameState.getSelectedDice().clear();
 
                 if(masterGameState.getTurn() < players.length-1){
                     masterGameState.setTurn(masterGameState.getTurn() + 1);

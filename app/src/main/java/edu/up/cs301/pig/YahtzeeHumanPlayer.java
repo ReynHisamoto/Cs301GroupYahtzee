@@ -101,7 +101,9 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
                  scores[i][j].setText(((YahtzeeGameState)info).getScores(i)[j]+ "");
              }
          }
-         roundNum.setText("ROUND: " + ((YahtzeeGameState) info).getRound() + "\n" + allPlayerNames[((YahtzeeGameState) info).getTurn()] + "'s Turn");
+         roundNum.setText("ROUND: " + ((YahtzeeGameState) info).getRound() + "\n" +
+                 allPlayerNames[((YahtzeeGameState) info).getTurn()] + "'s Turn" +
+                 "\n Roll Number:" + ((YahtzeeGameState) info).getRollNum() );
         }
     }//receiveInfo
 
