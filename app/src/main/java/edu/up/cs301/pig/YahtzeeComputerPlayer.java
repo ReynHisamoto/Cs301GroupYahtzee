@@ -23,23 +23,22 @@ public class YahtzeeComputerPlayer extends GameComputerPlayer {
     /**
      * callback method--game's state has changed
      *
-     * @param info
-     * 		the information (presumably containing the game's state)
+     * @param info the information (presumably containing the game's state)
      */
     @Override
     protected void receiveInfo(GameInfo info) {
-    if(!(info instanceof NotYourTurnInfo)){
-    int rand = (int) (Math.random() * 14 );
-    if(rand != 6 && rand != 7){
-    YahtzeeScore action = new YahtzeeScore(this, rand,playerNum);
-    game.sendAction(action);
-    }else{
-        YahtzeeRoll action = new YahtzeeRoll(this,playerNum);
-        game.sendAction(action);
+        if (!(info instanceof NotYourTurnInfo)) {
+            int rand = (int) (Math.random() * 14);
+            if (rand != 6 && rand != 7) {
+                YahtzeeScore action = new YahtzeeScore(this, rand, playerNum);
+                game.sendAction(action);
+            } else {
+                YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
+                game.sendAction(action);
+            }
+
+        }//receiveInfo
+
+
     }
-
-    }//receiveInfo
-
-
-}
 }
