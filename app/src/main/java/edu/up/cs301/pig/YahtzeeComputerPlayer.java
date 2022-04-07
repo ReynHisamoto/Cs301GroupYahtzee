@@ -33,9 +33,13 @@ public class YahtzeeComputerPlayer extends GameComputerPlayer {
     if(rand != 6 && rand != 7){
     YahtzeeScore action = new YahtzeeScore(this, rand,playerNum);
     game.sendAction(action);
+    }else{
+        YahtzeeRoll action = new YahtzeeRoll(this,playerNum);
+        game.sendAction(action);
     }
 
     }//receiveInfo
+
 
 }
 }
