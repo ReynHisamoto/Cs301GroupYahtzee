@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\aweso_9w51wb5\\StudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
+            "outputFile": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\aweso_9w51wb5\\StudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values-v14\\styles.xml",
+                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values-v14\\styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

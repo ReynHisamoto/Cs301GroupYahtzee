@@ -1,4 +1,4 @@
-package edu.up.cs301.pig;
+package edu.up.cs301.yahtzee;
 
 import static org.junit.Assert.*;
 
@@ -36,13 +36,13 @@ public class YahtzeeLocalGameTest {
         assertEquals("game over", gameEnd);*/
     }
 
-    @Test
-    public void checkMaxNumDice() {
+    //@Test
+   /* public void checkMaxNumDice() {
     int[] testDice = {1,1,1,2,3};
     YahtzeeLocalGame game = new YahtzeeLocalGame();
     int res = game.checkMaxNumDice(testDice);
     assertEquals(res, 3);
-    }
+    }*/
 
     @Test
     public void checkSecondNumDice() {

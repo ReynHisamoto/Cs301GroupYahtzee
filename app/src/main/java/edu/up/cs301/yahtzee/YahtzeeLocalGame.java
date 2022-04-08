@@ -1,4 +1,4 @@
-package edu.up.cs301.pig;
+package edu.up.cs301.yahtzee;
 
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.LocalGame;
@@ -138,6 +138,10 @@ public class YahtzeeLocalGame extends LocalGame {
             int mostCommon = maxNumDice(numDice);
             int secondCommon = secondNumDice(numDice, mostCommon);
             boolean fullTop = false;
+            boolean alreadyChosen = masterGameState.getChosen(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow());
+            if(alreadyChosen){
+                return false;
+            }
             // if player selects aces twos etc. get score then add to score sheet
             if (((YahtzeeScore) action).getRow() <= 5) {
                 for (Dice dice : masterGameState.getDiceArray()) {

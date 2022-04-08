@@ -12,13 +12,14 @@
 
     <application
         android:debuggable="true"
-        android:icon="@drawable/face1"
+        android:icon="@drawable/face2"
         android:label="@string/app_name"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="edu.up.cs301.pig.YahtzeeMainActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" >
+            android:name="edu.up.cs301.yahtzee.YahtzeeMainActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

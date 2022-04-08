@@ -1,20 +1,16 @@
-package edu.up.cs301.pig;
+package edu.up.cs301.yahtzee;
 
 import edu.up.cs301.game.GameHumanPlayer;
 import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.infoMsg.GameInfo;
-import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
-
-import org.w3c.dom.Text;
 
 /**
  * A GUI for a human to play Pig. This default version displays the GUI but is incomplete
@@ -142,7 +138,7 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
             game.sendAction(action);
             return true;
         }
-        return false;
+        return true;
     }
 
     /**

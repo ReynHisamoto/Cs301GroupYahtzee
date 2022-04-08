@@ -1,4 +1,4 @@
-package edu.up.cs301.pig;
+package edu.up.cs301.yahtzee;
 
 import edu.up.cs301.game.GameComputerPlayer;
 import edu.up.cs301.game.infoMsg.GameInfo;
@@ -29,6 +29,11 @@ public class YahtzeeComputerPlayer extends GameComputerPlayer {
     protected void receiveInfo(GameInfo info) {
         if (!(info instanceof NotYourTurnInfo)) {
             int rand = (int) (Math.random() * 14);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             if (rand != 6 && rand != 7) {
                 YahtzeeScore action = new YahtzeeScore(this, rand, playerNum);
                 game.sendAction(action);
