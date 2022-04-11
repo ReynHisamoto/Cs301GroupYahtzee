@@ -38,6 +38,188 @@ import edu.up.cs301.game.actionMsg.GameAction;
  * Resource:
  * https://www.geeksforgeeks.org/arraylist-in-java/
  * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
+ * <p>
+ * External Citation
+ * Date: 23 September 2022
+ * Problem: forgot how arraylists worked
+ * Resource:
+ * https://www.geeksforgeeks.org/arraylist-in-java/
+ * Solution: I used the example code from this post.
  */
 /**
  External Citation
@@ -130,7 +312,7 @@ public class YahtzeeLocalGame extends LocalGame {
         /**
          * checks where the player has clicked and adds to the scoreboard accordingly
          */
-        if (action instanceof YahtzeeScore && !canMakeAction(((YahtzeeScore) action).getIdx())
+        if (action instanceof YahtzeeScore && !canMakeAction(((YahtzeeScore) action).getIdx()) && ((YahtzeeScore) action).getRow() > 16
                 && masterGameState.getScores(((YahtzeeScore) action).getIdx())[((YahtzeeScore) action).getRow()] == 0
                 && !masterGameState.getChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow())) {
             int score = 0;
@@ -138,10 +320,15 @@ public class YahtzeeLocalGame extends LocalGame {
             int mostCommon = maxNumDice(numDice);
             int secondCommon = secondNumDice(numDice, mostCommon);
             boolean fullTop = false;
-            boolean alreadyChosen = masterGameState.getChosen(((YahtzeeScore) action).getIdx(),((YahtzeeScore) action).getRow());
-            if(alreadyChosen){
+            boolean alreadyChosen = masterGameState.getChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow());
+            if (alreadyChosen) {
                 return false;
             }
+            if (((YahtzeeScore) action).getRow() == 6 || ((YahtzeeScore) action).getRow() == 7 ||
+                    ((YahtzeeScore) action).getRow() == 15) {
+                return false;
+            }
+
             // if player selects aces twos etc. get score then add to score sheet
             if (((YahtzeeScore) action).getRow() <= 5) {
                 for (Dice dice : masterGameState.getDiceArray()) {
@@ -153,64 +340,105 @@ public class YahtzeeLocalGame extends LocalGame {
                 masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
             }
             // if player selects 3 of a kind then get the most common dice value and multiply by three
-            else if (((YahtzeeScore) action).getRow() == 8 && mostCommon >= 3) {
-                int valOfThree = 0;
-                for (int i = 0; i < numDice.length; i++) {
-                    if (mostCommon == numDice[i]) {
-                        valOfThree = i;
+            else if (((YahtzeeScore) action).getRow() == 8) {
+                if (mostCommon >= 3) {
+                    int valOfThree = 0;
+                    for (int i = 0; i < numDice.length; i++) {
+                        if (mostCommon == numDice[i]) {
+                            valOfThree = i;
+                        }
                     }
-                }
-                score += valOfThree * 3;
-                for (int i = 0; i < masterGameState.getDiceArray().length; i++) {
-                    if (masterGameState.getDiceArray()[i].getVal() != valOfThree) {
-                        score += masterGameState.getDiceArray()[i].getVal();
+                    score += valOfThree * 3;
+                    for (int i = 0; i < masterGameState.getDiceArray().length; i++) {
+                        if (masterGameState.getDiceArray()[i].getVal() != valOfThree) {
+                            score += masterGameState.getDiceArray()[i].getVal();
+                        }
                     }
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
+                    masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
+                } else if (masterGameState.getRollNum() == 3) {
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), 0);
+                    masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
+                } else {
+                    return false;
                 }
-                masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
-                masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
             }
             // if player selects 4 of a kind then get the most common dice value and multiply by four
-            else if (((YahtzeeScore) action).getRow() == 9 && mostCommon >= 4) {
-                int valOfFour = 0;
-                for (int i = 0; i < numDice.length; i++) {
-                    if (mostCommon == numDice[i]) {
-                        valOfFour = i;
+            else if (((YahtzeeScore) action).getRow() == 9) {
+                if (mostCommon >= 4) {
+                    int valOfFour = 0;
+                    for (int i = 0; i < numDice.length; i++) {
+                        if (mostCommon == numDice[i]) {
+                            valOfFour = i;
+                        }
                     }
-                }
-                score += valOfFour * 4;
-                for (int i = 0; i < masterGameState.getDiceArray().length; i++) {
-                    if (masterGameState.getDiceArray()[i].getVal() != valOfFour) {
-                        score += masterGameState.getDiceArray()[i].getVal();
+                    score += valOfFour * 4;
+                    for (int i = 0; i < masterGameState.getDiceArray().length; i++) {
+                        if (masterGameState.getDiceArray()[i].getVal() != valOfFour) {
+                            score += masterGameState.getDiceArray()[i].getVal();
+                        }
                     }
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
+                    masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
+                } else if (masterGameState.getRollNum() == 3) {
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), 0);
+                    masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
+                } else {
+                    return false;
                 }
-                masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
-                masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
             }
             // if player selects full house then checks for full house by looking if there are three of one type and two of another if true then set score to 25
-            else if (((YahtzeeScore) action).getRow() == 10 && mostCommon == 3 && secondCommon == 2) {
-                score += 25;
-                masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
-                masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
-                // if player selects small straight check if true if so then give player 30 pts on score card
-            } else if (((YahtzeeScore) action).getRow() == 11 && SmallStraight(numDice)) {
-                score += 30;
-                masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
-                masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
-                // if player selects large straight and true then give player 40 points
-            } else if (((YahtzeeScore) action).getRow() == 12 && LargeStraight(numDice)) {
-                score += 40;
-                masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
-                masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
-                // if player chooses yahtzee and if true give player 50 points
-            } else if (((YahtzeeScore) action).getRow() == 14 && Yahtzee(numDice)) {
-                if (masterGameState.getScores(((YahtzeeScore) action).getIdx())[13] == 0) {
-                    score += 50;
-                } else if (masterGameState.getScores(((YahtzeeScore) action).getIdx())[13] > 0) {
-                    score += 100;
+            else if (((YahtzeeScore) action).getRow() == 10) {
+                if (mostCommon == 3 && secondCommon == 2) {
+                    score += 25;
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
+                    masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
+                } else if (masterGameState.getRollNum() == 3) {
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), 0);
+                    masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
+                } else {
+                    return false;
                 }
-                masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
-                masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
-
+                // if player selects small straight check if true if so then give player 30 pts on score card
+            } else if (((YahtzeeScore) action).getRow() == 11) {
+                if (SmallStraight(numDice)) {
+                    score += 30;
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
+                    masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
+                } else if (masterGameState.getRollNum() == 3) {
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), 0);
+                    masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
+                } else {
+                    return false;
+                }
+                // if player selects large straight and true then give player 40 points
+            } else if (((YahtzeeScore) action).getRow() == 12) {
+                if (LargeStraight(numDice)) {
+                    score += 40;
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
+                    masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
+                    // if player chooses yahtzee and if true give player 50 points
+                } else if (masterGameState.getRollNum() == 3) {
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), 0);
+                    masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
+                } else {
+                    return false;
+                }
+            } else if (((YahtzeeScore) action).getRow() == 14) {
+                if (Yahtzee(numDice)) {
+                    if (masterGameState.getScores(((YahtzeeScore) action).getIdx())[13] == 0) {
+                        score += 50;
+                    } else if (masterGameState.getScores(((YahtzeeScore) action).getIdx())[13] > 0) {
+                        score += 100;
+                    }
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
+                    masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
+                } else if (masterGameState.getRollNum() == 3) {
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), 0);
+                    masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
+                } else {
+                    return false;
+                }
 
                 // if player chooses chance sum dice and add to score
             } else if (((YahtzeeScore) action).getRow() == 13) {
