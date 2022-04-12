@@ -68,10 +68,28 @@ public class YahtzeeLocalGameTest {
 
     @Test
     public void smallStraight() {
+        YahtzeeLocalGame game =  new YahtzeeLocalGame();
+        int[] dice = new int[5];
+        game.SmallStraight(dice);
+        dice[0] = 1;
+        dice[1] = 2;
+        dice[2] = 3;
+        dice[3] = 4;
+        assertEquals(true, game.SmallStraight(dice));
+
     }
 
     @Test
     public void largeStraight() {
+        YahtzeeLocalGame game =  new YahtzeeLocalGame();
+        int[] dice = new int[5];
+        game.LargeStraight(dice);
+        dice[0] = 1;
+        dice[1] = 2;
+        dice[2] = 3;
+        dice[3] = 4;
+        dice[4] = 5;
+        assertEquals(true, game.SmallStraight(dice));
     }
 
     /**
