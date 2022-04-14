@@ -269,7 +269,9 @@ public class YahtzeeLocalGame extends LocalGame {
          who made the action, then it will tell the YahtzeeGameState to "keep" the die that has had
          the action performed on it.
          **/
+
         if (action instanceof YahtzeeKeep && !canMakeAction(((YahtzeeKeep) action).getIdx())) {
+            //TODO WRITE MORE COMMENTS
             if (!masterGameState.getDice(((YahtzeeKeep) action).getSelected()).isKeep()) {
                 masterGameState.getSelectedDice().add(masterGameState.getDice(((YahtzeeKeep) action).getSelected()));
                 masterGameState.getDice(((YahtzeeKeep) action).getSelected()).setKeep(true);
@@ -312,7 +314,7 @@ public class YahtzeeLocalGame extends LocalGame {
         /**
          * checks where the player has clicked and adds to the scoreboard accordingly
          */
-        if (action instanceof YahtzeeScore && !canMakeAction(((YahtzeeScore) action).getIdx()) && ((YahtzeeScore) action).getRow() > 16
+        if (action instanceof YahtzeeScore && !canMakeAction(((YahtzeeScore) action).getIdx()) && ((YahtzeeScore) action).getRow() < 16
                 && masterGameState.getScores(((YahtzeeScore) action).getIdx())[((YahtzeeScore) action).getRow()] == 0
                 && !masterGameState.getChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow())) {
             int score = 0;
