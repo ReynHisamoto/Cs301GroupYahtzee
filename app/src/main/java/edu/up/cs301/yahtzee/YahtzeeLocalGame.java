@@ -268,6 +268,9 @@ public class YahtzeeLocalGame extends LocalGame {
          Essentially, this "if" statement detects if the action is a YahtzeeKeep action. If it is, it detects
          who made the action, then it will tell the YahtzeeGameState to "keep" the die that has had
          the action performed on it.
+
+         Although it is named Yahtzee Keep, when toggling a dice anf highlighting it green, it actually
+         means you are wanting to Roll said dice. In a sense, all the dice that are not highlighted are being "kept"
          **/
 
         if (action instanceof YahtzeeKeep && !canMakeAction(((YahtzeeKeep) action).getIdx())) {
