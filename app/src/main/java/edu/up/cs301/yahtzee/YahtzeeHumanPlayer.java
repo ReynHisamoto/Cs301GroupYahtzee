@@ -22,8 +22,6 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
 
     /* instance variables */
 
-
-
     // These variables will reference widgets that will be modified during play
     private TextView[][] scores = null;
     private TextView roundNum = null;

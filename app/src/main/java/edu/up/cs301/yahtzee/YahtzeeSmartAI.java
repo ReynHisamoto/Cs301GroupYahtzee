@@ -11,8 +11,32 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     }
 
 
+    public int tempBSfunction(){
+        int arrLength = masterGameState.getDiceArray().length; //it's always 5
+        int numSizes;
+        for(int i = 0; i < arrLength; i++){
+        if(diceArr[i].getVal() == 6 && masterGameState.chosen[6][2]){
+
+        }
+        }
+    }
+
+
+    YahtzeeGameState masterGameState;
+    Dice[] diceArr= masterGameState.getDiceArray();
+
+
     @Override
     protected void receiveInfo(GameInfo info) {
+
+        if (info instanceof YahtzeeGameState) {
+            masterGameState = (YahtzeeGameState) info;
+        }
+
+
+
+
+
         if (!(info instanceof NotYourTurnInfo)) {
             int rand = (int) (Math.random() * 14);
             try {
@@ -27,7 +51,6 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                 YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
                 game.sendAction(action);
             }
-
         }//receiveInfo
     }
 }

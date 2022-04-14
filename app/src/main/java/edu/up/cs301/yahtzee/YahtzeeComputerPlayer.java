@@ -25,8 +25,12 @@ public class YahtzeeComputerPlayer extends GameComputerPlayer {
      *
      * @param info the information (presumably containing the game's state)
      */
+
+    YahtzeeGameState masterGameState;
+
     @Override
     protected void receiveInfo(GameInfo info) {
+
         if (!(info instanceof NotYourTurnInfo)) {
             int rand = (int) (Math.random() * 14);
             try {
