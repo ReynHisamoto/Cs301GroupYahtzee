@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\CS301\\Cs301GroupYahtzee\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\color.xml",
-                    "from": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "57,95,133",
-                        "endColumns": "36,36,37",
-                        "endOffsets": "89,127,166"
-                    },
-                    "to": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,92,129",
-                        "endColumns": "36,36,37",
-                        "endOffsets": "87,124,162"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "C:\\CS301\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -38,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\dimen.xml",
+                    "source": "C:\\CS301\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\color.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "57,95,133",
+                        "endColumns": "36,36,37",
+                        "endOffsets": "89,127,166"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,92,129",
+                        "endColumns": "36,36,37",
+                        "endOffsets": "87,124,162"
+                    }
+                },
+                {
+                    "source": "C:\\CS301\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\dimen.xml",
                     "from": {
                         "startLines": "7,2,4,3,6,5",
                         "startColumns": "4,4,4,4,4,4",
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\aweso\\AndroidStudioProjects\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "C:\\CS301\\Cs301GroupYahtzee\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "11,2,7,17,18,19,14,3,20,4,8,12,13,21,10,6,15,9,15,5",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,89,4",
