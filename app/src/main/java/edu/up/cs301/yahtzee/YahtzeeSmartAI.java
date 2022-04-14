@@ -10,20 +10,29 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         super(name);
     }
 
-
+    int numSixes = 0;
+    // iterates through the dice array, and
     public int tempBSfunction(){
         int arrLength = masterGameState.getDiceArray().length; //it's always 5
-        int numSizes;
+
+
         for(int i = 0; i < arrLength; i++){
-        if(diceArr[i].getVal() == 6 && masterGameState.chosen[6][2]){
+
+        if(diceArr[i].getVal() == 6 && !masterGameState.getChosen(2,6)){
+            numSixes++;
+        }
+
 
         }
-        }
+
+        return  numSixes;
     }
 
 
+    //masterGameState.setChosen(2,6,true);
     YahtzeeGameState masterGameState;
-    Dice[] diceArr= masterGameState.getDiceArray();
+    Dice[] diceArr;
+
 
 
     @Override
@@ -33,7 +42,13 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             masterGameState = (YahtzeeGameState) info;
         }
 
+        //sleep(1000);
+        diceArr= masterGameState.getDiceArray();
 
+        //checks if there are more than 2 sixes. If there are, selects the "sixes" box.
+        if((numSixes > 2) && !masterGameState.getChosen(2,6)){
+            masterGameState.setChosen(2,6,true);
+        }
 
 
 
