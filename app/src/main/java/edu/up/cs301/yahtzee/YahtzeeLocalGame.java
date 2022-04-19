@@ -70,7 +70,6 @@ public class YahtzeeLocalGame extends LocalGame {
             }
             return true;
 
-
             /**
              * Sets selected dice value to random int 1-6
              */
@@ -309,9 +308,9 @@ public class YahtzeeLocalGame extends LocalGame {
     }
 
     /*
-    checks the most common dice given an array of common dice
+    checks the most common dice given an array of common dice.Getter method.
      */
-    protected int maxNumDice(int[] potValue) {
+    public int maxNumDice(int[] potValue) {
         int maxNum = 0;
         for (int numDice : potValue) {
             if (maxNum < numDice) {
@@ -322,9 +321,9 @@ public class YahtzeeLocalGame extends LocalGame {
     }
 
     /*
-    checks for the second most common dice given an array of common dice
+    checks for the second most common dice given an array of common dice. Getter Method.
      */
-    protected int secondNumDice(int[] potValue, int currentMax) {
+    public int secondNumDice(int[] potValue, int currentMax) {
         int maxNum = 0;
         for (int numDice : potValue) {
             if (maxNum < numDice && numDice < currentMax) {
@@ -336,9 +335,9 @@ public class YahtzeeLocalGame extends LocalGame {
 
 
     /*
-    creates an array of dice in common
+    creates an array of dice in common.Getter method.
      */
-    protected int[] totalDice(Dice[] dice) {
+    public int[] totalDice(Dice[] dice) {
         int[] potValue = new int[7];
         for (int i = 0; i < potValue.length; i++)
             for (Dice dices : dice) {
@@ -350,9 +349,9 @@ public class YahtzeeLocalGame extends LocalGame {
     }
 
     /*
-    checks whether or not the given hand of dice is a small straight
+    checks whether or not the given hand of dice is a small straight. Getter method
      */
-    protected boolean SmallStraight(int[] potValue) {
+    public boolean SmallStraight(int[] potValue) {
         int numInstance = 0;
         for (int val : potValue) {
             if (val >= 1) {
@@ -369,9 +368,9 @@ public class YahtzeeLocalGame extends LocalGame {
 
 
     /*
-    checks whether or not the given hand of dice is a large straight
+    checks whether or not the given hand of dice is a large straight. Getter Method.
      */
-    protected boolean LargeStraight(int[] potValue) {
+    public boolean LargeStraight(int[] potValue) {
         int numInstance = 0;
         for (int val : potValue) {
             if (val == 1) {
@@ -387,9 +386,9 @@ public class YahtzeeLocalGame extends LocalGame {
     }
 
     /*
-    checks whether or not the given hand of dice is a yahtzee
+    checks whether or not the given hand of dice is a yahtzee. Getter method.
      */
-    protected boolean Yahtzee(int[] potValue) {
+    public boolean Yahtzee(int[] potValue) {
         for (int val : potValue) {
             if (val == 5) {
                 return true;
