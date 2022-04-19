@@ -525,7 +525,7 @@ public class YahtzeeLocalGame extends LocalGame {
             }
         }
 
-        if (masterGameState.getRound() > 13 * players.length) {
+        if (masterGameState.getRound() >= 13 * players.length) {
             return "The winner is " + playerNames[max] + " !";
         }
 

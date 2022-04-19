@@ -6,9 +6,9 @@
 
     <include
         android:id="@+id/tabHost"
+        layout="@layout/game_config_tabhost"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/game_config_tabhost" />
+        android:layout_height="wrap_content" />
 
     <RelativeLayout
         android:layout_width="match_parent"
