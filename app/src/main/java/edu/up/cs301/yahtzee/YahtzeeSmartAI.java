@@ -9,30 +9,23 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     public YahtzeeSmartAI(String name) {
         super(name);
     }
-
-    int numSixes = 0;
-    // iterates through the dice array, and
-    public int tempBSfunction(){
-        int arrLength = masterGameState.getDiceArray().length; //it's always 5
+    private final int arrLength = 5;
+    private Boolean[][] chosen;
 
 
-        for(int i = 0; i < arrLength; i++){
-
-        if(diceArr[i].getVal() == 6 && !masterGameState.getChosen(2,6)){
-            numSixes++;
-        }
 
 
-        }
 
-        return  numSixes;
-    }
+
+
+
+
+
 
 
     //masterGameState.setChosen(2,6,true);
     YahtzeeGameState masterGameState;
     Dice[] diceArr;
-
 
 
     @Override
@@ -42,14 +35,10 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             masterGameState = (YahtzeeGameState) info;
         }
 
-        //sleep(1000);
-        diceArr= masterGameState.getDiceArray();
 
-        //checks if there are more than 2 sixes. If there are, selects the "sixes" box.
-        if((numSixes > 2) && !masterGameState.getChosen(2,6)){
-            masterGameState.setChosen(2,6,true);
-        }
-
+        sleep(500);
+        diceArr = masterGameState.getDiceArray();
+        //chose = masterGameState.get
 
 
         if (!(info instanceof NotYourTurnInfo)) {
@@ -59,7 +48,13 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if (rand != 6 && rand != 7) {
+
+
+            if (this.hasSixes()){
+                YahtzeeScore action = new YahtzeeScore(this, 5, playerNum);
+                game.sendAction(action);
+            }
+            else if (rand != 6 && rand != 7) {
                 YahtzeeScore action = new YahtzeeScore(this, rand, playerNum);
                 game.sendAction(action);
             } else {
@@ -68,6 +63,58 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             }
         }//receiveInfo
     }
+
+    /**
+     *These are a series of helper methods that scan to see what values the dice array holds. Checks
+     * to see how many sixes there are, if there's a 3 of a kind, if there's a full house, etc.
+     *
+     */
+
+    //counts how many dice of a given value there are.
+    public int hasValue (){
+        int numValue = 0;
+        for(int i = 0; i < arrLength; i++){
+            if(diceArr[i].getVal() == 6){ numValue++;}
+        }
+        return numValue;
+    }
+
+    public boolean hasSixes (){
+        int numValue = 0;
+        for(int i = 0; i < arrLength; i++){
+            if(diceArr[i].getVal() == 6){
+                numValue++;
+            }
+        }
+        if(numValue >= 1){
+            return true;
+        }
+        else {return false;}
+    }
+
+
+
+    // 3 of a kind detector. Input value you're looking for three of kind of.
+    public boolean threeOfKind (int value){
+        int arrLength = masterGameState.getDiceArray().length; //it's always 5
+
+        int numValue = 0;
+        for(int i = 0; i < arrLength; i++){
+            if(diceArr[i].getVal() == value){
+                numValue++;
+            }
+        }
+        if(numValue >= 3){
+            return true;
+        }
+        else {return false;}
+    }
+
+
+
+
+
+
 }
 
 
