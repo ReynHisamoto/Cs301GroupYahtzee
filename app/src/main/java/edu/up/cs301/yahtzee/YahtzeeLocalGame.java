@@ -278,12 +278,6 @@ public class YahtzeeLocalGame extends LocalGame {
             if (!masterGameState.getDice( ( (YahtzeeKeep)action).getSelected() ).isKeep() ) {
                 masterGameState.getSelectedDice().add(masterGameState.getDice(((YahtzeeKeep) action).getSelected()));
                 masterGameState.getDice(((YahtzeeKeep) action).getSelected()).setKeep(true);
-
-                //TODO REMOVE. TALK TO AUGUSTINE ABOUT WHY
-                if (masterGameState.getSelectedDice().size() > 3) {
-                    masterGameState.getSelectedDice().get(3).setKeep(false);
-                    masterGameState.getSelectedDice().remove(3);
-                }
                 return true;
             } else {
                 masterGameState.getSelectedDice().remove(masterGameState.getDice(((YahtzeeKeep) action).getSelected()));
