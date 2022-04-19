@@ -40,7 +40,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         if (info instanceof YahtzeeGameState) {
             masterGameState = (YahtzeeGameState) info;
         }
-
+        //test = game.maxNumDice;
         sleep(500);
         diceArr = masterGameState.getDiceArray();
         //chose = masterGameState.get
