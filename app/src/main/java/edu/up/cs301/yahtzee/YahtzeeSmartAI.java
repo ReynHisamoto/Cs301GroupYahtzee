@@ -28,22 +28,26 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
 
 
 
-    //masterGameState.setChosen(2,6,true);
+    //The master game statte
     YahtzeeGameState masterGameState;
+    //An array of the dice values in play.
     Dice[] diceArr;
-
-    int test;
+    //An array that counts how many of each value of dice there are.
+    int[] numDiceAI;
+    //Most common dice from the numDiceAI array.
+    int mostCommonAI;
 
     @Override
     protected void receiveInfo(GameInfo info) {
 
-        if (info instanceof YahtzeeGameState) {
-            masterGameState = (YahtzeeGameState) info;
-        }
-        //test = game.maxNumDice;
+        if (info instanceof YahtzeeGameState) {masterGameState = (YahtzeeGameState) info;}
         sleep(500);
+
+        //instantiates the instance variables.
         diceArr = masterGameState.getDiceArray();
-        //chose = masterGameState.get
+        numDiceAI = ((YahtzeeLocalGame) game).totalDice(masterGameState.getDiceArray());
+        mostCommonAI = ((YahtzeeLocalGame) game).maxNumDice(numDiceAI);
+
 
 
         if (!(info instanceof NotYourTurnInfo)) {
@@ -55,11 +59,11 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             }
 
 
-            if (this.hasSixes()){
-                YahtzeeScore action = new YahtzeeScore(this, 5, playerNum);
-                game.sendAction(action);
-            }
-            else if (rand != 6 && rand != 7) {
+//            if (this.hasSixes()){
+//                YahtzeeScore action = new YahtzeeScore(this, 5, playerNum);
+//                game.sendAction(action);
+//            }
+            if (rand != 6 && rand != 7) {
                 YahtzeeScore action = new YahtzeeScore(this, rand, playerNum);
                 game.sendAction(action);
             } else {
@@ -75,44 +79,20 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
      *
      */
 
-    //counts how many dice of a given value there are.
-    public int hasValue (){
-        int numValue = 0;
-        for(int i = 0; i < arrLength; i++){
-            if(diceArr[i].getVal() == 6){ numValue++;}
-        }
-        return numValue;
+    //Detects if there is any kind of 3 of kind
+    private boolean threeOfKind(){
+        if (mostCommonAI >= 3){return true;}
+        else{return false;}
     }
-
-    public boolean hasSixes (){
-        int numValue = 0;
-        for(int i = 0; i < arrLength; i++){
-            if(diceArr[i].getVal() == 6){
-                numValue++;
-            }
-        }
-        if(numValue >= 1){
-            return true;
-        }
-        else {return false;}
-    }
+    //Detects if there is 3 of kind of >= 4
+//    private boolean topHalfThreeOfKind(int[] potValue){
+//        int maxNum =0;
+//        for (int i = 3; i < potValue.length; i++){
+//            if (potValue[i]
+//        }
 
 
 
-    // 3 of a kind detector. Input value you're looking for three of kind of.
-    public boolean threeOfKind (int value){
-        int arrLength = masterGameState.getDiceArray().length; //it's always 5
-
-        int numValue = 0;
-        for(int i = 0; i < arrLength; i++){
-            if(diceArr[i].getVal() == value){
-                numValue++;
-            }
-        }
-        if(numValue >= 3){
-            return true;
-        }
-        else {return false;}
     }
 
 
@@ -123,6 +103,45 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
 }
 
 
+//counts how many dice of a given value there are.
+//    public int hasValue (){
+//        int numValue = 0;
+//        for(int i = 0; i < arrLength; i++){
+//            if(diceArr[i].getVal() == 6){ numValue++;}
+//        }
+//        return numValue;
+//    }
+//
+//    public boolean hasSixes (){
+//        int numValue = 0;
+//        for(int i = 0; i < arrLength; i++){
+//            if(diceArr[i].getVal() == 6){
+//                numValue++;
+//            }
+//        }
+//        if(numValue >= 1){
+//            return true;
+//        }
+//        else {return false;}
+//    }
+//
+//
+//
+//    // 3 of a kind detector. Input value you're looking for three of kind of.
+//    public boolean threeOfKind (int value){
+//        int arrLength = masterGameState.getDiceArray().length; //it's always 5
+//
+//        int numValue = 0;
+//        for(int i = 0; i < arrLength; i++){
+//            if(diceArr[i].getVal() == value){
+//                numValue++;
+//            }
+//        }
+//        if(numValue >= 3){
+//            return true;
+//        }
+//        else {return false;}
+//    }
 
 
 
