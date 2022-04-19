@@ -624,4 +624,4 @@ public class YahtzeeLocalGame extends LocalGame {
     }
 
 
-}// class PigLocalGame
+}// class YahtzeeLocalGame
