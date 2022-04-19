@@ -60,7 +60,6 @@ public class YahtzeeLocalGame extends LocalGame {
             if (!masterGameState.getDice( ( (YahtzeeKeep)action).getSelected() ).isKeep() ) {
                 masterGameState.getSelectedDice().add(masterGameState.getDice(((YahtzeeKeep) action).getSelected()));
                 masterGameState.getDice(((YahtzeeKeep) action).getSelected()).setKeep(true);
-                return true;
             } else {
                 masterGameState.getSelectedDice().remove(masterGameState.getDice(((YahtzeeKeep) action).getSelected()));
                 masterGameState.getDice(((YahtzeeKeep) action).getSelected()).setKeep(false);
@@ -68,8 +67,8 @@ public class YahtzeeLocalGame extends LocalGame {
                     masterGameState.getSelectedDice().get(3).setKeep(false);
                     masterGameState.getSelectedDice().remove(3);
                 }
-                return true;
             }
+            return true;
 
 
             /**
@@ -113,7 +112,7 @@ public class YahtzeeLocalGame extends LocalGame {
             }
 
             // if player selects aces twos etc. get score then add to score sheet
-            if (((YahtzeeScore) action).getRow() <= 5) {
+            if (((YahtzeeScore) action).getRow() <= 5 && numDice[((YahtzeeScore) action).getRow()] > 0) {
                 for (Dice dice : masterGameState.getDiceArray()) {
                     if (dice.getVal() == ((YahtzeeScore) action).getRow() + 1) {
                         score += dice.getVal();
