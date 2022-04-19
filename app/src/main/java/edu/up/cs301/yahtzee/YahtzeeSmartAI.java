@@ -13,8 +13,13 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     private Boolean[][] chosen;
 
 
-
-
+    /**
+     * List of geter methods I obtain from YahtzeeLocalGame
+     *
+     * game.maxNumDice - checks the most common dice given an array of common dice.
+     *
+     *
+     */
 
 
 
@@ -27,6 +32,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     YahtzeeGameState masterGameState;
     Dice[] diceArr;
 
+    int test;
 
     @Override
     protected void receiveInfo(GameInfo info) {
@@ -34,7 +40,6 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         if (info instanceof YahtzeeGameState) {
             masterGameState = (YahtzeeGameState) info;
         }
-
 
         sleep(500);
         diceArr = masterGameState.getDiceArray();
