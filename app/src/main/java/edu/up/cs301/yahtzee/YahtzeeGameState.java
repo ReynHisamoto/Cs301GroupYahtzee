@@ -105,6 +105,7 @@ public class YahtzeeGameState extends GameState {
         return round;
     }
     public ArrayList<Dice> getSelectedDice(){return selected;}
+
     public Boolean getChosen(int player, int row){return chosen[player][row];}
 
 

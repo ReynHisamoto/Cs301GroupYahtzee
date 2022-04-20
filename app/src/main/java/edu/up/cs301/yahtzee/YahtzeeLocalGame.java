@@ -316,7 +316,7 @@ public class YahtzeeLocalGame extends LocalGame {
     }
 
     /*
-    checks the most common dice given an array of common dice.Getter method.
+    checks the amount of the most common dice given an array of common dice.Getter method.
      */
     public int maxNumDice(int[] potValue) {
         int maxNum = 0;
