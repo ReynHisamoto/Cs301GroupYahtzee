@@ -112,7 +112,8 @@ public class YahtzeeLocalGame extends LocalGame {
             }
 
             // if player selects aces twos etc. get score then add to score sheet
-            if (((YahtzeeScore) action).getRow() <= 5 && numDice[((YahtzeeScore) action).getRow()] > 0) {
+            if (((YahtzeeScore) action).getRow() <= 5)
+                if( numDice[((YahtzeeScore) action).getRow()+1] > 0) {
                 for (Dice dice : masterGameState.getDiceArray()) {
                     if (dice.getVal() == ((YahtzeeScore) action).getRow() + 1) {
                         score += dice.getVal();
@@ -120,7 +121,13 @@ public class YahtzeeLocalGame extends LocalGame {
                 }
                 masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), score);
                 masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
-            }
+            }else if(masterGameState.getRollNum() == 3){
+                    masterGameState.setScores(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), 0);
+                    masterGameState.setChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow(), true);
+                } else {
+                    return false;
+                }
+
             // if player selects 3 of a kind then get the most common dice value and multiply by three
             else if (((YahtzeeScore) action).getRow() == 8) {
                 if (mostCommon >= 3) {
