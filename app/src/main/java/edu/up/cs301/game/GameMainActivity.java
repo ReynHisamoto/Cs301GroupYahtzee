@@ -3,6 +3,7 @@ package edu.up.cs301.game;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -11,11 +12,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -25,6 +28,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
+import android.widget.Toast;
+
 import edu.up.cs301.game.config.GameConfig;
 import edu.up.cs301.game.config.GamePlayerType;
 import edu.up.cs301.game.util.IPCoder;
@@ -88,6 +93,14 @@ View.OnClickListener {
 	 * GameMainActivity that implements the following methods.
 	 * --------------------------------------------------------------------
 	 */
+
+
+	//TODO work on help menu
+	private AlertDialog.Builder dialogBuilder;
+	private AlertDialog dialog;
+	private Button menu_cancel;
+
+
 	/**
 	 * Creates a default, game-specific configuration for the current game.
 	 * 
@@ -350,7 +363,12 @@ View.OnClickListener {
 		remoteTabSpec.setIndicator(remoteTabString());
 		tabHost.addTab(localTabSpec);
 		tabHost.addTab(remoteTabSpec);
-		
+
+		//added how to play tab to game framework
+		//TabSpec howToPlayTabSpec = tabHost.newTabSpec(howToPlayTabString());
+		//howToPlayTabSpec.setContent(R.id.howToPlay);
+		//tabHost.addTab(howToPlayTabSpec);
+
 		// make sure the current tab is the right one
 		tabHost.setCurrentTab(config.isLocal() ? 0 : 1);
 
@@ -467,6 +485,40 @@ View.OnClickListener {
 		getMenuInflater().inflate(R.menu.game_main, menu);
 		return true;
 	}//onCreateOptionsMenu
+
+
+	/**
+	menu for the rules of Yahtzee
+
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+			int id = item.getItemId();
+			createNewContactDialog();
+		return super.onOptionsItemSelected(item);
+	}
+
+	public void createNewContactDialog() {
+		dialogBuilder = new AlertDialog.Builder(this);
+		final View menuPopup = getLayoutInflater().inflate(R.layout.how_to_play, null);
+
+		menu_cancel = (Button)menuPopup.findViewById(R.id.cancelButton);
+
+		dialogBuilder.setView(menuPopup);
+
+		dialog = dialogBuilder.create();
+		dialog.show();
+
+		//closes the popup window
+		menu_cancel.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				dialog.dismiss();
+			}
+		});
+	}
+
+
 
 	/**
 	 * this method is called whenever the user clicks on a button.
@@ -738,6 +790,10 @@ View.OnClickListener {
 	private String remoteTabString() {
 		return this.getResources().getString(R.string.remote_tab);
 	}// remoteTabString
+
+	private String howToPlayTabString() {
+		return "How To Play";
+	}
 
 
 	/**

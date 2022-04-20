@@ -93,7 +93,8 @@ public class YahtzeeLocalGame extends LocalGame {
         /**
          * checks where the player has clicked and adds to the scoreboard accordingly
          */
-        if (action instanceof YahtzeeScore && !canMakeAction(((YahtzeeScore) action).getIdx()) && ((YahtzeeScore) action).getRow() < 16
+        if (action instanceof YahtzeeScore && !canMakeAction(((YahtzeeScore) action).getIdx()) && ((YahtzeeScore) action).getRow() < 16 &&
+                ((YahtzeeScore) action).getRow() > 0
                 && masterGameState.getScores(((YahtzeeScore) action).getIdx())[((YahtzeeScore) action).getRow()] == 0
                 && !masterGameState.getChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow())) {
             int score = 0;

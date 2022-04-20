@@ -39,19 +39,7 @@
                 layout="@layout/game_remote_tab" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/howToPlay"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="75dp">
 
-            <include
-                android:id="@+id/howToPlayTabLayout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/how_to_play" />
-        </LinearLayout>
     </FrameLayout>
 
 </TabHost>

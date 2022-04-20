@@ -5,6 +5,8 @@ import edu.up.cs301.game.GameMainActivity;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
+import android.app.AlertDialog;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +30,12 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
     private Button roll = null;
     private ImageButton[] dice = null;
     private TextView[] names = null;
+    private Button howToPlay = null;
+
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
+
+
 
     // the android activity that we are running
     private GameMainActivity myActivity;
@@ -121,10 +129,13 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
             }
             YahtzeeKeep action = new YahtzeeKeep(this, playerNum, idx);
             game.sendAction(action);
-        } else if (button instanceof Button) {
+        } else if (button instanceof Button && button.getId() == (myActivity.findViewById(R.id.roll)).getId()) {
             YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
             game.sendAction(action);
-        }
+        } else if (button.getId() == (myActivity.findViewById(R.id.button2)).getId()) {
+            //setAsGui(myActivity.findViewById());
+            Log.d("test", "help button pressed");
+       }
     }// onClick
 
     @Override
@@ -140,6 +151,7 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
         }
         return true;
     }
+
 
     /**
      * callback method--our game has been chosen/rechosen to be the GUI,
@@ -198,12 +210,16 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
                 activity.findViewById(R.id.Dice4),
                 activity.findViewById(R.id.Dice5),};
         roll = activity.findViewById(R.id.roll);
+
         //Listen for button presses
         for (ImageButton die : dice) {
             die.setOnClickListener(this);
         }
         roll.setOnClickListener(this);
+
         getTopView().setOnTouchListener(this);
+
+
     }//setAsGui
 
 
