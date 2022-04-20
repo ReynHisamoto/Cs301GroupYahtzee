@@ -8,5 +8,20 @@
         android:id="@+id/howToPlayTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="How To Play Yahtzee" />
+        android:text="How To Play Yahtzee"
+ />
+
+    <TextView
+        android:id="@+id/howToPlayDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Each player has a score card. On your turn, roll the dice up to 3 time to get a high-scoring combonation from one of the 13 categories.
+You must fill out one box at the end of your turn regardless of the score you recieved. Before each roll, you must select the dice you want to reroll."
+        />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Close" />
 </LinearLayout>
