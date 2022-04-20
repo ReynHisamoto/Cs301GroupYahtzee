@@ -30,7 +30,6 @@ public class YahtzeeComputerPlayer extends GameComputerPlayer {
 
     @Override
     protected void receiveInfo(GameInfo info) {
-
         if (!(info instanceof NotYourTurnInfo)) {
             int rand = (int) (Math.random() * 14);
             try {

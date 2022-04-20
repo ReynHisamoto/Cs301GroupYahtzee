@@ -47,7 +47,7 @@ public class YahtzeeLocalGame extends LocalGame {
     @Override
     protected boolean makeMove(GameAction action) {
         /**
-         Essentially, this "if" statement detects if the action is a YahtzeeKeep action. If it is, it detects
+         Essentially, this "if" statement detects if the action is a YahtzeeSelect action. If it is, it detects
          who made the action, then it will tell the YahtzeeGameState to "keep" the die that has had
          the action performed on it.
          TODO CHANGE NAME OF KEEP
@@ -55,14 +55,14 @@ public class YahtzeeLocalGame extends LocalGame {
          means you are wanting to Roll said dice. In a sense, all the dice that are not highlighted are being "kept"
          **/
 
-        if (action instanceof YahtzeeKeep && !canMakeAction(((YahtzeeKeep) action).getIdx())) {
+        if (action instanceof YahtzeeSelect && !canMakeAction(((YahtzeeSelect) action).getIdx())) {
             //TODO WRITE MORE COMMENTS
-            if (!masterGameState.getDice( ( (YahtzeeKeep)action).getSelected() ).isKeep() ) {
-                masterGameState.getSelectedDice().add(masterGameState.getDice(((YahtzeeKeep) action).getSelected()));
-                masterGameState.getDice(((YahtzeeKeep) action).getSelected()).setKeep(true);
+            if (!masterGameState.getDice( ( (YahtzeeSelect)action).getSelected() ).isKeep() ) {
+                masterGameState.getSelectedDice().add(masterGameState.getDice(((YahtzeeSelect) action).getSelected()));
+                masterGameState.getDice(((YahtzeeSelect) action).getSelected()).setKeep(true);
             } else {
-                masterGameState.getSelectedDice().remove(masterGameState.getDice(((YahtzeeKeep) action).getSelected()));
-                masterGameState.getDice(((YahtzeeKeep) action).getSelected()).setKeep(false);
+                masterGameState.getSelectedDice().remove(masterGameState.getDice(((YahtzeeSelect) action).getSelected()));
+                masterGameState.getDice(((YahtzeeSelect) action).getSelected()).setKeep(false);
                 if (masterGameState.getSelectedDice().size() > 3) {
                     masterGameState.getSelectedDice().get(3).setKeep(false);
                     masterGameState.getSelectedDice().remove(3);
@@ -94,7 +94,7 @@ public class YahtzeeLocalGame extends LocalGame {
          * checks where the player has clicked and adds to the scoreboard accordingly
          */
         if (action instanceof YahtzeeScore && !canMakeAction(((YahtzeeScore) action).getIdx()) && ((YahtzeeScore) action).getRow() < 16 &&
-                ((YahtzeeScore) action).getRow() > 0
+                ((YahtzeeScore) action).getRow() >= 0
                 && masterGameState.getScores(((YahtzeeScore) action).getIdx())[((YahtzeeScore) action).getRow()] == 0
                 && !masterGameState.getChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow())) {
             int score = 0;
