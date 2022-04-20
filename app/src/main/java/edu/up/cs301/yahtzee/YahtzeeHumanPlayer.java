@@ -127,7 +127,7 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
                     idx = i;
                 }
             }
-            YahtzeeKeep action = new YahtzeeKeep(this, playerNum, idx);
+            YahtzeeSelect action = new YahtzeeSelect(this, playerNum, idx);
             game.sendAction(action);
         } else if (button instanceof Button && button.getId() == (myActivity.findViewById(R.id.roll)).getId()) {
             YahtzeeRoll action = new YahtzeeRoll(this, playerNum);

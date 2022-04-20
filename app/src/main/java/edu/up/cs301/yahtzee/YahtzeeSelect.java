@@ -3,7 +3,7 @@ package edu.up.cs301.yahtzee;
 import edu.up.cs301.game.GamePlayer;
 import edu.up.cs301.game.actionMsg.GameAction;
 
-public class YahtzeeKeep extends GameAction {
+public class YahtzeeSelect extends GameAction {
     /**
      * constructor for GameAction
      *
@@ -11,7 +11,7 @@ public class YahtzeeKeep extends GameAction {
      */
     private int idx;
     private int selected;
-    public YahtzeeKeep(GamePlayer player,int id,int die) {
+    public YahtzeeSelect(GamePlayer player, int id, int die) {
         super(player);
         this.idx = id;
         this.selected = die;
