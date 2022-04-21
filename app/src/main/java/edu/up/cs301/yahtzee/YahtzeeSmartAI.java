@@ -124,6 +124,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                     if (dice.getVal() != mostCommonValue || !dice.isKeep()) {
                         YahtzeeSelect action = new YahtzeeSelect(this, this.playerNum, i);
                         game.sendAction(action);
+                        return;
                     }
                 }
                 YahtzeeRoll action = new YahtzeeRoll(this, this.playerNum);
@@ -136,6 +137,12 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                     if (dice.getVal() != mostCommonValue && !dice.isKeep()) {
                         YahtzeeSelect action = new YahtzeeSelect(this, this.playerNum, i);
                         game.sendAction(action);
+                        return;
+                    }//TODO fix the selection so that it updates with the most recent update
+                     else if(dice.getVal() == mostCommonValue && dice.isKeep()){
+                        YahtzeeSelect action = new YahtzeeSelect(this, this.playerNum, i);
+                        game.sendAction(action);
+                        return;
                     }
                 }
                 YahtzeeRoll action = new YahtzeeRoll(this, this.playerNum);
@@ -156,27 +163,31 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
 */
 
             //Santiago's code:
-            if (ones()) {
+            if (ones() && !masterGameState.getChosen(playerNum,0)) {
                 YahtzeeScore action = new YahtzeeScore(this, 0, playerNum);
                 game.sendAction(action);
                 return;
-            } else if (twos()) {
+            } else if (twos() && !masterGameState.getChosen(playerNum,1)) {
                 YahtzeeScore action = new YahtzeeScore(this, 1, playerNum);
                 game.sendAction(action);
-            } else if (threes()) {
+            } else if (threes() && !masterGameState.getChosen(playerNum,2)) {
                 YahtzeeScore action = new YahtzeeScore(this, 2, playerNum);
                 game.sendAction(action);
                 return;
-            } else if (fours()) {
+            } else if (fours() && !masterGameState.getChosen(playerNum,3)) {
                 YahtzeeScore action = new YahtzeeScore(this, 3, playerNum);
                 game.sendAction(action);
                 return;
-            } else if (fives()) {
+            } else if (fives() && !masterGameState.getChosen(playerNum,4)) {
                 YahtzeeScore action = new YahtzeeScore(this, 4, playerNum);
                 game.sendAction(action);
                 return;
-            } else if (sixes()) {
+            } else if (sixes() && !masterGameState.getChosen(playerNum,5)) {
                 YahtzeeScore action = new YahtzeeScore(this, 5, playerNum);
+                game.sendAction(action);
+                return;
+            }else if( !masterGameState.getChosen(playerNum,13)){
+                YahtzeeScore action = new YahtzeeScore(this,13,playerNum);
                 game.sendAction(action);
                 return;
             }
