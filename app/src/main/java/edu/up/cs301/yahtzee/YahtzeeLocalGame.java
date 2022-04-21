@@ -14,11 +14,17 @@ import edu.up.cs301.game.actionMsg.GameAction;
 
 /**
  External Citation
- Date: 23 September 2022
+ Date: March 20, 2022
  Problem: forgot how for each loops worked
  Resource:
  https://www.geeksforgeeks.org/for-each-loop-in-java/
  Solution: I used the example code from this post.
+ */
+/**
+ External Citation
+ Date: April 21, 2022
+ Problem: Needed to find a good concise set of rules for how to play Yahtzee
+ https://daroolz.com/play/yahtzee/
  */
 public class YahtzeeLocalGame extends LocalGame {
 

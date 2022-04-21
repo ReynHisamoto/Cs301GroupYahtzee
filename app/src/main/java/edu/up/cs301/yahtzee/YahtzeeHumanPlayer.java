@@ -132,10 +132,7 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
         } else if (button instanceof Button && button.getId() == (myActivity.findViewById(R.id.roll)).getId()) {
             YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
             game.sendAction(action);
-        } else if (button.getId() == (myActivity.findViewById(R.id.button2)).getId()) {
-            //setAsGui(myActivity.findViewById());
-            Log.d("test", "help button pressed");
-       }
+        }
     }// onClick
 
     @Override
