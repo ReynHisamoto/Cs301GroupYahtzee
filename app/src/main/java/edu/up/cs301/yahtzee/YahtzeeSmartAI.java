@@ -20,11 +20,17 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     //An array that counts how many of each value of dice there are.
     int[] numDiceAI;
     //The amount of most common dice from the numDiceAI array.
-    int mostCommonAI;
+    int amountMostComm;
     //The current turn's roll number
     int currentRollNum;
     //The value of the most common dice
     int mostCommonValue = 0;
+    //Player ID
+    int ID = this.playerNum;
+    //Turn number
+    int turn;
+    // Roll number
+    int rollNum;
 
     @Override
     protected void receiveInfo(GameInfo info) {
@@ -37,8 +43,10 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         //instantiates the instance variables.
         diceArr = masterGameState.getDiceArray();
         numDiceAI = ((YahtzeeLocalGame) game).totalDice(masterGameState.getDiceArray());
-        mostCommonAI = ((YahtzeeLocalGame) game).maxNumDice(numDiceAI);
+        amountMostComm = ((YahtzeeLocalGame) game).maxNumDice(numDiceAI);
         currentRollNum = masterGameState.getRollNum();
+        turn = masterGameState.getTurn();
+        rollNum = masterGameState.getRollNum();
 
         //Instantiates mostCommonValue
         for (int i = 0; i < numDiceAI.length; i++){
@@ -75,7 +83,22 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
 //                  1.	Roll other dice then score upper score
 //                  2.	Score chance if upper scores are filled.
 
-            //Does this for a)
+
+            //TODO don't erase any of this. How do I go about selecting dice that I want, in detail with arrays. Ask Augustine for help.
+            else if(amountMostComm >= 3){
+                //a)
+                if(mostCommonValue >= 3){
+                    if(rollNum < 3 && !aIChosen(this.playerNum,mostCommonValue-1)){
+                        YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
+                        game.sendAction(action);
+                    }
+                    else if (rollNum == 3 && !aIChosen(this.playerNum,mostCommonValue-1)){
+                        YahtzeeScore action = new YahtzeeScore(this, 0, playerNum);
+                        game.sendAction(action);
+                    }
+
+                }
+            }
 
 
             //Santiago's code:
@@ -152,7 +175,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
      */
     //Detects if there is any kind of 3 of kind
     private boolean threeOfKind() {
-        if (mostCommonAI >= 3) {
+        if (amountMostComm >= 3) {
             return true;
         } else {
             return false;
@@ -160,12 +183,19 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     }
 
     private boolean fourOfKind() {
-        if (mostCommonAI >= 4){
+        if (amountMostComm >= 4){
             return true;
         }
         else{
             return false;
         }
+    }
+
+
+
+    //detects if a given array spot has been chosen
+    private boolean aIChosen(int player, int row){
+        return masterGameState.getChosen(player,row);
     }
 
 
@@ -248,11 +278,6 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         }
     }
 
-
-    //detects if a given array spot has been chosen
-    private boolean aIChosen(int player, int row){
-        return masterGameState.getChosen(player,row);
-    }
 
     //Methods imported from yahtzeelocalgame.
     // ((YahtzeeLocalgame) game).LargeStraight() - checks if there is large straight.
