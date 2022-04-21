@@ -21,10 +21,12 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     int[] numDiceAI;
     //The amount of most common dice from the numDiceAI array.
     int mostCommonAI;
-    //The amount of the second most common dice
+    //The amount of the second most common dice. possible
     int secondMostCommonAI;
     //The current turn's roll number
     int currentRollNum;
+    //The value of the most common dice
+    int mostCommonValue = 0;
 
     @Override
     protected void receiveInfo(GameInfo info) {
@@ -32,10 +34,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         if (info instanceof YahtzeeGameState) {
             masterGameState = (YahtzeeGameState) info;
         }
-
-
         sleep(500);
-
 
         //instantiates the instance variables.
         diceArr = masterGameState.getDiceArray();
@@ -43,12 +42,15 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         mostCommonAI = ((YahtzeeLocalGame) game).maxNumDice(numDiceAI);
         currentRollNum = masterGameState.getRollNum();
 
+        //Instantiates mostCommonValue
+        for (int i = 0; i < numDiceAI.length; i++){
+            if(numDiceAI[i] > mostCommonValue){
+                mostCommonValue = i;
+            }
+        }
 
 
-        //Leftover code from dumb AI - basically just allows it to run.
         if (!(info instanceof NotYourTurnInfo)) {
-
-
             int rand = (int) (Math.random() * 14);
             try {
                 Thread.sleep(50);
@@ -56,12 +58,35 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                 e.printStackTrace();
             }
 
+            //Step 1: If lower scorecard has yahtzee, full house, or large straight, select that.
+            //Checks yahtzee
+            if(((YahtzeeLocalGame) game).Yahtzee(numDiceAI) && !aIChosen(this.playerNum,14)){
+                YahtzeeScore action = new YahtzeeScore(this, 15, this.playerNum);
+                game.sendAction(action);
+            }
+            //checks large straight
+            else if((((YahtzeeLocalGame) game).LargeStraight(numDiceAI) && !aIChosen(this.playerNum,12))){
+                YahtzeeScore action = new YahtzeeScore(this, 12, this.playerNum);
+                game.sendAction(action);
+            }
+            //TODO Create if statement to detect full house
 
-            //Dumb if statement, will change later. Just selects 3 of kind if AI gets it.
-//          if (threeOfKind() && masterGameState.getChosen(this.playerNum,8)){
-//                YahtzeeScore action = new YahtzeeScore(this, 8, playerNum);
-//                game.sendAction(action);
-//            }
+
+
+            //skipping a few steps to write this weird "if" statement.
+//            5.	If at least three copies of a number, and it’s top score hasn’t been selected :
+//            a)	If value larger than one but less than 4:
+//                  1.	Roll rest and aim for Yahtzee.
+//            b)	If value equal to or larger than 4:
+//                  1.	Roll other dice then score upper score
+//                  2.	Score chance if upper scores are filled.
+
+            //Does this for a)
+
+
+
+
+            //Santiago's code:
             if (ones()){
                 YahtzeeScore action = new YahtzeeScore(this, 0, playerNum);
                 game.sendAction(action);
@@ -116,6 +141,9 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                 game.sendAction(action);
             }
 
+
+
+            //Leftover code from dumb AI - basically just allows it to run.
             if (rand != 6 && rand != 7) {
                 YahtzeeScore action = new YahtzeeScore(this, rand, playerNum);
                 game.sendAction(action);
@@ -136,13 +164,10 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         }//receiveInfo
     }
 
-
-
     /**
      * These are a series of helper methods that scan to see what values the dice array holds. Checks
      * to see how many sixes there are, if there's a 3 of a kind, if there's a full house, etc.
      */
-
     //Detects if there is any kind of 3 of kind
     private boolean threeOfKind() {
         if (mostCommonAI >= 3) {
@@ -161,19 +186,15 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         }
     }
 
+
+    //These methods check if there is at least one of a given dice, and if so return true
     private boolean ones(){
         int val = 0;
         for (int i = 0; i <= 4; i++){
-            if (diceArr[i].getVal() == 1){
-                val++;
-            }
+            if (diceArr[i].getVal() == 1){val++;}
         }
-        if (val >= 1){
-            return true;
-        } else {
-            return false;
-        }
-    }
+        if (val >= 1){ return true;}
+        else {return false;}}
 
     private boolean twos(){
         int val = 0;
@@ -246,12 +267,15 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     }
 
 
-    // ((YahtzeeLocalgame) game).LargeStraight - checks if there is large straight.
-    // ((YahtzeeLocalgame) game).SmallStraight - checks if there is small straight.
-    // ((YahtzeeLocalgame) game).Yahtzee - checks if there is Yahtzee.
+    //detects if a given array spot has been chosen
+    private boolean aIChosen(int player, int row){
+        return masterGameState.getChosen(player,row);
+    }
 
-
-
+    //Methods imported from yahtzeelocalgame.
+    // ((YahtzeeLocalgame) game).LargeStraight() - checks if there is large straight.
+    // ((YahtzeeLocalgame) game).SmallStraight() - checks if there is small straight.
+    // ((YahtzeeLocalgame) game).Yahtzee() - checks if there is Yahtzee.
 
 }
 
