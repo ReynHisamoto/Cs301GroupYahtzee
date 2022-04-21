@@ -39,10 +39,12 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
 
         if (info instanceof YahtzeeGameState) {
             masterGameState = (YahtzeeGameState) info;
+            if(((YahtzeeGameState) info).getTurn() != this.playerNum){
+                return;
+            }
         }
-        sleep(50);
-
         //instantiates the instance variables.
+        yahtzeeLocalGame = (YahtzeeLocalGame) game;
         diceArr = masterGameState.getDiceArray();
         numDiceAI = ((YahtzeeLocalGame) game).totalDice(masterGameState.getDiceArray());
         amountMostComm = ((YahtzeeLocalGame) game).maxNumDice(numDiceAI);
@@ -51,8 +53,9 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         rollNum = masterGameState.getRollNum();
 
         //Instantiates mostCommonValue
-        for (int i = 0; i < numDiceAI.length; i++){
-            if(numDiceAI[i] > mostCommonValue){
+
+        for (int i = 0; i < numDiceAI.length; i++) {
+            if (numDiceAI[i] == amountMostComm) {
                 mostCommonValue = i;
             }
         }
@@ -61,46 +64,44 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         if (!(info instanceof NotYourTurnInfo)) {
             int rand = (int) (Math.random() * 14);
             try {
-                Thread.sleep(50);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             //Step 1: If lower scorecard has yahtzee, full house, or large straight, select that.
             //Checks yahtzee
-            if(((YahtzeeLocalGame) game).Yahtzee(numDiceAI) && !aIChosen(this.playerNum,14)){
+            if (((YahtzeeLocalGame) game).Yahtzee(numDiceAI) && !aIChosen(this.playerNum, 14)) {
                 YahtzeeScore action = new YahtzeeScore(this, 15, this.playerNum);
                 game.sendAction(action);
                 return;
             }
             //checks large straight
-            else if((((YahtzeeLocalGame) game).LargeStraight(numDiceAI) && !aIChosen(this.playerNum,12))){
+            else if ((((YahtzeeLocalGame) game).LargeStraight(numDiceAI) && !aIChosen(this.playerNum, 12))) {
                 YahtzeeScore action = new YahtzeeScore(this, 12, this.playerNum);
                 game.sendAction(action);
                 return;
             }
             //checks small straight
-            else if ((((YahtzeeLocalGame) game).SmallStraight(numDiceAI)) && !aIChosen(this.playerNum, 11)){
+            else if ((((YahtzeeLocalGame) game).SmallStraight(numDiceAI)) && !aIChosen(this.playerNum, 11)) {
                 YahtzeeScore action = new YahtzeeScore(this, 11, this.playerNum);
                 game.sendAction(action);
                 return;
             }
 
             //NOTE: Santi version of full house helper method down below, FINISHED BUT NOT TESTED YET
-            else if (fullHouse(numDiceAI)){
+            else if (fullHouse(numDiceAI)) {
                 YahtzeeScore action = new YahtzeeScore(this, 11, this.playerNum);
                 game.sendAction(action);
                 return;
-            }else if(fourOfKind()){
-                YahtzeeScore action = new YahtzeeScore(this,9,this.playerNum);
+            } else if (fourOfKind()) {
+                YahtzeeScore action = new YahtzeeScore(this, 9, this.playerNum);
+                game.sendAction(action);
+                return;
+            } else if (threeOfKind()) {
+                YahtzeeScore action = new YahtzeeScore(this, 8, this.playerNum);
                 game.sendAction(action);
                 return;
             }
-            else if(threeOfKind()){
-                YahtzeeScore action = new YahtzeeScore(this, 8,this.playerNum);
-                game.sendAction(action);
-                return;
-            }
-
 
 
             //skipping a few steps to write this hard "if" statement.
@@ -113,7 +114,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
 
 
             //TODO don't erase any of this. How do I go about selecting dice that I want, in detail with arrays. Ask Augustine for help.
-            else if(amountMostComm >= 3) {
+            else if (amountMostComm >= 3 && ((YahtzeeGameState)info).getRollNum() != 3) {
                 //a)
                 for (int i = 0; i < diceArr.length; i++) {
                     Dice dice = diceArr[i];
@@ -125,10 +126,10 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                 YahtzeeRoll action = new YahtzeeRoll(this, this.playerNum);
                 game.sendAction(action);
                 //6
-            }else if(amountMostComm == 2){
+            } else if (amountMostComm <= 2 && ((YahtzeeGameState)info).getRollNum() != 3) {
                 for (int i = 0; i < diceArr.length; i++) {
                     Dice dice = diceArr[i];
-                    if (dice.getVal() != mostCommonValue || !dice.isKeep()) {
+                    if (dice.getVal() != mostCommonValue && !dice.isKeep()) {
                         YahtzeeSelect action = new YahtzeeSelect(this, this.playerNum, i);
                         game.sendAction(action);
                     }
@@ -150,36 +151,30 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
 */
 
             //Santiago's code:
-            if (ones()){
+            if (ones()) {
                 YahtzeeScore action = new YahtzeeScore(this, 0, playerNum);
                 game.sendAction(action);
                 return;
-            }
-            else if (twos()){
+            } else if (twos()) {
                 YahtzeeScore action = new YahtzeeScore(this, 1, playerNum);
                 game.sendAction(action);
-            }
-            else if (threes()){
+            } else if (threes()) {
                 YahtzeeScore action = new YahtzeeScore(this, 2, playerNum);
                 game.sendAction(action);
                 return;
-            }
-            else if (fours()){
+            } else if (fours()) {
                 YahtzeeScore action = new YahtzeeScore(this, 3, playerNum);
                 game.sendAction(action);
                 return;
-            }
-            else if (fives()){
+            } else if (fives()) {
                 YahtzeeScore action = new YahtzeeScore(this, 4, playerNum);
                 game.sendAction(action);
                 return;
-            }
-            else if (sixes()){
+            } else if (sixes()) {
                 YahtzeeScore action = new YahtzeeScore(this, 5, playerNum);
                 game.sendAction(action);
                 return;
             }
-
 
 
             //Leftover code from dumb AI - basically just allows it to run.
@@ -207,108 +202,87 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     }
 
     private boolean fourOfKind() {
-        if (amountMostComm >= 4){
+        if (amountMostComm >= 4) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
 
-
     //detects if a given array spot has been chosen
-    private boolean aIChosen(int player, int row){
-        return masterGameState.getChosen(player,row);
+    private boolean aIChosen(int player, int row) {
+        return masterGameState.getChosen(player, row);
     }
 
 
     //These methods check if there is at least one of a given dice, and if so return true. Santiago's methods
-    private boolean ones(){
+    private boolean ones() {
         int val = 0;
-        for (int i = 0; i <= 4; i++){
-            if (diceArr[i].getVal() == 1){val++;}
-        }
-        if (val >= 1){ return true;}
-        else {return false;}}
-
-    private boolean twos(){
-        int val = 0;
-        for (int i = 0; i <= 4; i++){
-            if (diceArr[i].getVal() == 2){
+        for (int i = 0; i <= 4; i++) {
+            if (diceArr[i].getVal() == 1) {
                 val++;
             }
         }
-        if (val >= 1){
-            return true;
-        } else {
-            return false;
-        }
+        return (val >= 1);
     }
 
-    private boolean threes(){
+    private boolean twos() {
         int val = 0;
-        for (int i = 0; i <= 4; i++){
-            if (diceArr[i].getVal() == 3){
+        for (int i = 0; i <= 4; i++) {
+            if (diceArr[i].getVal() == 2) {
                 val++;
             }
         }
-        if (val >= 1){
-            return true;
-        } else {
-            return false;
-        }
+        return (val >= 1);
     }
 
-    private boolean fours(){
+    private boolean threes() {
         int val = 0;
-        for (int i = 0; i <= 4; i++){
-            if (diceArr[i].getVal() == 4){
+        for (int i = 0; i <= 4; i++) {
+            if (diceArr[i].getVal() == 3) {
                 val++;
             }
         }
-        if (val >= 1){
-            return true;
-        } else {
-            return false;
-        }
+        return (val >= 1);
     }
 
-    private boolean fives(){
+    private boolean fours() {
         int val = 0;
-        for (int i = 0; i <= 4; i++){
-            if (diceArr[i].getVal() == 5){
+        for (int i = 0; i <= 4; i++) {
+            if (diceArr[i].getVal() == 4) {
                 val++;
             }
         }
-        if (val >= 1){
-            return true;
-        } else {
-            return false;
-        }
+        return (val >= 1);
     }
 
-    private boolean sixes(){
+    private boolean fives() {
         int val = 0;
-        for (int i = 0; i <= 4; i++){
-            if (diceArr[i].getVal() == 6){
+        for (int i = 0; i <= 4; i++) {
+            if (diceArr[i].getVal() == 5) {
                 val++;
             }
         }
-        if (val >= 1){
-            return true;
-        } else {
-            return false;
-        }
+        return (val >= 1);
     }
 
-    private boolean fullHouse(int[] numDiceAI){
+    private boolean sixes() {
+        int val = 0;
+        for (int i = 0; i <= 4; i++) {
+            if (diceArr[i].getVal() == 6) {
+                val++;
+            }
+        }
+        return (val >= 1);
+    }
+
+    private boolean fullHouse(int[] numDiceAI) {
         mostCommonValue = yahtzeeLocalGame.maxNumDice(numDiceAI);
         secondMostCommonValue = yahtzeeLocalGame.secondNumDice(numDiceAI, mostCommonValue);
-        if (mostCommonValue == 3 && secondMostCommonValue == 2){
+        if (mostCommonValue == 3 && secondMostCommonValue == 2) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
