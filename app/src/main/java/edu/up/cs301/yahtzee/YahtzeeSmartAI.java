@@ -21,8 +21,6 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     int[] numDiceAI;
     //The amount of most common dice from the numDiceAI array.
     int mostCommonAI;
-    //The amount of the second most common dice. possible
-    int secondMostCommonAI;
     //The current turn's roll number
     int currentRollNum;
     //The value of the most common dice
