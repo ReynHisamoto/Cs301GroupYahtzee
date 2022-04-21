@@ -2,6 +2,7 @@ package edu.up.cs301.yahtzee;
 
 import edu.up.cs301.game.GameComputerPlayer;
 import edu.up.cs301.game.infoMsg.GameInfo;
+import edu.up.cs301.game.infoMsg.IllegalMoveInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 
 public class YahtzeeSmartAI extends GameComputerPlayer {
@@ -42,6 +43,8 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             if(((YahtzeeGameState) info).getTurn() != this.playerNum){
                 return;
             }
+        }else{
+            return;
         }
         //instantiates the instance variables.
         yahtzeeLocalGame = (YahtzeeLocalGame) game;
@@ -93,11 +96,11 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                 YahtzeeScore action = new YahtzeeScore(this, 11, this.playerNum);
                 game.sendAction(action);
                 return;
-            } else if (fourOfKind()) {
+            } else if (fourOfKind() && mostCommonValue > 3) {
                 YahtzeeScore action = new YahtzeeScore(this, 9, this.playerNum);
                 game.sendAction(action);
                 return;
-            } else if (threeOfKind()) {
+            } else if (threeOfKind() && mostCommonValue > 3) {
                 YahtzeeScore action = new YahtzeeScore(this, 8, this.playerNum);
                 game.sendAction(action);
                 return;
@@ -125,6 +128,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                 }
                 YahtzeeRoll action = new YahtzeeRoll(this, this.playerNum);
                 game.sendAction(action);
+                return;
                 //6
             } else if (amountMostComm <= 2 && ((YahtzeeGameState)info).getRollNum() != 3) {
                 for (int i = 0; i < diceArr.length; i++) {
@@ -136,6 +140,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                 }
                 YahtzeeRoll action = new YahtzeeRoll(this, this.playerNum);
                 game.sendAction(action);
+                return;
             }
               /*  if(mostCommonValue >= 3){
                     if(rollNum < 3 && !aIChosen(this.playerNum,mostCommonValue-1)){
@@ -177,14 +182,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             }
 
 
-            //Leftover code from dumb AI - basically just allows it to run.
-            if (rand != 6 && rand != 7) {
-                YahtzeeScore action = new YahtzeeScore(this, rand, playerNum);
-                game.sendAction(action);
-            } else {
-                YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
-                game.sendAction(action);
-            }
+
         }//receiveInfo
     }
 

@@ -36,7 +36,6 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
     private AlertDialog dialog;
 
 
-
     // the android activity that we are running
     private GameMainActivity myActivity;
 
@@ -105,6 +104,9 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
             for (int i = 0; i < allPlayerNames.length; i++) {
                 for (int j = 0; j < scores[i].length; j++) {
                     scores[i][j].setText(((YahtzeeGameState) info).getScores(i)[j] + "");
+                    if (((YahtzeeGameState) info).getChosen(i, j)) {
+                        scores[i][j].setBackgroundColor(0x55222200);
+                    }
                 }
             }
             roundNum.setText("ROUND: " + ((YahtzeeGameState) info).getRound() + "\n" +
@@ -139,7 +141,7 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
     public boolean onTouch(View view, MotionEvent motionEvent) {
         if (motionEvent.getX() > (this.getTopView().getWidth() * 3.65) / 5 && view.equals(getTopView())) {
             int row = (int) motionEvent.getY() / (scores[1][1].getHeight());
-            if(row > 0){
+            if (row > 0) {
                 row--;
             }
             YahtzeeScore action = new YahtzeeScore(this, row, playerNum);
