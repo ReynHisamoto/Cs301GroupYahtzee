@@ -47,7 +47,6 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             }
         }
 
-
         if (!(info instanceof NotYourTurnInfo)) {
             int rand = (int) (Math.random() * 14);
             try {
@@ -55,7 +54,6 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
             //Step 1: If lower scorecard has yahtzee, full house, or large straight, select that.
             //Checks yahtzee
             if(((YahtzeeLocalGame) game).Yahtzee(numDiceAI) && !aIChosen(this.playerNum,14)){
@@ -69,8 +67,6 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             }
             //TODO Create if statement to detect full house
 
-
-
             //skipping a few steps to write this weird "if" statement.
 //            5.	If at least three copies of a number, and it’s top score hasn’t been selected :
 //            a)	If value larger than one but less than 4:
@@ -80,8 +76,6 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
 //                  2.	Score chance if upper scores are filled.
 
             //Does this for a)
-
-
 
 
             //Santiago's code:
