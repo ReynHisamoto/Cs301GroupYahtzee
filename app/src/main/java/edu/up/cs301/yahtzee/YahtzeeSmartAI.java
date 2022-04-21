@@ -149,16 +149,6 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                 YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
                 game.sendAction(action);
             }
-            //if (yahtzeeLocalGame.SmallStraight(numDiceAI)){
-              //  YahtzeeScore action = new YahtzeeScore(this, 11, playerNum);
-                //game.sendAction(action);
-            //}
-            //else {
-              //  YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
-                //game.sendAction(action);
-            //}
-
-
         }//receiveInfo
     }
 
