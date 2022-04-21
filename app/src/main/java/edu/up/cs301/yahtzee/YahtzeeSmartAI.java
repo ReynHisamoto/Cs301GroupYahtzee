@@ -25,6 +25,8 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     int currentRollNum;
     //The value of the most common dice
     int mostCommonValue = 0;
+    //The value of the second most common dice
+    int secondMostCommonValue = 0;
     //Player ID
     int ID = this.playerNum;
     //Turn number
@@ -38,7 +40,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         if (info instanceof YahtzeeGameState) {
             masterGameState = (YahtzeeGameState) info;
         }
-        sleep(500);
+        sleep(50);
 
         //instantiates the instance variables.
         diceArr = masterGameState.getDiceArray();
@@ -73,7 +75,18 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                 YahtzeeScore action = new YahtzeeScore(this, 12, this.playerNum);
                 game.sendAction(action);
             }
+            //checks small straight
+            else if ((((YahtzeeLocalGame) game).SmallStraight(numDiceAI)) && !aIChosen(this.playerNum, 11)){
+                YahtzeeScore action = new YahtzeeScore(this, 11, this.playerNum);
+                game.sendAction(action);
+            }
             //TODO Create if statement to detect full house
+
+            //NOTE: Santi version of full house helper method down below, FINISHED BUT NOT TESTED YET
+            else if (fullHouse(numDiceAI)){
+                YahtzeeScore action = new YahtzeeScore(this, 11, this.playerNum);
+                game.sendAction(action);
+            }
 
             //skipping a few steps to write this hard "if" statement.
 //            5.	If at least three copies of a number, and it’s top score hasn’t been selected :
@@ -278,6 +291,16 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         }
     }
 
+    private boolean fullHouse(int[] numDiceAI){
+        mostCommonValue = yahtzeeLocalGame.maxNumDice(numDiceAI);
+        secondMostCommonValue = yahtzeeLocalGame.secondNumDice(numDiceAI, mostCommonValue);
+        if (mostCommonValue == 3 && secondMostCommonValue == 2){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     //Methods imported from yahtzeelocalgame.
     // ((YahtzeeLocalgame) game).LargeStraight() - checks if there is large straight.
