@@ -75,7 +75,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             }
             //TODO Create if statement to detect full house
 
-            //skipping a few steps to write this weird "if" statement.
+            //skipping a few steps to write this hard "if" statement.
 //            5.	If at least three copies of a number, and it’s top score hasn’t been selected :
 //            a)	If value larger than one but less than 4:
 //                  1.	Roll rest and aim for Yahtzee.
@@ -199,7 +199,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     }
 
 
-    //These methods check if there is at least one of a given dice, and if so return true
+    //These methods check if there is at least one of a given dice, and if so return true. Santiago's methods
     private boolean ones(){
         int val = 0;
         for (int i = 0; i <= 4; i++){
