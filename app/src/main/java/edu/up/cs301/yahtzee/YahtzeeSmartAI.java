@@ -57,6 +57,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             }
         }
 
+
         if (!(info instanceof NotYourTurnInfo)) {
             int rand = (int) (Math.random() * 14);
             try {
@@ -69,24 +70,38 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             if(((YahtzeeLocalGame) game).Yahtzee(numDiceAI) && !aIChosen(this.playerNum,14)){
                 YahtzeeScore action = new YahtzeeScore(this, 15, this.playerNum);
                 game.sendAction(action);
+                return;
             }
             //checks large straight
             else if((((YahtzeeLocalGame) game).LargeStraight(numDiceAI) && !aIChosen(this.playerNum,12))){
                 YahtzeeScore action = new YahtzeeScore(this, 12, this.playerNum);
                 game.sendAction(action);
+                return;
             }
             //checks small straight
             else if ((((YahtzeeLocalGame) game).SmallStraight(numDiceAI)) && !aIChosen(this.playerNum, 11)){
                 YahtzeeScore action = new YahtzeeScore(this, 11, this.playerNum);
                 game.sendAction(action);
+                return;
             }
-            //TODO Create if statement to detect full house
 
             //NOTE: Santi version of full house helper method down below, FINISHED BUT NOT TESTED YET
             else if (fullHouse(numDiceAI)){
                 YahtzeeScore action = new YahtzeeScore(this, 11, this.playerNum);
                 game.sendAction(action);
+                return;
+            }else if(fourOfKind()){
+                YahtzeeScore action = new YahtzeeScore(this,9,this.playerNum);
+                game.sendAction(action);
+                return;
             }
+            else if(threeOfKind()){
+                YahtzeeScore action = new YahtzeeScore(this, 8,this.playerNum);
+                game.sendAction(action);
+                return;
+            }
+
+
 
             //skipping a few steps to write this hard "if" statement.
 //            5.	If at least three copies of a number, and it’s top score hasn’t been selected :
@@ -98,9 +113,30 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
 
 
             //TODO don't erase any of this. How do I go about selecting dice that I want, in detail with arrays. Ask Augustine for help.
-            else if(amountMostComm >= 3){
+            else if(amountMostComm >= 3) {
                 //a)
-                if(mostCommonValue >= 3){
+                for (int i = 0; i < diceArr.length; i++) {
+                    Dice dice = diceArr[i];
+                    if (dice.getVal() != mostCommonValue || !dice.isKeep()) {
+                        YahtzeeSelect action = new YahtzeeSelect(this, this.playerNum, i);
+                        game.sendAction(action);
+                    }
+                }
+                YahtzeeRoll action = new YahtzeeRoll(this, this.playerNum);
+                game.sendAction(action);
+                //6
+            }else if(amountMostComm == 2){
+                for (int i = 0; i < diceArr.length; i++) {
+                    Dice dice = diceArr[i];
+                    if (dice.getVal() != mostCommonValue || !dice.isKeep()) {
+                        YahtzeeSelect action = new YahtzeeSelect(this, this.playerNum, i);
+                        game.sendAction(action);
+                    }
+                }
+                YahtzeeRoll action = new YahtzeeRoll(this, this.playerNum);
+                game.sendAction(action);
+            }
+              /*  if(mostCommonValue >= 3){
                     if(rollNum < 3 && !aIChosen(this.playerNum,mostCommonValue-1)){
                         YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
                         game.sendAction(action);
@@ -109,64 +145,39 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                         YahtzeeScore action = new YahtzeeScore(this, 0, playerNum);
                         game.sendAction(action);
                     }
-
                 }
-            }
 
+*/
 
             //Santiago's code:
             if (ones()){
                 YahtzeeScore action = new YahtzeeScore(this, 0, playerNum);
                 game.sendAction(action);
+                return;
             }
-            else {
-                YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
+            else if (twos()){
+                YahtzeeScore action = new YahtzeeScore(this, 1, playerNum);
                 game.sendAction(action);
             }
-
-            if (twos()){
-                YahtzeeScore action = new YahtzeeScore(this, 0, playerNum);
+            else if (threes()){
+                YahtzeeScore action = new YahtzeeScore(this, 2, playerNum);
                 game.sendAction(action);
+                return;
             }
-            else {
-                YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
+            else if (fours()){
+                YahtzeeScore action = new YahtzeeScore(this, 3, playerNum);
                 game.sendAction(action);
+                return;
             }
-
-            if (threes()){
-                YahtzeeScore action = new YahtzeeScore(this, 0, playerNum);
+            else if (fives()){
+                YahtzeeScore action = new YahtzeeScore(this, 4, playerNum);
                 game.sendAction(action);
+                return;
             }
-            else {
-                YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
+            else if (sixes()){
+                YahtzeeScore action = new YahtzeeScore(this, 5, playerNum);
                 game.sendAction(action);
-            }
-
-            if (fours()){
-                YahtzeeScore action = new YahtzeeScore(this, 0, playerNum);
-                game.sendAction(action);
-            }
-            else {
-                YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
-                game.sendAction(action);
-            }
-
-            if (fives()){
-                YahtzeeScore action = new YahtzeeScore(this, 0, playerNum);
-                game.sendAction(action);
-            }
-            else {
-                YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
-                game.sendAction(action);
-            }
-
-            if (sixes()){
-                YahtzeeScore action = new YahtzeeScore(this, 0, playerNum);
-                game.sendAction(action);
-            }
-            else {
-                YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
-                game.sendAction(action);
+                return;
             }
 
 
