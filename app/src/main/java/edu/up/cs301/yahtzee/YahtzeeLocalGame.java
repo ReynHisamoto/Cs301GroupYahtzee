@@ -29,7 +29,7 @@ import edu.up.cs301.game.actionMsg.GameAction;
 public class YahtzeeLocalGame extends LocalGame {
 
     private YahtzeeGameState masterGameState;
-
+    private boolean soundPlayed;
     /**
      * This ctor creates a new game state
      */
@@ -108,6 +108,7 @@ public class YahtzeeLocalGame extends LocalGame {
             int mostCommon = maxNumDice(numDice);
             int secondCommon = secondNumDice(numDice, mostCommon);
             boolean fullTop = false;
+            soundPlayed = false;
             boolean alreadyChosen = masterGameState.getChosen(((YahtzeeScore) action).getIdx(), ((YahtzeeScore) action).getRow());
             if (alreadyChosen) {
                 return false;
@@ -280,7 +281,12 @@ public class YahtzeeLocalGame extends LocalGame {
             } else {
                 masterGameState.setTurn(0);
             }
-
+            for(GamePlayer player : players){
+                if(player instanceof YahtzeeHumanPlayer && !soundPlayed){
+                    soundPlayed = true;
+                    ((YahtzeeHumanPlayer) player).writingSound();
+                }
+            }
             return true;
         }
 
@@ -317,6 +323,11 @@ public class YahtzeeLocalGame extends LocalGame {
         }
 
         if (masterGameState.getRound() >= 13 * players.length + 1) {
+            for(GamePlayer player : players){
+                if(player instanceof YahtzeeHumanPlayer){
+                    ((YahtzeeHumanPlayer) player).winSound();
+                }
+            }
             return "The winner is " + playerNames[max] + " !";
         }
 

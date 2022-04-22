@@ -6,6 +6,7 @@ import edu.up.cs301.game.R;
 import edu.up.cs301.game.infoMsg.GameInfo;
 
 import android.app.AlertDialog;
+import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -134,6 +135,8 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
         } else if (button instanceof Button && button.getId() == (myActivity.findViewById(R.id.roll)).getId()) {
             YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
             game.sendAction(action);
+            MediaPlayer song = MediaPlayer.create(myActivity, R.raw.roll);
+            song.start();
         }
     }// onClick
 
@@ -221,5 +224,12 @@ public class YahtzeeHumanPlayer extends GameHumanPlayer implements OnClickListen
 
     }//setAsGui
 
-
+public void winSound(){
+    MediaPlayer song = MediaPlayer.create(myActivity, R.raw.win);
+    song.start();
+}
+public void writingSound(){
+    MediaPlayer song = MediaPlayer.create(myActivity, R.raw.writing);
+    song.start();
+}
 }// class PigHumanPlayer
