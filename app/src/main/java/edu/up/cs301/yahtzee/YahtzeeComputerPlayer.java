@@ -33,7 +33,7 @@ public class YahtzeeComputerPlayer extends GameComputerPlayer {
         if (!(info instanceof NotYourTurnInfo)) {
             int rand = (int) (Math.random() * 15);
             try {
-                Thread.sleep(500);
+                Thread.sleep(250);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
