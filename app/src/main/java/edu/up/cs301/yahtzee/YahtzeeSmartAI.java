@@ -27,7 +27,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     //The value of the most common dice
     int mostCommonValue = 0;
     //The value of the second most common dice
-    int secondMostCommonValue = 0;
+    int secondMostCommon = 0;
     //Player ID
     int ID = this.playerNum;
     //Turn number
@@ -38,14 +38,13 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     @Override
     protected void receiveInfo(GameInfo info) {
 
-        if (info instanceof YahtzeeGameState) {
+        if ((info instanceof YahtzeeGameState) ) {
             masterGameState = (YahtzeeGameState) info;
-            if(((YahtzeeGameState) info).getTurn() != this.playerNum){
+            if(masterGameState.getTurn() != playerNum){
                 return;
             }
-        }else{
-            return;
         }
+
         //instantiates the instance variables.
         yahtzeeLocalGame = (YahtzeeLocalGame) game;
         diceArr = masterGameState.getDiceArray();
@@ -54,7 +53,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         currentRollNum = masterGameState.getRollNum();
         turn = masterGameState.getTurn();
         rollNum = masterGameState.getRollNum();
-
+        secondMostCommon = ((YahtzeeLocalGame) game).secondNumDice(numDiceAI,amountMostComm);
         //Instantiates mostCommonValue
 
         for (int i = 0; i < numDiceAI.length; i++) {
@@ -65,7 +64,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
 
 
         if (!(info instanceof NotYourTurnInfo)) {
-            int rand = (int) (Math.random() * 14);
+
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -74,7 +73,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             //Step 1: If lower scorecard has yahtzee, full house, or large straight, select that.
             //Checks yahtzee
             if (((YahtzeeLocalGame) game).Yahtzee(numDiceAI) && !aIChosen(this.playerNum, 14)) {
-                YahtzeeScore action = new YahtzeeScore(this, 15, this.playerNum);
+                YahtzeeScore action = new YahtzeeScore(this, 14, this.playerNum);
                 game.sendAction(action);
                 return;
             }
@@ -92,15 +91,15 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             }
 
             //NOTE: Santi version of full house helper method down below, FINISHED BUT NOT TESTED YET
-            else if (fullHouse(numDiceAI)) {
-                YahtzeeScore action = new YahtzeeScore(this, 11, this.playerNum);
+            else if (fullHouse(numDiceAI) && !aIChosen(this.playerNum, 10)) {
+                YahtzeeScore action = new YahtzeeScore(this, 10, this.playerNum);
                 game.sendAction(action);
                 return;
-            } else if (fourOfKind() && mostCommonValue > 3) {
+            } else if (fourOfKind() && mostCommonValue > 3 && !aIChosen(this.playerNum, 9)) {
                 YahtzeeScore action = new YahtzeeScore(this, 9, this.playerNum);
                 game.sendAction(action);
                 return;
-            } else if (threeOfKind() && mostCommonValue > 3) {
+            } else if (threeOfKind() && mostCommonValue > 3 && !aIChosen(this.playerNum, 8)) {
                 YahtzeeScore action = new YahtzeeScore(this, 8, this.playerNum);
                 game.sendAction(action);
                 return;
@@ -116,12 +115,11 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
 //                  2.	Score chance if upper scores are filled.
 
 
-
-            else if (amountMostComm >= 3 && ((YahtzeeGameState)info).getRollNum() != 3) {
+             if (amountMostComm >= 3 && currentRollNum < 3) {
                 //a)
                 for (int i = 0; i < diceArr.length; i++) {
                     Dice dice = diceArr[i];
-                    if (dice.getVal() != mostCommonValue || !dice.isKeep()) {
+                    if (dice.getVal() != mostCommonValue && !dice.isKeep()) {
                         YahtzeeSelect action = new YahtzeeSelect(this, this.playerNum, i);
                         game.sendAction(action);
                         return;
@@ -131,15 +129,10 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                 game.sendAction(action);
                 return;
                 //6
-            } else if (amountMostComm <= 2 && ((YahtzeeGameState)info).getRollNum() != 3) {
+            } else if (amountMostComm <= 2 && currentRollNum < 3) {
                 for (int i = 0; i < diceArr.length; i++) {
                     Dice dice = diceArr[i];
                     if (dice.getVal() != mostCommonValue && !dice.isKeep()) {
-                        YahtzeeSelect action = new YahtzeeSelect(this, this.playerNum, i);
-                        game.sendAction(action);
-                        return;
-                    }//TODO fix the selection so that it updates with the most recent update
-                     else if(dice.getVal() == mostCommonValue && dice.isKeep()){
                         YahtzeeSelect action = new YahtzeeSelect(this, this.playerNum, i);
                         game.sendAction(action);
                         return;
@@ -191,7 +184,12 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                 game.sendAction(action);
                 return;
             }
-
+            for(int i =0; i < 16; i++){
+                if(!masterGameState.getChosen(playerNum,i)){
+                    YahtzeeScore action = new YahtzeeScore(this, i, playerNum);
+                    game.sendAction(action);
+                }
+            }
 
 
         }//receiveInfo
@@ -287,9 +285,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     }
 
     private boolean fullHouse(int[] numDiceAI) {
-        mostCommonValue = yahtzeeLocalGame.maxNumDice(numDiceAI);
-        secondMostCommonValue = yahtzeeLocalGame.secondNumDice(numDiceAI, mostCommonValue);
-        if (mostCommonValue == 3 && secondMostCommonValue == 2) {
+        if (amountMostComm == 3 && secondMostCommon == 2) {
             return true;
         } else {
             return false;

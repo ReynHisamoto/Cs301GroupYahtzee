@@ -88,6 +88,10 @@ public class YahtzeeLocalGame extends LocalGame {
                     rand = (int) (Math.random() * 6 + 1);
                     dice.setVal(rand);
                 }
+                for(Dice dice: masterGameState.getSelectedDice()){
+                    dice.setKeep(false);
+                }
+                masterGameState.getSelectedDice().clear();
                 return true;
             }
         }
@@ -312,7 +316,7 @@ public class YahtzeeLocalGame extends LocalGame {
             }
         }
 
-        if (masterGameState.getRound() >= 13 * players.length) {
+        if (masterGameState.getRound() >= 13 * players.length + 1) {
             return "The winner is " + playerNames[max] + " !";
         }
 
