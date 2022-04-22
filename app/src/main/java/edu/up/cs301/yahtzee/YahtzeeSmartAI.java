@@ -116,7 +116,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
 //                  2.	Score chance if upper scores are filled.
 
 
-            //TODO don't erase any of this. How do I go about selecting dice that I want, in detail with arrays. Ask Augustine for help.
+
             else if (amountMostComm >= 3 && ((YahtzeeGameState)info).getRollNum() != 3) {
                 //a)
                 for (int i = 0; i < diceArr.length; i++) {
