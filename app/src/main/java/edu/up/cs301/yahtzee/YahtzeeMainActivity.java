@@ -18,9 +18,44 @@ import edu.up.cs301.game.config.GamePlayerType;
 
 
 /**
- * I'm just going to make a note here: This game has a bug where when you switch from portrait to
+ * Hello! This is the part where we discuss how this game fulfills the grading rubric.
+ * Our game, almost in its entirety, implements the rules of the game and derives from the
+ * design that we started out with.
+ *
+ * The GUI is mostly effective and easy to use. The only thing
+ * that can be confusing is that when you select dice you are actually selecting dice to roll rather
+ * than to hold. However, we included that detail in our "how to play" button/screen.
+ *
+ * The smart AI is pretty smart. It's definitely possible to lose to it.
+ *
+ * We appropriately addressed all the bugs reported.
+ *
+ * The game doesn't support network play, but it's close. I discuss the bug down below.
+ *
+ * The game mostly follows the 301 coding standard, although there's room for improvement.
+ *
+ * The unit tests are present and passing.
+ *
+ * We feel the game looks pleasant, and the sound effects make it more satisfying.
+ *
+ * Extra features:
+ * -It can work in both portrait and landscape mode, with a small bug discussed below.
+ * -There are sound effects
+ * -There is an "how to play" page.
+ *
+ * We feel we followed the instructions well.
+ *
+ * Bugs:
+ * This game has a bug where when you switch from portrait to
  * landscape it requires you to hit the "roll" button in order to update the gui. However,
- * it can play in both.
+ * it can play in both. It would likely take another listener to update the GUI each time
+ * the tablet is rotated.
+ *
+ * Network play doesn't work, but we're close. We can link two tablets up to each other, and both
+ * can send actions. However, only the local player can actually see the updated game state. The
+ * remote player has a blank GUI. We don't have any idea how to fix this.
+ *
+ *
  */
 public class YahtzeeMainActivity extends GameMainActivity {
 
