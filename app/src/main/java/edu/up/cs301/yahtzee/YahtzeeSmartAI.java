@@ -54,8 +54,8 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         turn = masterGameState.getTurn();
         rollNum = masterGameState.getRollNum();
         secondMostCommon = ((YahtzeeLocalGame) game).secondNumDice(numDiceAI,amountMostComm);
-        //Instantiates mostCommonValue
 
+        //Instantiates mostCommonValue
         for (int i = 0; i < numDiceAI.length; i++) {
             if (numDiceAI[i] == amountMostComm) {
                 mostCommonValue = i;
@@ -90,33 +90,30 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                 return;
             }
 
-            //NOTE: Santi version of full house helper method down below, FINISHED BUT NOT TESTED YET
+            //checks full house
             else if (fullHouse(numDiceAI) && !aIChosen(this.playerNum, 10)) {
                 YahtzeeScore action = new YahtzeeScore(this, 10, this.playerNum);
                 game.sendAction(action);
                 return;
+            //checks four of a kind
             } else if (fourOfKind() && mostCommonValue > 3 && !aIChosen(this.playerNum, 9)) {
                 YahtzeeScore action = new YahtzeeScore(this, 9, this.playerNum);
                 game.sendAction(action);
                 return;
+            //checks four of a kind
             } else if (threeOfKind() && mostCommonValue > 3 && !aIChosen(this.playerNum, 8)) {
                 YahtzeeScore action = new YahtzeeScore(this, 8, this.playerNum);
                 game.sendAction(action);
                 return;
             }
-
-
-            //skipping a few steps to write this hard "if" statement.
-//            5.	If at least three copies of a number, and it’s top score hasn’t been selected :
+            //Step 2
+//            If at least three copies of a number, and it’s top score hasn’t been selected :
 //            a)	If value larger than one but less than 4:
 //                  1.	Roll rest and aim for Yahtzee.
 //            b)	If value equal to or larger than 4:
 //                  1.	Roll other dice then score upper score
 //                  2.	Score chance if upper scores are filled.
-
-
              if (amountMostComm >= 3 && currentRollNum < 3) {
-                //a)
                 for (int i = 0; i < diceArr.length; i++) {
                     Dice dice = diceArr[i];
                     if (dice.getVal() != mostCommonValue && !dice.isKeep()) {
@@ -128,8 +125,10 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                 YahtzeeRoll action = new YahtzeeRoll(this, this.playerNum);
                 game.sendAction(action);
                 return;
-                //6
-            } else if (amountMostComm <= 2 && currentRollNum < 3) {
+
+             //Step 3: if 2 copies of a number, and it’s top hasn’t been selected, roll other three.
+
+             } else if (amountMostComm <= 2 && currentRollNum < 3) {
                 for (int i = 0; i < diceArr.length; i++) {
                     Dice dice = diceArr[i];
                     if (dice.getVal() != mostCommonValue && !dice.isKeep()) {
@@ -142,20 +141,13 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
                 game.sendAction(action);
                 return;
             }
-              /*  if(mostCommonValue >= 3){
-                    if(rollNum < 3 && !aIChosen(this.playerNum,mostCommonValue-1)){
-                        YahtzeeRoll action = new YahtzeeRoll(this, playerNum);
-                        game.sendAction(action);
-                    }
-                    else if (rollNum == 3 && !aIChosen(this.playerNum,mostCommonValue-1)){
-                        YahtzeeScore action = new YahtzeeScore(this, 0, playerNum);
-                        game.sendAction(action);
-                    }
-                }
 
-*/
-
-            //Santiago's code:
+            /**
+             *This is a series of if statements that, if there exists nothing else decent for the
+             * AI to do, will fill in the highest most box on the scorecard. This is actually a yahtzee
+             * strategy: you don't want to throw away your 4's,5's,or 6's because you want high scores on those.
+             * The "chance" is also best saved for later in the game when there is less left on the board.
+              */
             if (ones() && !masterGameState.getChosen(playerNum,0)) {
                 YahtzeeScore action = new YahtzeeScore(this, 0, playerNum);
                 game.sendAction(action);
@@ -223,7 +215,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
     }
 
 
-    //These methods check if there is at least one of a given dice, and if so return true. Santiago's methods
+    //These methods check if there is at least one of a given dice, and if so return true.
     private boolean ones() {
         int val = 0;
         for (int i = 0; i <= 4; i++) {
@@ -283,7 +275,7 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
         }
         return (val >= 1);
     }
-
+    //Detects if full house.
     private boolean fullHouse(int[] numDiceAI) {
         if (amountMostComm == 3 && secondMostCommon == 2) {
             return true;
@@ -291,12 +283,6 @@ public class YahtzeeSmartAI extends GameComputerPlayer {
             return false;
         }
     }
-
-    //Methods imported from yahtzeelocalgame.
-    // ((YahtzeeLocalgame) game).LargeStraight() - checks if there is large straight.
-    // ((YahtzeeLocalgame) game).SmallStraight() - checks if there is small straight.
-    // ((YahtzeeLocalgame) game).Yahtzee() - checks if there is Yahtzee.
-
 }
 
 

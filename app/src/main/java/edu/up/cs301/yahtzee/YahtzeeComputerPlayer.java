@@ -5,10 +5,10 @@ import edu.up.cs301.game.infoMsg.GameInfo;
 import edu.up.cs301.game.infoMsg.NotYourTurnInfo;
 
 /**
- * An AI for Pig
+ * An AI for Yahtzee
  *
- * @author Andrew M. Nuxoll
- * @version August 2015
+ * @author Augustine P, Reyn H, James L, Santiago F
+ * @version Spring 2022
  */
 public class YahtzeeComputerPlayer extends GameComputerPlayer {
 

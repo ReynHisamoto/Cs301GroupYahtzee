@@ -10,10 +10,17 @@ import edu.up.cs301.game.config.GamePlayerType;
 
 
 /**
- * this is the primary activity for Pig
+ * this is the primary activity for Yahtzee
  *
- * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl
- * @version February 2016
+ * @author Augustine P, Reyn H, James L, Santiago F
+ * @version Spring 2022
+ */
+
+
+/**
+ * I'm just going to make a note here: This game has a bug where when you switch from portrait to
+ * landscape it requires you to hit the "roll" button in order to update the gui. However,
+ * it can play in both.
  */
 public class YahtzeeMainActivity extends GameMainActivity {
 

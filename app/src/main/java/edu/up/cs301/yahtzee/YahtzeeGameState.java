@@ -5,7 +5,7 @@ package edu.up.cs301.yahtzee;
  *
  * @author Andrew M. Nuxoll, modified by Steven R. Vegdahl, Augustine P, Reyn H, James L, Santiago F
  *
- * @version February 2016
+ * @version February 2022
  */
 
 import java.util.ArrayList;
